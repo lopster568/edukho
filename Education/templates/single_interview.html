@@ -1,0 +1,285 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  {% if single_interview %}
+    {% for x in single_interview %}{{ x.title }} | Education Khoj{% endfor %}
+  {% else %}
+    Interview | Education Khoj
+  {% endif %}
+{% endblock %}
+
+{% block metadescription %}
+  {% if single_interview %}
+    {% for x in single_interview %}
+      <meta name="description" content="{{ x.desc|striptags|truncatechars:160 }}">
+    {% endfor %}
+  {% endif %}
+{% endblock %}
+
+{% block extra_meta %}
+{% if single_interview %}
+{% for x in single_interview %}
+//educationkhoj.com/Interview/{{ x.id }}">
+
+<!-- Open Graph -->
+<meta property="og:title" content="{{ x.title }}">
+<meta property="og:description" content="{{ x.desc|striptags|truncatechars:160 }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://educationkhoj.com/Interview/{{ x.id }}">
+<meta property="og:image" content="/media/{{ x.img }}">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ x.title }}">
+<meta name="twitter:description" content="{{ x.desc|striptags|truncatechars:160 }}">
+<meta name="twitter:image" content="/media/{{ x.img }}">
+{% endfor %}
+{% endif %}
+{% endblock %}
+
+{% block schema %}
+{% if single_interview %}
+{% for x in single_interview %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ x.title }}",
+  "description": "{{ x.desc|striptags|truncatechars:160 }}",
+  "image": "https://educationkhoj.com/media/{{ x.img }}",
+  "datePublished": "{{ x.date }}",
+  "dateModified": "{{ x.date }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ x.profile }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Education Khoj",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://educationkhoj.com/static/images/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://educationkhoj.com/Interview/{{ x.id }}"
+  }
+}
+</script>
+{% endfor %}
+{% endif %}
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://educationkhoj.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Interviews",
+      "item": "https://educationkhoj.com/Interveiw"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{% if single_interview %}{% for x in single_interview %}{{ x.title }}{% endfor %}{% endif %}",
+      "item": "https://educationkhoj.com/Interview/{% if single_interview %}{% for x in single_interview %}{{ x.id }}{% endfor %}{% endif %}"
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<main class="container">
+  <div class="row g-5">
+
+    <!-- ── Main Article Column ── -->
+    <div class="col-md-8">
+
+      {% if single_interview %}
+      {% for x in single_interview %}
+
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+          ><a href="/">Home</a></li>
+          ><a href="/Interveiw">Interviews</a></li>
+          >
+            {{ x.title|truncatechars:50 }}
+          </li>
+        </ol>
+      </nav>
+
+      <article itemscope itemtype="https://schema.org/Article">
+
+        <!-- Article Header -->
+        <header class="mb-4">
+          <h1 class="fw-bolder mb-1"
+              style="font-size: 1.7rem;"
+              itemprop="headline">{{ x.title }}</h1>
+
+          <div class="text-muted fst-italic mb-2">
+            <time itemprop="datePublished"
+                  datetime="{{ x.date }}">
+              Posted on {{ x.date }}
+            </time>
+          </div>
+
+          {% if x.tags %}
+          <a class="badge bg-secondary text-decoration-none link-light"
+             href="/Interveiw?tag={{ x.tags }}">{{ x.tags }}</a>
+          {% endif %}
+
+          {% if x.profile %}
+          <span class="badge bg-success">{{ x.profile }}</span>
+          {% endif %}
+
+          {% if x.institution_name %}
+          <span class="badge bg-warning text-dark">{{ x.institution_name }}</span>
+          {% endif %}
+        </header>
+
+        <!-- Article Image -->
+        {% if x.img %}
+        <figure class="mb-4">
+          <img class="img-fluid rounded"
+               src="/media/{{ x.img }}"
+               alt="{{ x.title }}"
+               loading="lazy"
+               decoding="async"
+               itemprop="image">
+        </figure>
+        {% endif %}
+
+        <!-- Article Content -->
+        <section class="mb-5" itemprop="articleBody">
+          {{ x.desc|safe }}
+        </section>
+
+      </article>
+
+      <!-- Prev / Next Navigation -->
+      <div class="d-flex justify-content-between mt-4">
+        {% if prev_btn == 'enable' %}
+          <a href="/Interview/{{ x.id|add:"-1" }}"
+             class="btn btn-primary"
+             rel="prev">← Previous</a>
+        {% else %}
+          <a class="btn btn-primary disabled"
+             aria-disabled="true">← Previous</a>
+        {% endif %}
+
+        {% if btn == 'enable' %}
+          <a href="/Interview/{{ x.id|add:"1" }}"
+             class="btn btn-primary"
+             rel="next">Next →</a>
+        {% else %}
+          <a class="btn btn-primary disabled"
+             aria-disabled="true">Next →</a>
+        {% endif %}
+      </div>
+
+      {% endfor %}
+      {% endif %}
+
+    </div>
+
+    <!-- ── Sidebar ── -->
+    <div class="col-md-4 pt-3">
+
+      <!-- Banner 1 -->
+      {% if banner %}
+      <div class="swiper leftSlider mb-4">
+        <div class="swiper-wrapper w-100">
+          {% for x in banner %}
+            {% if x.position == "1" %}
+            <div class="swiper-slide">
+              <a href="{{ x.banner_link_website }}"
+                 target="_blank" rel="noopener">
+                <img style="width:100%; height:100%; object-fit:cover;"
+                     src="/media/{{ x.img }}"
+                     alt="Interview Banner"
+                     loading="lazy">
+              </a>
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Banner 2 -->
+      <div class="swiper leftSlider mb-4">
+        <div class="swiper-wrapper w-100">
+          {% for x in banner %}
+            {% if x.position == "2" %}
+            <div class="swiper-slide">
+              <a href="{{ x.banner_link_website }}"
+                 target="_blank" rel="noopener">
+                <img style="width:100%; height:100%; object-fit:cover;"
+                     src="/media/{{ x.img }}"
+                     alt="Interview Banner"
+                     loading="lazy">
+              </a>
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Banner 3 -->
+      <div class="swiper leftSlider mb-4">
+        <div class="swiper-wrapper w-100">
+          {% for x in banner %}
+            {% if x.position == "3" %}
+            <div class="swiper-slide">
+              <a href="{{ x.banner_link_website }}"
+                 target="_blank" rel="noopener">
+                <img style="width:100%; height:100%; object-fit:cover;"
+                     src="/media/{{ x.img }}"
+                     alt="Interview Banner"
+                     loading="lazy">
+              </a>
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Banner 4 -->
+      <div class="swiper leftSlider mb-4">
+        <div class="swiper-wrapper w-100">
+          {% for x in banner %}
+            {% if x.position == "4" %}
+            <div class="swiper-slide">
+              <a href="{{ x.banner_link_website }}"
+                 target="_blank" rel="noopener">
+                <img style="width:100%; height:100%; object-fit:cover;"
+                     src="/media/{{ x.img }}"
+                     alt="Interview Banner"
+                     loading="lazy">
+              </a>
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+
+  </div>
+</main>
+
+{% endblock %}

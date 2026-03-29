@@ -1,0 +1,462 @@
+{% extends './basic.html' %}
+
+
+{% block content %}
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Job Page Management Content </h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'Education:admin_show' %}">Dashboard</a></li>
+
+                <li class="breadcrumb-item active">Job Page Management Content</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    {% if message != "" %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Job Add Successfully
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endif %}
+    <section class="section">
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="card ">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Vertically Centered</h5>
+                        <p>Add <code>.modal-dialog-centered</code> to <code>.modal-dialog</code> to vertically center
+                            the modal.</p> -->
+
+                        <!-- Vertically centered Modal -->
+                        <button type="button" class="btn btn-primary mt-3 " data-bs-toggle="modal"
+                            data-bs-target="#verticalycentered">
+                            Job Management Content +
+                        </button>
+                        <div class="modal fade" id="verticalycentered" tabindex="-1">
+                            <div class="modal-dialog modal-lg">
+                                <form method="post" enctype="multipart/form-data">
+                                    <div class="modal-content ">
+                                        {% csrf_token %}
+                                        <div class="modal-body">
+                                            <div class="col-lg-12">
+
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title"> Job Management Content </h5>
+
+                                                        <!-- General Form Elements -->
+                                                        <div class="row">
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Title</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="title"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Company
+                                                                    Name</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="company"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label class="col-sm-12 col-form-label">State</label>
+                                                                <div class="col-sm-12">
+                                                                    <select class="form-select" name="state"
+                                                                        aria-label="Default select example">
+                                                                        <option value="0">Select State</option>
+                                                                        {% if state %}
+                                                                        {% for n in state %}
+                                                                        <option value="{{n.id}}">{{n.State_name}}
+                                                                        </option>
+                                                                        {% endfor %}
+                                                                        {% endif %}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Start Date</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="date" name="start_date"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">End Date</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="date" name="end_date"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Salary</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="salary"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Experience</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="experience"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label class="col-sm-12 col-form-label">Job
+                                                                    Category</label>
+                                                                <div class="col-sm-12">
+                                                                    <select class="form-select" name="cate"
+                                                                        aria-label="Default select example">
+                                                                        <option selected value="1">Teaching
+                                                                        </option>
+                                                                        <option value="2">Non-Teaching</option>
+
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-12 mb-3">
+                                                                <label for="inputNumber"
+                                                                    class="col-sm-12 col-form-label">
+                                                                    Description</label>
+                                                                <div class="col-sm-12">
+                                                                    <textarea id="editor" name="editor"></textarea>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                </form><!-- End General Form Elements -->
+                            </div>
+                        </div>
+                    </div><!-- End Vertically centered Modal-->
+
+
+                    <div class="modal fade" id="verticalycentered_update" tabindex="-1">
+                        <div class="modal-dialog modal-lg" id="update">
+
+                        </div>
+                    </div><!-- End Vertically centered Modal-->
+
+                </div>
+            </div>
+
+
+
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"> Job Management Content </h5>
+
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Company Name</th>
+                                    <th scope="col">State</th>
+                                    <th scope="col">job category</th>
+                                    <th scope="col" colspan="2" class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% if job %}
+                                {% for y in job %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td>{{y.job_title}}</td>
+                                    <td>{{y.company}}</td>
+                                    <td>   {% if state %}
+
+                                        {% for x in state %}
+
+                                        {% if x.id|stringformat:'s' == y.state %}
+
+                                        {{x.State_name}}
+
+                                        {% endif %}
+                                        {% endfor %}
+
+                                        {% endif %}</td>
+                                    <td>{% if y.job_category == '1' %}Teaching {% else %}Non- Teaching{% endif %}</td>
+                                    <td> <button type="button" class="btn btn-success btn-sm " data-bs-toggle="modal"
+                                            onclick="read_home('{{y.id}}')" data-bs-target="#verticalycentered_update">
+                                            Update
+                                        </button></td>
+
+                                    {% if y.is_active == '1' %}
+                                    <td> <a type="button" id="delete{{y.id}}" onclick="deactive('{{y.id}}')"
+                                            class="btn btn-sm btn-danger">
+                                            Deactive
+                                        </a></td>
+                                    {% else %}
+                                    <td> <a type="button" id="delete{{y.id}}" onclick="deactive('{{y.id}}')"
+                                            class="btn btn-sm btn-warning">
+                                            Active
+                                        </a></td>
+                                    {% endif %}
+
+
+
+
+                                           <td> <a type="button"  onclick="deleteper('{{y.id}}')"
+                                        class="btn btn-sm btn-danger">
+                                       <i class="fa-solid fa-trash"></i>
+                                    </a></td>
+                                </tr>
+                                {% endfor %}
+                                {% endif %}
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    function deactive(id) {
+        // Use AJAX to fetch data and update the data area
+
+
+        $.ajax({
+            url: `job_content_management/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+                // Update the data area with the received data
+                var dataArea = $('#alert');
+                dataArea.empty()
+                dataArea.append(`<div class="alert alert-success alert-dismissible fade show" role="alert">${data.data}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                if ($(`#delete${id}`).hasClass('btn-warning')) {
+                    $(`#delete${id}`).removeClass('btn-warning')
+                    $(`#delete${id}`).addClass('btn-danger')
+                    $(`#delete${id}`).text('Deactive')
+                } else {
+                    $(`#delete${id}`).removeClass('btn-danger')
+                    $(`#delete${id}`).addClass('btn-warning')
+                    $(`#delete${id}`).text('Active')
+                }
+
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+
+    function read_home(id) {
+        // Use AJAX to fetch data and update the data area
+
+
+        $.ajax({
+            url: `job_content_management_update/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data.data[0].title)
+                // Update the data area with the received data
+                var dataArea = $('#update');
+
+                dataArea.html(`          <form action="/job_content_management_update/${id}"  method="post" enctype="multipart/form-data">
+                                    <div class="modal-content ">
+                                        {% csrf_token %}
+
+                                        <div class="col-lg-12">
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"> Job Management Content </h5>
+
+        <!-- General Form Elements -->
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="inputText"
+                    class="col-sm-12 col-form-label">Title</label>
+                <div class="col-sm-12">
+                    <input type="text" name="title" value="${data.data[0].title}"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="inputText"
+                    class="col-sm-12 col-form-label">Company
+                    Name</label>
+                <div class="col-sm-12">
+                    <input type="text" name="company" value="${data.data[0].company}"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="col-sm-12 col-form-label">State</label>
+                <div class="col-sm-12">
+                    <select class="form-select" name="state"
+                        aria-label="Default select example">
+                        <option value="0">Select State</option>
+                        {% if state %}
+                        {% for n in state %}
+                        <option value="{{n.id}}"${data.data[0].state == '{{n.id}}'? 'selected': ''}>{{n.State_name}}</option>
+                        </option>
+                        {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="inputText"
+                    class="col-sm-12 col-form-label">Start Date</label>
+                <div class="col-sm-12">
+                    <input type="date" name="start_date" value="${data.data[0].start_date}"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="inputText"
+                    class="col-sm-12 col-form-label">End Date</label>
+                <div class="col-sm-12">
+                    <input type="date" name="end_date" value="${data.data[0].end_date}"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="inputText"
+                    class="col-sm-12 col-form-label">Salary</label>
+                <div class="col-sm-12">
+                    <input type="text" name="salary" value="${data.data[0].salary}"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="inputText"
+                    class="col-sm-12 col-form-label">Experience</label>
+                <div class="col-sm-12">
+                    <input type="text" name="experience" value="${data.data[0].exp}"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="col-sm-12 col-form-label">Job
+                    Category</label>
+                <div class="col-sm-12">
+                    <select class="form-select" name="cate"
+                        aria-label="Default select example">
+                        <option  value="1" ${data.data[0].category == '1'? 'selected': ''}>Teaching
+                        </option>
+                        <option value="2" ${data.data[0].category == '2'? 'selected': ''}>Non-Teaching</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-12 mb-3">
+                <label for="inputNumber"
+                    class="col-sm-12 col-form-label">
+                    Description</label>
+                <div class="col-sm-12">
+                    <textarea id="editor" name="editor">
+                        ${data.data[0].desc}
+
+                        </textarea>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+</div>
+<div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                      </div>
+                                </form><!-- End General Form Elements -->`);
+
+
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+
+
+
+  function deleteper(id) {
+        // Use AJAX to fetch data and update the data area
+
+
+        $.ajax({
+            url: `delete_job_content_managment/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+                // Update the data area with the received data
+                var dataArea = $('#alert');
+                dataArea.empty()
+                dataArea.append(`<div class="alert alert-success alert-dismissible fade show" role="alert">${data.data}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                window.location.href=""
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+
+</script>
+{% endblock %}

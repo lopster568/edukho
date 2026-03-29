@@ -1,0 +1,469 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}About Us — Education Khoj | India's No.1 Education Platform{% endblock %}
+
+{% block metadescription %}
+<meta name="description" content="Learn about Education Khoj — India's No.1 education platform. Meet our team, learn our mission and discover how we've been empowering students and educators for over 12 years.">
+{% endblock %}
+
+{% block canonical %}
+//educationkhoj.com/about
+{% endblock %}
+
+{% block extra_meta %}
+<meta property="og:title" content="About Education Khoj | India's No.1 Education Platform">
+<meta property="og:description" content="Learn about Education Khoj — empowering students and educators for over 12 years across India.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://educationkhoj.com/about">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About Education Khoj">
+{% endblock %}
+
+
+
+{% block content %}
+
+<!-- Extra CSS specific to About page -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Education Khoj",
+  "description": "Learn about Education Khoj — India's No.1 education platform empowering students and educators for over 12 years.",
+  "url": "https://educationkhoj.com/about",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Education Khoj",
+    "url": "https://educationkhoj.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://educationkhoj.com/static/images/logo.png"
+    }
+  }
+}
+</script>
+{% endblock %}
+
+
+<style>
+  :root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+  }
+
+  .hero-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 5rem 0;
+  }
+
+  .section-title {
+    position: relative;
+    margin-bottom: 2.5rem;
+    color: var(--primary-color);
+  }
+
+  .section-title:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--secondary-color);
+  }
+
+  .feature-card {
+    transition: all 0.3s ease;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    height: 100%;
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+  }
+
+  .team-member {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .team-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 1rem;
+  }
+
+  .team-social {
+    margin-top: 1rem;
+  }
+
+  .team-social a {
+    color: var(--primary-color);
+    margin: 0 5px;
+    transition: all 0.3s;
+  }
+
+  .team-social a:hover {
+    color: var(--secondary-color);
+    transform: translateY(-3px);
+  }
+
+  .value-item,
+  .service-item {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+  }
+
+  .value-item:before,
+  .service-item:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+  }
+</style>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12 text-center">
+        <h1 class="display-4 fw-bold mb-4 text-white">About Education Khoj</h1>
+        <p class="lead mb-5 text-white">
+          For over 12 years, Educationkhoj has been at the forefront of educational engagement and youth empowerment.
+          Beginning with our widely recognized educational tabloid, we have consistently delivered high-quality,
+          informative, and inspiring content aimed at students and parents.
+          Our publication has served as a trusted resource for thousands of students, helping bridge the gap between
+          academics and real-world learning. Over the years, we have evolved into a multifaceted organization that not
+          only informs but also inspires and activates learning communities.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What We Do / About Section -->
+<section class="py-5" id="mission">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-12">
+        <div class="feature-card p-4 h-100">
+          <div class="feature-icon d-flex">
+            <i class="fas fa-globe"></i>
+            <h3 class="mx-3">What We Do</h3>
+          </div>
+          <p>
+            Educational Tabloid – for the past 12 years our flagship tabloid has been a trusted name in the academic
+            community, dedicated to connecting schools, institutions, students, and parents through meaningful and
+            impactful content. With a strong presence in the education sector, we serve as a vital platform that not
+            only shares knowledge but also offers promotional opportunities to educational institutions and brands.
+          </p>
+          <p>Our monthly tabloid features:</p>
+          <ul>
+            <li class="fw-bold">Latest Educational News &amp; Updates</li>
+            <li style="list-style: none;">Stay informed with current developments in the education sector, including board exam
+              results, curriculum changes, and new government policies.</li>
+
+            <li class="fw-bold">Achievements &amp; Highlights</li>
+            <li style="list-style: none;">We showcase outstanding performances of students, schools, and teachers, giving
+              them the recognition they truly deserve.</li>
+
+            <li class="fw-bold">Events &amp; Competitions</li>
+            <li style="list-style: none;">Coverage of academic and sports events, quizzes, workshops, and seminars
+              organized across institutions.</li>
+
+            <li class="fw-bold">Educational Advertisements</li>
+            <li style="list-style: none;">A prime space for schools, colleges, coaching classes, publishers, and edtech
+              companies to reach a targeted and engaged audience.</li>
+
+            <li class="fw-bold">Career &amp; Exam Guidance</li>
+            <li style="list-style: none;">Expert advice, career tips, and information on competitive exams to help
+              students plan their futures wisely.</li>
+
+            <li class="fw-bold">Parenting &amp; Student Corners</li>
+            <li style="list-style: none;">
+              Engaging content for parents and students to promote better understanding, learning, and development.
+              Over the years, our tabloid has grown into a respected publication not only for its content but also for
+              its role in promoting educational growth. Today, we proudly partner with schools, educational
+              institutions, and learning-focused businesses to provide them with the visibility they need to flourish.
+            </li>
+          </ul>
+
+          <p class="fw-bold">Educational &amp; Sports Events</p>
+          <p>
+            We organize engaging <strong>competitions, seminars, workshops</strong> and <strong>sports
+              tournaments</strong> that promote:
+          </p>
+          <ul>
+            <li>Holistic student development</li>
+            <li>Leadership, teamwork, and creativity</li>
+            <li>Community building and inter-school collaboration</li>
+          </ul>
+          <p>
+            These events have seen participation from hundreds of schools and have become an annual highlight in many
+            educational calendars.
+          </p>
+
+          <p><strong>New Educational Portal</strong><br>
+            Welcome to our <strong>Educational News Portal</strong> — a one-stop digital platform dedicated to
+            everything that matters in the world of education. In today's fast-evolving academic landscape, staying
+            informed and connected is crucial. Our portal bridges that gap by offering rich, relevant, and real-time
+            content curated specifically for students, educators, institutions, and parents.
+          </p>
+
+          <p><strong>Education-Focused Search Engine</strong><br>
+            Our custom-built search engine is tailored to help users find the best educational institutions, courses,
+            scholarships, and learning resources with precision and ease. Whether you're searching for the top schools,
+            colleges, coaching centers, or online courses — our search tool brings you accurate and updated results.
+          </p>
+
+          <p><strong>Latest News in Education</strong><br>
+            We deliver timely and trusted updates on board results, entrance exams, academic changes, policy updates,
+            and innovations in the education sector — all in one place.
+          </p>
+
+          <p><strong>Sports Events Coverage</strong><br>
+            Recognizing the importance of sports in overall student development, we cover inter-school, inter-college,
+            and national-level sports events — showcasing achievements, talents, and inspiring stories of young
+            athletes.
+          </p>
+
+          <p><strong>Exclusive Interviews</strong><br>
+            From top educators and school principals to achievers and change makers — our interviews offer insights,
+            experiences, and expert opinions that inspire and inform.
+          </p>
+
+          <p><strong>Educational Articles &amp; Insights</strong><br>
+            Thoughtfully written articles by teachers, professionals, and educationists provide guidance, motivation,
+            and information on topics ranging from exam strategies to mental well-being and classroom innovations.
+          </p>
+
+          <p><strong>Jobs in Education Sector</strong><br>
+            We connect institutions with the right talent through our job listings. Educators, administrators, and
+            support staff can explore teaching and non-teaching opportunities across schools, colleges, and edtech
+            platforms.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="py-5" id="team">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-8 text-center">
+        <h2 class="section-title">Meet Our Team</h2>
+        <p class="lead text-muted">
+          The passionate people behind Education Khoj
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <!-- Each team-member block is copied from the source you shared -->
+      <div class="col-md-12 col-lg-12">
+        <div class="team-member shadow p-3">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://i.postimg.cc/3J83TJzm/76275752-d11b-48dc-b51c-48ccad06ce8b-removebg-preview-removebg-preview.png" alt="Girish Bhardwaj - Founder Education Khoj" class="team-img" loading="lazy">
+              <h4>Girish Bhardwaj</h4>
+              <p class="text-primary">Founder</p>
+            </div>
+            <div class="col-md-8 d-flex justify-content-center align-items-center">
+              <p style="text-align: justify;">
+                With over 20 years of experience in the media and marketing industry, Girish
+                Bhardwaj has worked with many TV channels and digital platforms, building a strong foundation in
+                content strategy, brand development, and audience engagement. As the founder of this website, he
+                leverages his extensive background to create impactful digital experiences that blend traditional
+                media expertise with modern marketing tactics.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Saif -->
+      <div class="col-md-12 col-lg-12">
+        <div class="team-member shadow p-3">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://i.postimg.cc/8z3GMdcm/saif-removebg-preview.png" alt="Saif - Web Developer Education Khoj" class="team-img" loading="lazy">
+              <h4>Saif</h4>
+              <p class="text-primary">Web Developer</p>
+            </div>
+            <div class="col-md-8 d-flex justify-content-center align-items-center">
+              <p style="text-align: justify;">
+                <a href="https://samwithcode.in/"
+                   class="text-dark text-decoration-none"
+                   target="_blank">
+                  MERN Stack Developer | 3+ Years Experience. Saif is a skilled MERN stack developer with 3+ years of
+                  experience in creating responsive, user-friendly web apps. He has built projects like iVartGallery
+                  (e-commerce) and SamWithCode (custom CRM with educational content). Proficient in React, JavaScript,
+                  HTML, CSS &amp; Python, he focuses on clean, functional, and visually appealing UI/UX.
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Manish Singh -->
+      <div class="col-md-12 col-lg-12">
+        <div class="team-member shadow p-3">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://i.postimg.cc/Hx1CPpQJ/Manish-removebg-preview.png" alt="Manish Singh - Head of Marketing" class="team-img" loading="lazy">
+              <h4>Manish Singh</h4>
+              <p class="text-primary">Head of Marketing</p>
+            </div>
+            <div class="col-md-8 d-flex justify-content-center align-items-center">
+              <p style="text-align: justify;">
+                A dynamic marketing leader with over 25 years of experience in media marketing, Manish Singh has
+                successfully driven brand growth across television, digital, and print platforms. Known for crafting
+                innovative campaigns and building strong audience connections, he brings strategic vision and deep
+                industry knowledge to every project. His expertise spans content marketing, brand partnerships, and
+                multi-platform promotions, making him a key driver of business success in the evolving media landscape.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advocate Vijay Mudgal -->
+      <div class="col-md-12 col-lg-12">
+        <div class="team-member shadow p-3">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://i.postimg.cc/QC0Gt1v5/Vijay-mudgal-removebg-preview.png" alt="Advocate Vijay Mudgal - Legal Advisor" class="team-img" loading="lazy">
+              <h4>Advocate Vijay Mudgal</h4>
+              <p class="text-primary">Legal Advisor</p>
+            </div>
+            <div class="col-md-8 d-flex justify-content-center align-items-center">
+              <p style="text-align: justify;">
+                Vijay Mudgal is a skilled legal professional with expertise in corporate and commercial law, currently
+                managing the legal affairs of Educationkhoj.com. With a strong focus on compliance, contract
+                negotiation, and risk mitigation, he ensures that the company operates within all legal and regulatory
+                frameworks. He handles drafting and reviewing contracts, advises on legal strategy, and represents the
+                company in legal matters when needed. Known for his analytical thinking and business-oriented approach,
+                Vijay Mudgal plays a vital role in safeguarding the company’s interests while supporting its strategic
+                objectives.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rachna Singh -->
+      <div class="col-md-12 col-lg-12">
+        <div class="team-member shadow p-3">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://i.postimg.cc/8CW2vqqT/Rachna-removebg-preview.png" alt="Rachna Singh - Head of Finance" class="team-img" loading="lazy">
+              <h4>Rachna Singh</h4>
+              <p class="text-primary">Head of Finance</p>
+            </div>
+            <div class="col-md-8 d-flex justify-content-center align-items-center">
+              <p style="text-align: justify;">
+                Rachna Singh is an accomplished finance professional with extensive expertise in financial planning,
+                budgeting, and strategic decision-making. As the Head of Finance, she brings a wealth of knowledge and
+                over 20 years of experience in managing financial operations, ensuring fiscal stability, and driving
+                growth. Her analytical skills and leadership make her a key pillar in the organization’s success.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sumeer Dutta -->
+      <div class="col-md-12 col-lg-12">
+        <div class="team-member shadow p-3">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://i.postimg.cc/4y4qrnn3/SUmeer-removebg-preview.png" alt="Sumeer Dutta - Strategy Head" class="team-img" loading="lazy">
+              <h4>Sumeer Dutta</h4>
+              <p class="text-primary">Strategy Head</p>
+            </div>
+            <div class="col-md-8 d-flex justify-content-center align-items-center">
+              <p style="text-align: justify;">
+                Sumeer Dutta is a results-driven marketing and strategy professional with a strong focus on event
+                planning and execution. With a proven track record in creating impactful brand experiences, he
+                specializes in developing end-to-end marketing strategies for corporate events, product launches, and
+                large-scale activations. His strength lies in combining creative concepts with data-driven planning to
+                deliver memorable and result-oriented events.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parveen Rana -->
+      <div class="col-md-12 col-lg-12">
+        <div class="team-member shadow p-3">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://i.postimg.cc/ryYrd3cd/Parveen-Rana.png" alt="Parveen Rana - Sports Enthusiast" class="team-img" loading="lazy">
+              <h4>Parveen Rana</h4>
+              <p class="text-primary">Sports Enthusiast</p>
+            </div>
+            <div class="col-md-8 d-flex justify-content-center align-items-center">
+              <p style="text-align: justify;">
+                Praveen Rana is a passionate sports enthusiast with a deep interest in a wide range of games, from
+                cricket and football to emerging sports trends. Known for staying updated with the latest sports news,
+                stats, and events, he brings energy and insight to every discussion. Whether analyzing matches or
+                sharing behind-the-scenes stories, Parveen Rana adds a vibrant and informed voice to the platform’s
+                sports coverage.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arun Pandey -->
+      <div class="col-md-12 col-lg-12">
+        <div class="team-member shadow p-3">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="https://i.postimg.cc/h4MHV83Q/Arun-Pandey-removebg-preview.png" alt="Arun Pandey - Content Editor" class="team-img" loading="lazy">
+              <h4>Arun Pandey</h4>
+              <p class="text-primary">Content Editor</p>
+            </div>
+            <div class="col-md-8 d-flex justify-content-center align-items-center">
+              <p style="text-align: justify;">
+                Arun Pandey is an experienced journalist and content curator who oversees the editorial direction of the
+                website. With a keen eye for detail and a passion for storytelling, he ensures that all content is
+                accurate, engaging, and aligned with the brand’s voice. His background in journalism enables him to
+                identify compelling stories, maintain high editorial standards, and keep the website informative,
+                relevant, and timely.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

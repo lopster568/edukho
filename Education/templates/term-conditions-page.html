@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+{% load static %}
+
+
+<style>
+
+
+     /* Adding shadow to the card container */
+        .card {
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+
+h2{
+    font-family:"Anton", sans-serif;
+    font-size:1.6rem;
+}
+        /* Adding shadow to the headings */
+        h3 {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            font-size:1rem;
+        }
+
+        /* Adding margins to the paragraphs */
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* List styling for better clarity */
+        ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" integrity="sha512-RWhcC19d8A3vE7kpXq6Ze4GcPfGe3DQWuenhXAbcGiZOaqGojLtWwit1eeM9jLGHFv8hnwpX3blJKGjTsf2HxQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <link rel="preload" as="font"
+        href="https://smartmag.theme-sphere.com/tech-blog/wp-content/themes/smart-mag/css/icons/fonts/ts-icons.woff2?v2.8"
+        type="font/woff2" crossorigin="anonymous" />
+
+
+
+    <script type="text/javascript" id="smartmag-lazy-inline-js-after">
+        /* <![CDATA[ */
+        /**
+         * @copyright ThemeSphere
+         * @preserve
+         */
+        var BunyadLazy = {}; BunyadLazy.load = function () { function a(e, n) { var t = {}; e.dataset.bgset && e.dataset.sizes ? (t.sizes = e.dataset.sizes, t.srcset = e.dataset.bgset) : t.src = e.dataset.bgsrc, function (t) { var a = t.dataset.ratio; if (0 < a) { const e = t.parentElement; if (e.classList.contains("media-ratio")) { const n = e.style; n.getPropertyValue("--a-ratio") || (n.paddingBottom = 100 / a + "%") } } }(e); var a, o = document.createElement("img"); for (a in o.onload = function () { var t = "url('" + (o.currentSrc || o.src) + "')", a = e.style; a.backgroundImage !== t && requestAnimationFrame(() => { a.backgroundImage = t, n && n() }), o.onload = null, o.onerror = null, o = null }, o.onerror = o.onload, t) o.setAttribute(a, t[a]); o && o.complete && 0 < o.naturalWidth && o.onload && o.onload() } function e(t) { t.dataset.loaded || a(t, () => { document.dispatchEvent(new Event("lazyloaded")), t.dataset.loaded = 1 }) } function n(t) { "complete" === document.readyState ? t() : window.addEventListener("load", t) } return { initEarly: function () { var t, a = () => { document.querySelectorAll(".img.bg-cover:not(.lazyload)").forEach(e) }; "complete" !== document.readyState ? (t = setInterval(a, 150), n(() => { a(), clearInterval(t) })) : a() }, callOnLoad: n, initBgImages: function (t) { t && n(() => { document.querySelectorAll(".img.bg-cover").forEach(e) }) }, bgLoad: a } }(), BunyadLazy.load.initEarly();
+        /* ]]> */
+    </script>
+    <script type="text/javascript" id="sphere-post-views-js"
+        src="https://smartmag.theme-sphere.com/tech-blog/wp-content/cache/debloat/js/473bac2d5062cbbf2c6087dc2a98ff00.js"
+        defer></script>
+    <script type="text/javascript" id="sphere-post-views-js-after" defer
+        src="data:text/javascript;base64,Ci8qIDwhW0NEQVRBWyAqLwp2YXIgU3BoZXJlX1Bvc3RWaWV3cyA9IHsiYWpheFVybCI6Imh0dHBzOlwvXC9zbWFydG1hZy50aGVtZS1zcGhlcmUuY29tXC90ZWNoLWJsb2dcL3dwLWFkbWluXC9hZG1pbi1hamF4LnBocD9zcGhlcmVfcG9zdF92aWV3cz0xIiwic2FtcGxpbmciOjAsInNhbXBsaW5nUmF0ZSI6MTAsInJlcGVhdENvdW50RGVsYXkiOjAsInBvc3RJRCI6ZmFsc2UsInRva2VuIjoiZmY1NGVlZTc3OSJ9Ci8qIF1dPiAqLwo="></script>
+    <script type="text/javascript" id="jquery-core-js"
+        src="https://smartmag.theme-sphere.com/tech-blog/wp-content/cache/debloat/js/29be4c4dfb5cfe14cd63dedc0d0b9e3d.js"
+        defer></script>
+    <script type="text/javascript" id="jquery-migrate-js"
+        src="https://smartmag.theme-sphere.com/tech-blog/wp-content/cache/debloat/js/be9d74abae6c0d42368ea08c76c342dd.js"
+        defer></script>
+    <link rel="https://api.w.org/" href="https://smartmag.theme-sphere.com/tech-blog/wp-json/" />
+    <link rel="alternate" type="application/json"
+        href="https://smartmag.theme-sphere.com/tech-blog/wp-json/wp/v2/pages/6" />
+    <link rel="EditURI" type="application/rsd+xml" title="RSD"
+        href="https://smartmag.theme-sphere.com/tech-blog/xmlrpc.php?rsd" />
+    <meta name="generator" content="WordPress 6.4.4" />
+    <link rel='shortlink' href='https://smartmag.theme-sphere.com/tech-blog/' />
+    <link rel="alternate" type="application/json+oembed"
+        href="https://smartmag.theme-sphere.com/tech-blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsmartmag.theme-sphere.com%2Ftech-blog%2F" />
+    <link rel="alternate" type="text/xml+oembed"
+        href="https://smartmag.theme-sphere.com/tech-blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsmartmag.theme-sphere.com%2Ftech-blog%2F&#038;format=xml" />
+
+    <script>
+        var BunyadSchemeKey = 'bunyad-scheme-35';
+        (() => {
+            const d = document.documentElement;
+            const c = d.classList;
+            var scheme = localStorage.getItem(BunyadSchemeKey);
+
+            if (scheme) {
+                d.dataset.origClass = c;
+                scheme === 'dark' ? c.remove('s-light', 'site-s-light') : c.remove('s-dark', 'site-s-dark');
+                c.add('site-s-' + scheme, 's-' + scheme);
+            }
+        })();
+    </script>
+    <meta name="generator"
+        content="Elementor 3.19.4; features: e_optimized_assets_loading, additional_custom_breakpoints, block_editor_assets_optimize, e_image_loading_optimization; settings: css_print_method-external, google_font-enabled, font_display-auto">
+    <!-- There is no amphtml version available for this URL. -->
+
+
+
+
+    <div class="container">
+        <div class="card p-4">
+            <h2 class="text-center mb-4">Terms & Conditions</h2>
+            <p>Welcome to the website “Educationkhoj.com”. These terms and conditions cover every individual visiting this website and it is assumed that you accept this “Terms of Use” in full and have gone through and consent univocally to the same. If you disagree with these conditions you must not use this website.</p>
+
+            <h3>Creating a user account on Educationkhoj.com:</h3>
+            <p>By creating an account, the user agrees to the terms required to protect the confidentiality of username and password for the account and shall be solely liable for any activity conducted using the user account. The user also agrees to accept all risk and responsibilities for activity done under the username.</p>
+
+            <h3>Third-party content:</h3>
+            <p>By using this website, the user agrees to not use any foul or offensive language in any forum or publicly available comment section. Because we do not control the third party content, user understand and agree that:</p>
+            <ul class="">
+                <li class="">We are not responsible for, and do not endorse, any such content, including information and reviews about any institution provided by other users.</li>
+                <li class="">We make no guarantees about the accuracy, currency, suitability, reliability or quality of the information in such content.</li>
+                <li class="">We assume no responsibility for unintended, objectionable, inaccurate, misleading, or unlawful Content made available by users, advertisers, and third parties.</li>
+            </ul>
+
+            <p>We do not claim ownership in any content that the user submits or authorizes for use to us, the user, however, agrees that such content shall be exclusive to us and no such or similar shall be published, copied, reproduced by the user or any person visiting the website on any of the other online portal, without obtaining a prior consent in writing by Educationkhoj.com. The user is free to remove or get removed his/her own content, if such content is posted either accidentally or unintentionally on the website.</p>
+
+            <h3>Limitation of Liability:</h3>
+            <p>By using the site, you agree that Educationkhoj.com will not be liable for any legal theory or contracts for any kind of issues caused by any other party. The website is also not liable to verify or justify information provided by participants of the website i.e. educational institutions, coaching institutes, individual comments. To prevent the loss to visitors, it is highly recommended that every information available on the website must be verified before taking it into consideration. The terms and policies of Educationkhoj.com do not govern the use of third-party websites.</p>
+
+            <h3>Governing Law:</h3>
+            <p>All the legal proceedings shall be governed by the Laws of India and the courts of Delhi shall have the exclusive jurisdiction in case of any dispute.</p>
+
+            <h3>Refund & Cancellation Policy:</h3>
+            <p>No refund will be given for the monthly package. For packages like 3 months, 6 months & 12 months will be considered for sure. Payments will be refunded within 30 days of cancellation.</p>
+
+            <h3>Change in terms of Policy:</h3>
+            <p>Educationkhoj.com reserves the right to modify these terms of use and Privacy Policy at any time, as and when the need arises. We request you to regularly check this page from time to time to keep you updated on changes made.</p>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

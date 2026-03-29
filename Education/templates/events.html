@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+
+<style>
+.gallery-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.375rem;
+}
+
+@media (max-width: 768px) {
+  .gallery-img {
+    height: 150px; /* tablet pe chhota height */
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-img {
+    height: 100px; /* mobile pe aur chhota height */
+  }
+}
+
+
+</style>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+
+    <script type="text/javascript" id="smartmag-lazy-inline-js-after">
+        /* <![CDATA[ */
+        /**
+         * @copyright ThemeSphere
+         * @preserve
+         */
+        var BunyadLazy = {}; BunyadLazy.load = function () { function a(e, n) { var t = {}; e.dataset.bgset && e.dataset.sizes ? (t.sizes = e.dataset.sizes, t.srcset = e.dataset.bgset) : t.src = e.dataset.bgsrc, function (t) { var a = t.dataset.ratio; if (0 < a) { const e = t.parentElement; if (e.classList.contains("media-ratio")) { const n = e.style; n.getPropertyValue("--a-ratio") || (n.paddingBottom = 100 / a + "%") } } }(e); var a, o = document.createElement("img"); for (a in o.onload = function () { var t = "url('" + (o.currentSrc || o.src) + "')", a = e.style; a.backgroundImage !== t && requestAnimationFrame(() => { a.backgroundImage = t, n && n() }), o.onload = nul>
+        /* ]]> */
+    </script>
+    <script type="text/javascript" id="sphere-post-views-js"
+        src="https://smartmag.theme-sphere.com/tech-blog/wp-content/cache/debloat/js/473bac2d5062cbbf2c6087dc2a98ff00.js"
+        defer></script>
+    <script type="text/javascript" id="sphere-post-views-js-after" defer
+        src="data:text/javascript;base64,Ci8qIDwhW0NEQVRBWyAqLwp2YXIgU3BoZXJlX1Bvc3RWaWV3cyA9IHsiYWpheFVybCI6Imh0dHBzOlwvXC9zbWFydG1hZy50aGVtZS1zcGhlcmUuY29tXC90ZWNoLWJsb2dcL3dwLWFkbWluXC9hZG1pbi1hamF4LnBocD9zcGhlcmVfcG9zdF92aWV3cz0xIiwic2FtcGxpbmciOjAsInNhbXBsaW5nUmF0ZSI6MTAsInJlcGVhdENvdW50RGVsYXkiOjAsInBvc3RJRCI6ZmFsc2UsInRva2VuIjoiZmY1NGVlZTc3OSJ9Ci8qIF1dPiAqLwo="></script>
+    <script type="text/javascript" id="jquery-core-js"
+        src="https://smartmag.theme-sphere.com/tech-blog/wp-content/cache/debloat/js/29be4c4dfb5cfe14cd63dedc0d0b9e3d.js"
+        defer></script>
+    <script type="text/javascript" id="jquery-migrate-js"
+        src="https://smartmag.theme-sphere.com/tech-blog/wp-content/cache/debloat/js/be9d74abae6c0d42368ea08c76c342dd.js"
+        defer></script>
+    <link rel="https://api.w.org/" href="https://smartmag.theme-sphere.com/tech-blog/wp-json/" />
+    <link rel="alternate" type="application/json"
+        href="https://smartmag.theme-sphere.com/tech-blog/wp-json/wp/v2/pages/6" />
+    <link rel="EditURI" type="application/rsd+xml" title="RSD"
+        href="https://smartmag.theme-sphere.com/tech-blog/xmlrpc.php?rsd" />
+    <meta name="generator" content="WordPress 6.4.4" />
+    <link rel='shortlink' href='https://smartmag.theme-sphere.com/tech-blog/' />
+    <link rel="alternate" type="application/json+oembed"
+        href="https://smartmag.theme-sphere.com/tech-blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsmartmag.theme-sphere.com%2Ftech-blog%2F" />
+    <link rel="alternate" type="text/xml+oembed"
+        href="https://smartmag.theme-sphere.com/tech-blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsmartmag.theme-sphere.com%2Ftech-blog%2F&#038;format=xml" />
+
+    <script>
+        var BunyadSchemeKey = 'bunyad-scheme-35';
+        (() => {
+            const d = document.documentElement;
+            const c = d.classList;
+            var scheme = localStorage.getItem(BunyadSchemeKey);
+
+            if (scheme) {
+                d.dataset.origClass = c;
+                scheme === 'dark' ? c.remove('s-light', 'site-s-light') : c.remove('s-dark', 'site-s-dark');
+                c.add('site-s-' + scheme, 's-' + scheme);
+            }
+        })();
+    </script>
+    <meta name="generator"
+        content="Elementor 3.19.4; features: e_optimized_assets_loading, additional_custom_breakpoints, block_editor_assets_optimize, e_image_loading_optimization; settings: css_print_method-external, google_font-enabled, font_display-auto">
+    <!-- There is no amphtml version available for this URL. -->
+
+
+  <div class="container">
+        <h2 class="text-center mb-4">Education Khoj Events</h2>
+
+{% for event in events %}
+<div class="container my-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title">{{event.title}}</h3>
+          <p class="card-text">
+            {{event.para |safe}}
+          </p>
+
+          <!-- Gallery Section -->
+          <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-2 mt-3">
+            <!-- Repeatable gallery images -->
+
+
+
+
+{% for x in event.images.all %}
+  <div class="col p-2">
+    <div>
+      <img src="/media/{{ x.image }}" class="img-fluid rounded gallery-img" alt="Gallery image">
+    </div>
+  </div>
+{% endfor %}
+
+            <!-- Add more <div class="col"> blocks as needed -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endfor %}
+
+           
+    </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

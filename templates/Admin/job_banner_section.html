@@ -1,0 +1,498 @@
+{% extends './basic.html' %}
+
+
+{% block content %}
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1> Job Page Banner </h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'Education:admin_show' %}">Dashboard</a></li>
+
+                <li class="breadcrumb-item active">Job Page Banner</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    {% if message != "" %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Job Banner Add Successfully
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endif %}
+    <section class="section">
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="card ">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Vertically Centered</h5>
+                        <p>Add <code>.modal-dialog-centered</code> to <code>.modal-dialog</code> to vertically center
+                            the modal.</p> -->
+
+                        <!-- Vertically centered Modal -->
+                        <button type="button" class="btn btn-primary mt-3 " data-bs-toggle="modal"
+                            data-bs-target="#verticalycentered">
+                            Job Page Banner +
+                        </button>
+                        <div class="modal fade" id="verticalycentered" tabindex="-1">
+                            <div class="modal-dialog modal-lg">
+                                <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="col-lg-12">
+
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Add Job Page Banner</h5>
+
+                                                        <!-- General Form Elements -->
+                                                        <div class="row">
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputEmail"
+                                                                    class="col-sm-12 col-form-label">Title</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="title"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputEmail"
+                                                                    class="col-sm-12 col-form-label">Start Date</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="date" name="start_date"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputEmail"
+                                                                    class="col-sm-12 col-form-label">End Date</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="date" name="end_date"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputEmail"
+                                                                    class="col-sm-12 col-form-label">Banner Website
+                                                                    link</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="banner_website_link"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label class="col-sm-12 col-form-label">Select Banner's
+                                                                    Position</label>
+                                                                <div class="col-sm-12">
+                                                                    <select class="form-select" name="position"
+                                                                        aria-label="Default select example">
+                                                                        <option selected value="0">Select Banner's
+                                                                            Position
+                                                                        </option>
+                                                                        <!--<option value="1">Right 1</option>-->
+                                                                        <!--<option value="2">Right 2</option>-->
+                                                                        <!--<option value="3">Right 3</option>-->
+                                                                        <!--<option value="3">Right 4</option>-->
+                                                                        <!--<option value="5">Right 5</option>-->
+                                                                        <option value="6">Top Banner</option>
+                                                                        <option value="7">Mid 1</option>
+                                                                         <option value="8">Mid 2</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6 mb-3">
+                                                                <label class="col-sm-12 col-form-label">Select Job
+                                                                    Category</label>
+                                                                <div class="col-sm-12">
+                                                                    <select class="form-select" name="job_cate"
+                                                                        aria-label="Default select example">
+                                                                        <option selected value="0">Select
+                                                                            Job Category
+                                                                        </option>
+                                                                        <option  value="1">Teaching
+                                                                        </option>
+                                                                        <option  value="2"> Non Teaching
+                                                                        </option>
+
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label class="col-sm-12 col-form-label">Select
+                                                                    Page</label>
+                                                                <div class="col-sm-12">
+                                                                    <select class="form-select" name="page"
+                                                                        aria-label="Default select example">
+                                                                        <option selected value="0">Select Page
+                                                                        </option>
+                                                                        <option value="1">Page 1</option>
+
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label class="col-sm-12 col-form-label">Select
+                                                                    State</label>
+                                                                <div class="col-sm-12">
+                                                                    <select class="form-select" name="state"
+                                                                        aria-label="Default select example">
+                                                                        <option selected value="0">Select State
+                                                                        </option>
+                                                                        {% if state %}
+                                                                        {% for n in state %}
+                                                                        <option value="{{n.id}}">{{n.State_name}}
+                                                                        </option>
+                                                                        {% endfor %}
+                                                                        {% endif %}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                            <div class="col-md-12 mb-3">
+                                                                <label for="inputNumber"
+                                                                    class="col-sm-12 col-form-label">Banner's
+                                                                    Images</label>
+                                                                <div class="col-sm-12">
+                                                                    <input class="form-control" name="banner_img"
+                                                                        type="file" id="formFile">
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                </form><!-- End General Form Elements -->
+                            </div>
+                        </div>
+                    </div><!-- End Vertically centered Modal-->
+
+
+                    <div class="modal fade" id="verticalycentered_update" tabindex="-1">
+                        <div class="modal-dialog modal-lg" id="update">
+
+                        </div>
+                    </div><!-- End
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Search Page Banner</h5>
+
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">job category</th>
+                                    <th scope="col">Page</th>
+                                    <th scope="col">State</th>
+                                    <th scope="col">Position</th>
+                                    <th scope="col">Banner's Images</th>
+                                    <th scope="col">Start Date</th>
+                                    <th scope="col">End Date</th>
+                                    <th scope="col" colspan="2" class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if job_banner %}
+                                {% for m in job_banner %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td><a href="{{m.banner_link_website}}" target="_blank">{{m.title}}</a></td>
+                                    <td>
+                                        {% if m.job_category == '1' %}
+
+                                        Teaching
+
+                                        {% else %}
+
+                                        Non - Teaching
+
+                                        {% endif %}
+
+                                    </td>
+                                    <td>{{m.page}}</td>
+
+                                    <td>
+
+
+                                        {% if state %}
+
+                                        {% for x in state %}
+
+                                        {% if x.id == m.state %}
+
+                                        {{x.State_name}}
+
+                                        {% endif %}
+                                        {% endfor %}
+
+                                        {% endif %}
+
+
+
+
+
+
+                                    </td>
+                                    <td>{% if m.position == '1' %} R1 {%elif m.position == '2' %} R2 {%elif m.position == '3' %} R3 {%elif m.position == '4' %} R4 {%elif m.position == '5' %} R5 {%elif m.position == '6' %} Top Banner {%elif m.position == '7' %} Mid Banner {% endif %}</td>
+                                    <td><img src="/media/{{m.img}}" width="100px" height="100px" alt="{{m.img}}"></td>
+                                    <td>{{m.start_date}}</td>
+                                    <td>{{m.end_date}}</td>
+                                           <td> <button type="button" class="btn btn-success btn-sm " data-bs-toggle="modal"
+                                            onclick="read_home('{{m.id}}')" data-bs-target="#verticalycentered_update">
+                                            Update
+                                        </button></td>
+
+                                    {% if m.is_active == '1' %}
+                                    <td> <a type="button" id="delete{{m.id}}" onclick="deactive('{{m.id}}')"
+                                            class="btn btn-sm btn-danger">
+                                            Deactive
+                                        </a></td>
+                                    {% else %}
+                                    <td> <a type="button" id="delete{{m.id}}" onclick="deactive('{{m.id}}')"
+                                            class="btn btn-sm btn-warning">
+                                            Active
+                                        </a></td>
+                                    {% endif %}
+
+
+
+                                        <td> <a type="button"  onclick="deleteper('{{m.id}}')"
+                                        class="btn btn-sm btn-danger">
+                                       <i class="fa-solid fa-trash"></i>
+                                    </a></td>
+                                </tr>
+                                {% endfor %}
+                                {% endif %}
+
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+
+    function deleteper(id) {
+        // Use AJAX to fetch data and update the data area
+
+
+        $.ajax({
+            url: `job_banner_delete/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+                // Update the data area with the received data
+                var dataArea = $('#alert');
+                dataArea.empty()
+                dataArea.append(`<div class="alert alert-success alert-dismissible fade show" role="alert">${data.data}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                window.location.href=""
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+
+
+function deactive(id) {
+    // Use AJAX to fetch data and update the data area
+
+    $.ajax({
+        url: `job_banner/${id}`,  // Updated to job_banner
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            // Update the data area with the received data
+            var dataArea = $('#alert');
+            dataArea.empty();
+            dataArea.append(`<div class="alert alert-success alert-dismissible fade show" role="alert">${data.data}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+            if ($(`#delete${id}`).hasClass('btn-warning')) {
+                $(`#delete${id}`).removeClass('btn-warning');
+                $(`#delete${id}`).addClass('btn-danger');
+                $(`#delete${id}`).text('Deactive');
+            } else {
+                $(`#delete${id}`).removeClass('btn-danger');
+                $(`#delete${id}`).addClass('btn-warning');
+                $(`#delete${id}`).text('Active');
+            }
+        },
+        error: function (error) {
+            console.log('Error fetching data: ', error);
+        }
+    });
+}
+
+
+
+function read_home(id) {
+    // Use AJAX to fetch data and update the data area
+    $.ajax({
+        url: `job_banner_update/${id}`,
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            // Update the data area with the received data
+            var dataArea = $('#update');
+
+            dataArea.html(`
+
+                <form action="/job_banner_update/${id}" method="post" enctype="multipart/form-data">
+                    <div class="modal-content">
+                        {% csrf_token %}
+
+
+                        <h5 class="card-title mt-4">Add Job Page Banner</h5>
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <!-- Job Banner Form Elements -->
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="inputEmail" class="col-sm-12 col-form-label">Banner Title</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" name="banner_title" value="${data.data[0].title}" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="inputEmail" class="col-sm-12 col-form-label">Start Date</label>
+                                            <div class="col-sm-12">
+                                                <input type="date" name="banner_start_date" value="${data.data[0].title}" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="inputEmail" class="col-sm-12 col-form-label">End Date</label>
+                                            <div class="col-sm-12">
+                                                <input type="date" name="banner_end_date" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="inputEmail" class="col-sm-12 col-form-label">Banner Website Link</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" name="banner_website_link" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="col-sm-12 col-form-label">Select Banner's Position</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-select" name="position" aria-label="Default select example">
+                                                    <option selected value="0">Select Banner's Position</option>
+                                                    <option value="6">Top Banner</option>
+                                                    <option value="7">Mid 1</option>
+                                                    <option value="8">Mid 2</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-3">
+                                            <label class="col-sm-12 col-form-label">Select Job Category</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-select" name="job_cate" aria-label="Default select example">
+                                                    <option selected value="0">Select Job Category</option>
+                                                    <option value="1">Teaching</option>
+                                                    <option value="2">Non Teaching</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="col-sm-12 col-form-label">Select Page</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-select" name="page" aria-label="Default select example">
+                                                    <option selected value="0">Select Page</option>
+                                                    <option value="1">Page 1</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="col-sm-12 col-form-label">Select State</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-select" name="state" aria-label="Default select example">
+                                                    <option selected value="0">Select State</option>
+                                                    {% if state %}
+                                                    {% for n in state %}
+                                                    <option value="{{n.id}}">{{n.State_name}}</option>
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 mb-3">
+                                            <label for="inputNumber" class="col-sm-12 col-form-label">Banner's Images</label>
+                                            <div class="col-sm-12">
+                                                <input class="form-control" name="banner_img" type="file" id="formFile">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </form><!-- End General Form Elements -->
+
+
+            `);
+        },
+        error: function (error) {
+            console.log('Error fetching data: ', error);
+        }
+    });
+}
+
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,380 @@
+{% extends './basic.html' %}
+
+
+{% block content %}
+{% load static %}
+
+<style>
+
+
+
+
+
+
+
+
+    .pricing .card {
+      border: none;
+      border-radius: 1rem;
+      transition: all 0.2s;
+      box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .pricing hr {
+      margin: 1.5rem 0;
+    }
+
+    .pricing .card-title {
+      margin: 0.5rem 0;
+      font-size: 0.9rem;
+      letter-spacing: .1rem;
+      font-weight: bold;
+    }
+
+    .pricing .card-price {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .pricing .card-price .period {
+      font-size: 0.8rem;
+    }
+
+    .pricing ul li {
+      margin-bottom: 1rem;
+    }
+
+    .pricing .text-muted {
+      opacity: 0.7;
+    }
+
+    .pricing .btn {
+      font-size: 80%;
+      border-radius: 5rem;
+      letter-spacing: .1rem;
+      font-weight: bold;
+      padding: 1rem;
+      opacity: 0.7;
+      transition: all 0.2s;
+    }
+
+    /* Hover Effects on Card */
+
+    @media (min-width: 992px) {
+      .pricing .card:hover {
+        margin-top: -.25rem;
+        margin-bottom: .25rem;
+        box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+      }
+
+      .pricing .card:hover .btn {
+        opacity: 1;
+      }
+    }
+    </style>
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>User Feature Page</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'Education:admin_show' %}">Dashboard</a></li>
+
+                <li class="breadcrumb-item active">User Account Page</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <section class="section">
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="card ">
+                    <div class="card-body">
+
+
+                        <form  method="post" enctype="multipart/form-data">
+
+                                {% csrf_token %}
+
+                                    <div class="col-lg-12">
+
+
+                                                <h5 class="card-title"> User Feature Form </h5>
+                                                {% if  data %}
+                                             {% for y in data %}
+
+                                                <!-- General Form Elements -->
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label class="col-sm-12 col-form-label">I am</label>
+                                                        <div class="col-sm-12">
+                                                            <select class="form-select" name="category"
+                                                                aria-label="Default select example">
+                                                                <option selected value="0">Select Who I am
+                                                                </option>
+                                                                {% if cate %}
+                                                                {% for x in cate %}
+
+                                                                <option {% if  x.id|stringformat:"d" == y.i_am  %} selected {% endif %} value="{{x.id}}">{{x.Category}}</option>
+                                                                {% endfor %}
+                                                                {% endif %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="inputText"
+                                                            class="col-sm-12 col-form-label">User Name</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" name="name" value="{{y.name}}"
+                                                                class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="inputText"
+                                                            class="col-sm-12 col-form-label">Name of Institution</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" name="name_of_institution"  value="{{y.name_of_institution}}"
+                                                                class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="inputText"
+                                                            class="col-sm-12 col-form-label">Address of Institution</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" name="address_of_institution" value="{{y.address_of_institution}}"
+                                                                class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="inputText"
+                                                            class="col-sm-12 col-form-label">Country</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" name="country" value="{{y.country}}"
+                                                                class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="inputText"
+                                                            class="col-sm-12 col-form-label">Contact No</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" name="contact" value="{{y.contact_no}}"
+                                                                class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="inputText"
+                                                            class="col-sm-12 col-form-label">Email</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="email" name="email" value="{{y.user_email}}"
+                                                                class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="inputText"
+                                                            class="col-sm-12 col-form-label">Website link</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" name="web_link" value="{{y.user_web}}"
+                                                                class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="inputText"
+                                                            class="col-sm-12 col-form-label">Name of Concerned Person</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" name="concerned_person" value="{{y.name_of_concerned_person}}"
+                                                                class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="inputText"
+                                                            class="col-sm-12 col-form-label">Year of Establishment</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="date" name="year_of_establishment" value="{{y.year_of_establishment}}"
+                                                                class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 mb-3">
+                                                        <label class="col-sm-12 col-form-label">State</label>
+                                                        <div class="col-sm-12">
+                                                            <select class="form-select" name="state"  id="state"  onchange="area_get()"
+                                                                aria-label="Default select example">
+                                                                <option value="0">Select State</option>
+                                                                {% if state %}
+                                                                {% for x in state %}
+
+                                                                <option {% if  x.id|stringformat:"d" == y.state  %} selected {% endif %} value="{{x.id}}">{{x.State_name}}</option>
+                                                                {% endfor %}
+                                                                {% endif %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+
+
+                                                    <div class="col-md-6 mb-3">
+                                                        <label class="col-sm-12 col-form-label">Area</label>
+                                                        <div class="col-sm-12">
+                                                            <select class="form-select" name="area"  id="area"
+                                                                aria-label="Default select example">
+                                                                <option value="0">Select Area</option>
+                                                                {% if area %}
+                                                                {% for x in area %}
+                                                                <option {% if  x.id|stringformat:"d" == y.region  %} selected {% endif %} value="{{x.id}}">{{x.Area_name}}</option>
+                                                                {% endfor %}
+                                                                {% endif %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="col-md-12 mb-3">
+                                                        <label for="inputNumber"
+                                                            class="col-sm-12 col-form-label"> Logo Image</label>
+                                                        <div class="col-sm-12">
+                                                            <input class="form-control" name="img"
+                                                                type="file" id="formFile">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                           {% endfor  %}
+                                                {% endif %}
+
+                                    </div>
+
+
+                                  <button type="submit" class="btn btn-primary btn-sm float-end">Update changes</button>
+
+
+                        </form><!-- End General Form Elements -->
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+    </section>
+
+{% if request.user.is_superuser  %}
+
+{% else %}
+
+<section class="pricing py-5">
+    <h3 class="text-center">For Paid Membership</h3>
+    <div class="container">
+
+      <div class="row my-5">
+
+        <div class="col-lg-3">
+
+   <!-- Free Tier -->
+   <a href="/plan/monthly">
+    <div class="card mb-5 mb-lg-0">
+    <img src="{% static 'payment/micro_page1.jpeg' %}" alt="">
+    </div>
+</a>
+
+
+</div>
+
+<div class="col-lg-3">
+
+    <!-- Free Tier -->
+    <a href="/plan/quartely">
+     <div class="card mb-5 mb-lg-0">
+    <img src="{% static 'payment/macro_page2.jpeg' %}" alt="">
+     </div>
+    </a>
+
+
+ </div>
+
+ <div class="col-lg-3">
+
+    <!-- Free Tier -->
+    <a href="/plan/half-yearly">
+     <div class="card mb-5 mb-lg-0">
+    <img src="{% static 'payment/macro_page3.jpeg' %}" alt="">
+     </div>
+
+    </a>
+
+ </div>
+ <div class="col-lg-3">
+
+    <!-- Free Tier -->
+    <a href="/plan/yearly">
+     <div class="card mb-5 mb-lg-0">
+   <img src="{% static 'payment/macro_page4.jpeg' %}" alt="">
+     </div>
+    </a>
+
+
+ </div>
+<!-- <a href="/plan/1" >Select Package</a> -->
+
+
+      </div>
+    </div>
+  </section>
+
+
+  {% endif %}
+
+</main><!-- End #main -->
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+     function area_get() {
+        // Use AJAX to fetch data and update the data area
+        var stateId = $("#state").val();
+        console.log(stateId)
+        $.ajax({
+            url: `get_data/${stateId !== "0" ? stateId : "0"}`,
+            type: 'GET',
+            // data: {'stateid': stateId},
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+                // Update the data area with the received data
+                var dataArea = $('#area');
+                dataArea.empty();
+                $.each(data.data, function (index, item) {
+                    dataArea.append(`<option value="${item.Area_id}">${item.Area_name}</option>`);
+                });
+
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+</script>
+
+
+
+
+{% endblock %}

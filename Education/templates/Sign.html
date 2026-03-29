@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+
+<!-- start sign up  -->
+
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+<style>
+  .divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .divider-text span {
+    padding: 7px;
+    font-size: 12px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .divider-text:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    top: 55%;
+    left: 0;
+    z-index: 1;
+  }
+
+  .btn-facebook {
+    background-color: #405D9D;
+    color: #fff;
+  }
+
+  .btn-twitter {
+    background-color: #ff0000c4;
+    color: #fff;
+  }
+</style>
+<div class="container">
+
+  <div class="">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+      <h4 class="card-title mt-3 text-center">Create Account</h4>
+      <p class="text-center">Get started with your free account</p>
+      <p>
+        <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Google</a>
+        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+      </p>
+      <p class="divider-text">
+        <span class="bg-light">OR</span>
+      </p>
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group input-group mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+          </div>
+          <select class="form-control" name='iam'>
+            <option selected> Select I am </option>
+            {% if cate %}
+            {% for x in cate %}
+            <option value="{{x.id}}">{{x.Category}}</option>
+            {% endfor %}
+            {% endif %}
+          </select>
+        </div> <!-- form-group end.// -->
+
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+          </div>
+          <input  class="form-control" name="username" placeholder="Username" type="text">
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+          </div>
+          <input name="email" class="form-control" placeholder="Email address" type="email">
+        </div> <!-- form-group// -->
+
+
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+          <input class="form-control" name='pass' placeholder="Create password" type="password">
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
+          <input class="form-control" name='pass' placeholder="Repeat password" type="password">
+        </div> <!-- form-group// -->
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block"> Create Account </button>
+        </div> <!-- form-group// -->
+        <p class="text-center">Have an account? <a href="/Login_form">Log In</a> </p>
+      </form>
+    </article>
+  </div> <!-- card.// -->
+
+</div>
+<!--container end.//-->
+
+
+
+
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end sign up  -->
+
+
+
+<!-- <div class='container mx-auto'>
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 py-12 mx-auto flex flex-wrap items-center">
+      <div class="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="w-full"
+          alt="Phone" />
+      </div>
+      <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+        <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Register Here</h2>
+        <form method="post">
+          {% csrf_token %}
+          <div class="relative mb-4">
+            <label htmlFor="full-name" class="leading-7 text-sm text-gray-600">I Am</label>
+            <select name="iam"
+              class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              <option value="0" selected>Select Category</option>
+              {% if cate %}
+              {% for x in cate %}
+              <option value="{{x.id}}">{{x.Category}}</option>
+              {% endfor %}
+              {% endif %}
+
+            </select>
+          </div>
+          <div class="relative mb-4">
+            <label htmlFor="username" class="leading-7 text-sm text-gray-600">Username</label>
+            <input type="text" placeholder='Email..' id="email" name="username"
+              class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+          </div>
+          <div class="relative mb-4">
+            <label htmlFor="email" class="leading-7 text-sm text-gray-600">Email</label>
+            <input type="email" placeholder='Email..' id="email" name="email"
+              class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+          </div>
+          <div class="relative mb-4">
+            <label htmlFor="password" class="leading-7 text-sm text-gray-600">Password</label>
+            <input type="password" placeholder='Password..' id="pass" name="pass"
+              class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+          </div>
+          <div class="relative mb-4">
+              <label htmlFor="cpass" class="leading-7 text-sm text-gray-600">Confirm Password</label>
+              <input type="text" placeholder='Confirm Password..' id="cpass" name="cpass" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+            </div> -->
+<!-- <button type='submit'
+            class="text-white w-full bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">Register</button>
+
+        </form>
+        <p class='text-gray-600 text-center'>Already an User
+          <Link to="/Login" class='text-center text-blue-500'>Login</Link>
+        </p>
+      </div>
+    </div>
+  </section>
+</div> -->
+{% endblock %}

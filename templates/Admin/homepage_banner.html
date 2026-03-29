@@ -1,0 +1,423 @@
+{% extends './basic.html' %}
+
+
+{% block content %}
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Home Page Banner </h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'Education:admin_show' %}">Dashboard</a></li>
+
+                <li class="breadcrumb-item active">Home Page Banner</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    <div id="alert">
+
+    </div>
+    {% if message != "" %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Banner Add Successfully
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endif %}
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <section class="section">
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="card ">
+                    <div class="card-body">
+
+
+
+
+                        <!-- Vertically centered Modal -->
+                        <button type="button" class="btn btn-primary mt-3 " data-bs-toggle="modal"
+                            data-bs-target="#verticalycentered">
+                            Home Page Banner +
+                        </button>
+                        <div class="modal fade" id="verticalycentered" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="col-lg-12">
+
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Add Home Page Banner</h5>
+
+                                                        <!-- General Form Elements -->
+
+                                                        <div class="row mb-3">
+                                                            <label for="inputText"
+                                                                class="col-sm-12 col-form-label">Title</label>
+                                                            <div class="col-sm-12">
+                                                                <input type="text" name="title" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputEmail"
+                                                                class="col-sm-12 col-form-label">Banner Website
+                                                                link</label>
+                                                            <div class="col-sm-12">
+                                                                <input type="text" name="banner_website_link"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputEmail"
+                                                                class="col-sm-12 col-form-label">Start Date</label>
+                                                            <div class="col-sm-12">
+                                                                <input type="date" name="start_date"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputEmail" class="col-sm-12 col-form-label">End
+                                                                Date</label>
+                                                            <div class="col-sm-12">
+                                                                <input type="date" name="end_date" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label class="col-sm-12 col-form-label">Select Banner's
+                                                                Position</label>
+                                                            <div class="col-sm-12">
+                                                                <select class="form-select" name="position"
+                                                                    aria-label="Default select example">
+                                                                    <option selected value="0">Select Banner's Position
+                                                                    </option>
+                                                                    <option value="1">Top Banner</option>
+                                                                    <option value="2">Main Banners</option>
+                                                                    <option value="3">Right 1</option>
+                                                                    <option value="4">Right 2</option>
+                                                                    <option value="5">Right 3</option>
+                                                                    <option value="6">Right 4</option>
+                                                                    <option value="7">Right 5</option>
+                                                                    <option value="8">Right 6</option>
+                                                                     <option value="9">Bottom Banner</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-3">
+                                                            <label for="inputNumber"
+                                                                class="col-sm-12 col-form-label">Banner's Images</label>
+                                                            <div class="col-sm-12">
+                                                                <input class="form-control" name="banner_img"
+                                                                    type="file" id="formFile">
+                                                            </div>
+                                                        </div>
+
+
+
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </form><!-- End General Form Elements -->
+                            </div>
+                        </div><!-- End Vertically centered Modal-->
+
+                        <div class="modal fade" id="verticalycentered_update" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered" id="update">
+
+                            </div>
+                        </div><!-- End Vertically centered Modal-->
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Home Page Banner</h5>
+
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Banner's Images</th>
+                                    <th scope="col">Banner's Position </th>
+                                    <th scope="col">Start Date</th>
+                                    <th scope="col">End Date</th>
+                                    <th scope="col" colspan="2" class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% if banner %}
+                                {% for x in banner %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td><a target="_blank" href="{{x.banner_link_website}}">{{x.title}}</a></td>
+                                    <td><img src="/media/{{x.img}}" title="{{x.title}}" alt="{{x.img}}" width="100px"
+                                            height="100px"></td>
+
+                                            <td>{% if x.banner_position == '1' %} Top Banner {%elif x.banner_position == '2' %} Main Banner {%elif x.banner_position == '3' %} R1 {%elif x.banner_position == '4' %} R2 {%elif x.banner_position == '5' %} R3 {%elif x.banner_position == '6' %} R4 {%elif x.banner_position == '7' %} R5 {%elif x.banner_position == '8' %} R6{% else %}{% endif %}</td>
+                                    <td>{{x.start_date }}</td>
+                                    <td>{{x.end_date}}</td>
+                                    <td> <button type="button" onclick="read_home('{{x.id}}')" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#verticalycentered_update">
+                                            Update
+                                        </button></td>
+
+                                        {% if x.is_active == '1' %}
+                                    <td> <a type="button" id="delete{{x.id}}" onclick="deactive('{{x.id}}')"
+                                            class="btn btn-sm btn-warning">
+                                            Active
+                                        </a></td>
+
+                                        {% else %}
+                                        <td> <a type="button" id="delete{{x.id}}" onclick="deactive('{{x.id}}')"
+                                            class="btn btn-sm btn-danger">
+                                            Deactive
+                                        </a></td>
+
+                                        {% endif %}
+
+
+                                           <td> <a type="button"  onclick="deleteper('{{x.id}}')"
+                                        class="btn btn-sm btn-danger">
+                                       <i class="fa-solid fa-trash"></i>
+                                    </a></td>
+
+                                </tr>
+
+
+                                </tr>
+                                {% endfor %}
+                                {% endif %}
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    function deactive(id) {
+        // Use AJAX to fetch data and update the data area
+
+
+        $.ajax({
+            url: `homepage_banner/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+                // Update the data area with the received data
+                var dataArea = $('#alert');
+                dataArea.empty()
+                dataArea.append(`<div class="alert alert-success alert-dismissible fade show" role="alert">${data.data}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                if ($(`#delete${id}`).hasClass('btn-danger')) {
+                    $(`#delete${id}`).removeClass('btn-danger')
+                    $(`#delete${id}`).addClass('btn-warning')
+                    $(`#delete${id}`).text('Active')
+                } else {
+                    $(`#delete${id}`).removeClass('btn-warning')
+                    $(`#delete${id}`).addClass('btn-danger')
+                    $(`#delete${id}`).text('Deactive')
+                }
+
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+
+    function read_home(id) {
+        // Use AJAX to fetch data and update the data area
+
+
+        $.ajax({
+            url: `homepage_banner_update/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data.data[0].title)
+                // Update the data area with the received data
+                var dataArea = $('#update');
+
+                dataArea.html(` <form method="post" action="/homepage_banner_update/${id}" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="col-lg-12">
+
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Add Home Page Banner</h5>
+
+                                                        <!-- General Form Elements -->
+
+                                                        <div class="row mb-3">
+                                                            <label for="inputText"
+                                                                class="col-sm-12 col-form-label">Title</label>
+                                                            <div class="col-sm-12">
+                                                                <input type="text" value="${data.data[0].title}" name="title" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputEmail"
+                                                                class="col-sm-12 col-form-label">Banner Website
+                                                                link</label>
+                                                            <div class="col-sm-12">
+                                                                <input type="text" value="${data.data[0].banner_link_website}" name="banner_website_link"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputEmail"
+                                                                class="col-sm-12 col-form-label">Start Date</label>
+                                                            <div class="col-sm-12">
+                                                                <input type="date" value="${data.data[0].start_date}"  name="start_date"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputEmail" class="col-sm-12 col-form-label">End
+                                                                Date</label>
+                                                            <div class="col-sm-12">
+                                                                <input type="date" value="${data.data[0].end_date}"  name="end_date" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label class="col-sm-12 col-form-label">Select Banner's
+                                                                Position</label>
+                                                            <div class="col-sm-12">
+                                                                <select class="form-select" name="position"
+                                                                    aria-label="Default select example">
+
+                                                                    <option ${data.data[0].position == '1' ? 'selected':''} value="1">Top Banner</option>
+                                                                    <option ${data.data[0].position == '2' ? 'selected':''} value="2">Main Banners</option>
+                                                                    <option ${data.data[0].position == '3' ? 'selected':''} value="3">Right 1</option>
+                                                                    <option ${data.data[0].position == '4' ? 'selected':''} value="4">Right 2</option>
+                                                                    <option ${data.data[0].position == '5' ? 'selected':''} value="5">Right 3</option>
+                                                                    <option ${data.data[0].position == '6' ? 'selected':''} value="6">Right 4</option>
+                                                                    <option ${data.data[0].position == '7' ? 'selected':''} value="7">Right 5</option>
+                                                                    <option ${data.data[0].position == '8' ? 'selected':''} value="8">Right 6</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-3">
+                                                            <label for="inputNumber"
+                                                                class="col-sm-12 col-form-label">Banner's Images</label>
+                                                            <div class="col-sm-12">
+                                                                <input class="form-control" name="banner_img"
+                                                                    type="file" id="formFile">
+                                                            </div>
+                                                        </div>
+
+
+
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </form><!-- End General Form Elements -->`);
+
+
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+
+
+
+       function deleteper(id) {
+        // Use AJAX to fetch data and update the data area
+
+
+        $.ajax({
+            url: `deletehomebanner/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+                // Update the data area with the received data
+                var dataArea = $('#alert');
+                dataArea.empty()
+                dataArea.append(`<div class="alert alert-success alert-dismissible fade show" role="alert">${data.data}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                window.location.href=""
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+
+
+</script>
+{% endblock %}

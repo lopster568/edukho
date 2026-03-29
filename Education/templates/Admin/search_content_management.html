@@ -1,0 +1,673 @@
+{% extends './basic.html' %}
+
+
+{% block content %}
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1> Search Content Management </h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'Education:admin_show' %}">Dashboard</a></li>
+
+                <li class="breadcrumb-item active">Search Content Management</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    <div id="alert">
+
+    </div>
+    {% if message != "" %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Add Successfully
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endif %}
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <section class="section">
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="card ">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Vertically Centered</h5>
+                        <p>Add <code>.modal-dialog-centered</code> to <code>.modal-dialog</code> to vertically center
+                            the modal.</p> -->
+
+                        <!-- Vertically centered Modal -->
+                        <button type="button" class="btn btn-primary mt-3 " data-bs-toggle="modal"
+                            data-bs-target="#verticalycentered">
+                            Search Content Form +
+                        </button>
+                        <div class="modal fade" id="verticalycentered" tabindex="-1">
+                            <div class="modal-dialog modal-lg">
+                                <form method="post" enctype="multipart/form-data">
+                                    <div class="modal-content ">
+                                        {% csrf_token %}
+                                        <div class="modal-body">
+                                            <div class="col-lg-12">
+
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title"> Search Content Form</h5>
+
+                                                        <!-- General Form Elements -->
+                                                        <div class="row">
+                                                            <div class="col-md-6 mb-3">
+                                                                <label class="col-sm-12 col-form-label">I am</label>
+                                                                <div class="col-sm-12">
+                                                                    <select class="form-select" name="category"
+                                                                        aria-label="Default select example">
+                                                                        <option selected value="0">Select Who I am
+                                                                        </option>
+                                                                        {% if cate %}
+                                                                        {% for x in cate %}
+                                                                        <option value="{{x.id}}">{{x.Category}}</option>
+                                                                        {% endfor %}
+                                                                        {% endif %}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Full Name</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="name" class="form-control">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Name of
+                                                                    Institution</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="name_of_institution"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Address of
+                                                                    Institution</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="address_of_institution"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Country</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="country"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Contact No</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="number" name="contact"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Start Date</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="date" name="start_date"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">End Date</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="date" name="end_date"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Email</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="email" name="email"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Website
+                                                                    link</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="web_link"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Name of Concerned
+                                                                    Person</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="concerned_person"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Year of
+                                                                    Establishment</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="date" name="year_of_establishment"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6 mb-3">
+                                                                <label class="col-sm-12 col-form-label">State</label>
+                                                                <div class="col-sm-12">
+                                                                    <select class="form-select" name="state"
+                                                                        aria-label="Default select example">
+                                                                        <option value="0">Select State</option>
+                                                                        {% if state %}
+                                                                        {% for x in state %}
+                                                                        <option value="{{x.id}}">{{x.State_name}}
+                                                                        </option>
+                                                                        {% endfor %}
+                                                                        {% endif %}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6 mb-3">
+                                                                <label class="col-sm-12 col-form-label">Area</label>
+                                                                <div class="col-sm-12">
+                                                                    <select class="form-select" name="area"
+                                                                        aria-label="Default select example">
+                                                                        <option value="0">Select Area</option>
+                                                                        {% if area %}
+                                                                        {% for x in area %}
+                                                                        <option value="{{x.id}}">{{x.Area_name}}
+                                                                        </option>
+                                                                        {% endfor %}
+                                                                        {% endif %}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-md-12 mb-3">
+                                                                <label for="inputNumber"
+                                                                    class="col-sm-12 col-form-label"> Logo Image</label>
+                                                                <div class="col-sm-12">
+                                                                    <input class="form-control" name="img" type="file"
+                                                                        id="formFile">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                </form><!-- End General Form Elements -->
+                            </div>
+                        </div>
+                    </div><!-- End Vertically centered Modal-->
+
+                    <div class="modal fade" id="verticalycentered_update" tabindex="-1">
+                        <div class="modal-dialog modal-lg" id="update">
+
+                        </div>
+                    </div><!-- End Vertically centered Modal-->
+
+
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Search Content Table</h5>
+
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">I am?</th>
+                                    <th scope="col">Area</th>
+                                    <th scope="col">State</th>
+                                    <th scope="col">Start Date</th>
+                                    <th scope="col">End Date</th>
+                                    <th scope="col">Is Paid?</th>
+                                    <th scope="col" colspan="2" class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if data %}
+                                {% for m in data %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td><a href="{{m.banner_link_website}}" target="_blank">{{m.name}}</a></td>
+                                    <td>
+                                        {% if cate %}
+
+                                        {% for x in cate %}
+
+                                        {% if x.id|stringformat:'s' == m.i_am %}
+
+                                        {{x.Category}}
+
+                                        {% endif %}
+                                        {% endfor %}
+
+                                        {% endif %}
+
+
+                                    </td>
+                                    <td>
+
+                                        {% if area %}
+
+                                        {% for x in area %}
+
+                                        {% if x.id|stringformat:'s' == m.region %}
+
+                                        {{x.Area_name}}
+
+                                        {% endif %}
+                                        {% endfor %}
+
+                                        {% endif %}
+
+
+
+
+
+                                    </td>
+                                    <td>
+
+
+                                        {% if state %}
+
+                                        {% for x in state %}
+
+                                        {% if x.id|stringformat:'s' == m.state %}
+
+                                        {{x.State_name}}
+
+                                        {% endif %}
+                                        {% endfor %}
+
+                                        {% endif %}
+
+
+
+
+
+
+
+                                    </td>
+                                    <td>{{m.date_joined}}</td>
+                                    <td>{{m.date_joined}}</td>
+
+
+{% if m.id|stringformat:'s' in pay_user %}
+    <td><span class="badge text-bg-success">Paid listing</span></td>
+{% else %}
+    <td><span class="badge text-bg-warning">Free listing</span></td>
+{% endif %}
+
+
+
+                                    <td> <button type="button" onclick="read_home('{{m.id}}')"
+                                            class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#verticalycentered_update">
+                                            Update
+                                        </button></td>
+
+                                    {% if m.is_active == 1 %}
+                                    <td> <a type="button" id="delete{{m.id}}" onclick="deactive('{{m.id}}')"
+                                            class="btn btn-sm btn-danger">
+                                            Deactive
+                                        </a></td>
+
+                                    {% else %}
+                                    <td> <a type="button" id="delete{{m.id}}" onclick="deactive('{{m.id}}')"
+                                            class="btn btn-sm btn-warning">
+                                            Active
+                                        </a></td>
+
+                                    {% endif %}
+
+                                      <td> <a type="button"  onclick="deleteper('{{m.id}}')"
+                                        class="btn btn-sm btn-danger">
+                                       <i class="fa-solid fa-trash"></i>
+                                    </a></td>
+
+                                </tr>
+
+                                </tr>
+                                {% endfor %}
+                                {% endif %}
+
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+
+  function deleteper(id) {
+        // Use AJAX to fetch data and update the data area
+alert(id)
+
+        $.ajax({
+            url: `deletesearch/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+
+
+console.log(data)
+                // Update the data area with the received data
+                var dataArea = $('#alert');
+                dataArea.empty()
+                dataArea.append(`<div class="alert alert-success alert-dismissible fade show" role="alert">${data.data}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                // window.location.href=""
+
+
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+    function deactive(id) {
+        // Use AJAX to fetch data and update the data area
+
+
+        $.ajax({
+            url: `search_content_management_deactive/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+                // Update the data area with the received data
+                var dataArea = $('#alert');
+                dataArea.empty()
+                dataArea.append(`<div class="alert alert-success alert-dismissible fade show" role="alert">${data.data}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                if ($(`#delete${id}`).hasClass('btn-warning')) {
+                    $(`#delete${id}`).removeClass('btn-warning')
+                    $(`#delete${id}`).addClass('btn-danger')
+                    $(`#delete${id}`).text('Deactive')
+                } else {
+                    $(`#delete${id}`).removeClass('btn-danger')
+                    $(`#delete${id}`).addClass('btn-warning')
+                    $(`#delete${id}`).text('Active')
+                }
+
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+
+    function read_home(id) {
+        // Use AJAX to fetch data and update the data area
+        console.log(id)
+
+        $.ajax({
+            url: `search_content_management_update/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+                // Update the data area with the received data
+                var dataArea = $('#update');
+
+                dataArea.html(`
+                <form method="post" action="search_content_management_update/${id}" enctype="multipart/form-data">
+                                    <div class="modal-content ">
+                                        {% csrf_token %}
+                                        <div class="modal-body">
+                                            <div class="col-lg-12">
+
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title"> Update Search Content Form</h5>
+
+                                                        <!-- General Form Elements -->
+                                                        <div class="row">
+                                                            <div class="col-md-6 mb-3">
+                                                                <label class="col-sm-12 col-form-label">I am</label>
+                                                                <div class="col-sm-12">
+                                                                    <select class="form-select" name="category"
+                                                                        aria-label="Default select example">
+                                                                        <option selected value="0">Select Who I am
+                                                                        </option>
+                                                                        {% if cate %}
+                                                                        {% for x in cate %}
+                                                                        <option ${data.data[0].cate == '{{x.id}}' ? 'selected':''} value="{{x.id}}">{{x.Category}}</option>
+                                                                        {% endfor %}
+                                                                        {% endif %}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Full Name</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" value="${data.data[0].name}" name="name" class="form-control">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Name of
+                                                                    Institution</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="name_of_institution" value="${data.data[0].name_of_institution}"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Address of
+                                                                    Institution</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="address_of_institution"  value="${data.data[0].address_of_institution}"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Country</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="country" value="${data.data[0].country}"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Contact No</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="number" name="contact"  value="${data.data[0].contact}"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Email</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="email" name="email" value="${data.data[0].user_email}"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Website
+                                                                    link</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="web_link" value="${data.data[0].user_web}"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Name of Concerned
+                                                                    Person</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="concerned_person" value="${data.data[0].name_of_concerned_person}"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Start Date</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="date" name="start_date" value="${data.data[0].start_date}"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">End Date</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="date" name="end_date" value="${data.data[0].end_date}"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Year of
+                                                                    Establishment</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="date" name="year_of_establishment"  value="${data.data[0].year_of_establishment}"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6 mb-3">
+                                                                <label class="col-sm-12 col-form-label">State</label>
+                                                                <div class="col-sm-12">
+                                                                    <select class="form-select" name="state"
+                                                                        aria-label="Default select example">
+                                                                        <option value="0">Select State</option>
+                                                                        {% if state %}
+                                                                        {% for x in state %}
+                                                                        <option value="{{x.id}}"${data.data[0].state == '{{x.id}}'? 'selected': ''}>{{x.State_name}}</option>
+                                                                        {% endfor %}
+                                                                        {% endif %}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6 mb-3">
+                                                                <label class="col-sm-12 col-form-label">Area</label>
+                                                                <div class="col-sm-12">
+                                                                    <select class="form-select" name="area"
+                                                                        aria-label="Default select example">
+                                                                        <option value="0">Select Area</option>
+                                                                        {% if area %}
+                                                                        {% for x in area %}
+                                                                        <option value="{{x.id}}"${data.data[0].area == '{{x.id}}'? 'selected': ''}>{{x.Area_name}}</option>
+                                                                        </option>
+                                                                        {% endfor %}
+                                                                        {% endif %}
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-md-12 mb-3">
+                                                                <label for="inputNumber"
+                                                                    class="col-sm-12 col-form-label"> Logo Image</label>
+                                                                <div class="col-sm-12">
+                                                                    <input class="form-control" name="img" type="file"
+                                                                        id="formFile">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                </form><!-- End General Form Elements -->
+                `);
+
+
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+
+
+</script>
+{% endblock %}

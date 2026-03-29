@@ -1,0 +1,217 @@
+{% extends './basic.html' %}
+
+
+{% block content %}
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1> About us Feature Page  </h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'Education:admin_show' %}">Dashboard</a></li>
+
+                <li class="breadcrumb-item active">About us Feature Page</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    {% if message != "" %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        About us Add Successfully
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endif %}
+    <section class="section">
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="card ">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Vertically Centered</h5>
+                        <p>Add <code>.modal-dialog-centered</code> to <code>.modal-dialog</code> to vertically center
+                            the modal.</p> -->
+
+                        <!-- Vertically centered Modal -->
+                        <button type="button" class="btn btn-primary mt-3 " data-bs-toggle="modal"
+                            data-bs-target="#verticalycentered">
+                            About +
+                        </button>
+                        <div class="modal fade" id="verticalycentered" tabindex="-1">
+                            <div class="modal-dialog">
+                                <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="col-lg-12">
+
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Add About Page</h5>
+
+                                                        <!-- General Form Elements -->
+                                                        <div class="row">
+                                                     
+                                                               
+                                                                    <div class="col-md-12 mb-3">
+                                                                        <label for="inputNumber"
+                                                                            class="col-sm-12 col-form-label">
+                                                                            Description</label>
+                                                                        <div class="col-sm-12">
+                                                                            <textarea id="editor" name="editor"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                            
+                                                       
+
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                </form><!-- End General Form Elements -->
+                            </div>
+                        </div>
+                    </div><!-- End Vertically centered Modal-->
+
+
+                    <div class="modal fade" id="verticalycentered_update" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Vertically Centered</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et
+                                    reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere
+                                    consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem
+                                    neque recusandae quo sit molestias sint dignissimos.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End Vertically centered Modal-->
+
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Search Page Banner</h5>
+
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">job category</th>
+                                    <th scope="col">Page</th>
+                                    <th scope="col">State</th>
+                                    <th scope="col">Position</th>
+                                    <th scope="col">Banner's Images</th>
+                                    <th scope="col">Start Date</th>
+                                    <th scope="col">End Date</th>
+                                    <th scope="col" colspan="2" class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if job_banner %}
+                                {% for m in job_banner %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td><a href="{{m.banner_link_website}}" target="_blank">{{m.title}}</a></td>
+                                    <td>
+                                        {% if m.job_category == '1' %}
+                                        
+                                        Teaching
+
+                                        {% else %}
+
+                                        Non - Teaching
+
+                                        {% endif %}
+                                    
+                                    </td>
+                                    <td>{{m.page}}</td>
+                                    
+                                    <td>
+                                        
+                                        
+                                        {% if state %}
+
+                                        {% for x in state %}
+
+                                        {% if x.id == m.state %}
+
+                                        {{x.State_name}}
+
+                                        {% endif %}
+                                        {% endfor %}
+                                        
+                                        {% endif %}    
+                                        
+                                     
+
+
+
+
+                                    </td>
+                                    <td>{% if m.position == '1' %} R1 {%elif m.position == '2' %} R2 {%elif m.position == '3' %} R3 {%elif m.position == '4' %} R4 {%elif m.position == '5' %} R5 {%elif m.position == '6' %} Top Banner {%elif m.position == '7' %} Mid Banner {% endif %}</td>
+                                    <td><img src="/media/{{m.img}}" width="100px" height="100px" alt="{{m.img}}"></td>
+                                    <td>{{m.start_date}}</td>
+                                    <td>{{m.end_date}}</td>
+                                    <td> <button type="button" class="btn btn-success " data-bs-toggle="modal"
+                                            data-bs-target="#verticalycentered_update">
+                                            Update
+                                        </button></td>
+                                    <td> <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#verticalycentered_update">
+                                            Deactive
+                                        </button></td>
+                                </tr>
+                                {% endfor %}
+                                {% endif %}
+
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+{% endblock %}

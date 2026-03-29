@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO Meta -->
+  <title>Latest Teaching Jobs in India | Education Khoj</title>
+  <meta name="description" content="Browse the latest teaching job vacancies across India. Find PRT, TGT, PGT and other teaching positions. Filter by state and job title.">
+  //educationkhoj.com/Job">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Latest Teaching Jobs in India | Education Khoj">
+  <meta property="og:description" content="Browse the latest teaching job vacancies across India. Find PRT, TGT, PGT positions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://educationkhoj.com/Job">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Latest Teaching Jobs in India | Education Khoj">
+  <meta name="twitter:description" content="Browse the latest teaching job vacancies across India.">
+
+  <!-- Bootstrap -->
+  //cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+        crossorigin="anonymous">
+
+  <!-- Font Awesome -->
+  //cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQZHXLlvWZOJyj7Yy7tcenmpD1ypASozpmTE0iPtmFIB46ZmdtAc9eNBvH0HZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Swiper -->
+  
+        href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css"
+        integrity="sha512-pmAAV1X4Nh5jA9mjcvwJXFQvCBi3T17aZ1KWkqXr7gO2YMvO8rfaa5ETWDuBvRq6fbDjlw4jHL44jNTScaKg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Custom CSS -->
+  /css" href="{% static 'assets/style.css' %}">
+
+  <!-- Google Fonts -->
+  //fonts.googleapis.com">
+  //fonts.gstatic.com" crossorigin>
+  //fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+  <!-- Schema: JobPosting ItemList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Latest Teaching Jobs",
+    "url": "https://educationkhoj.com/Job",
+    "itemListElement": [
+      {% for x in job %}
+      {
+        "@type": "ListItem",
+        "position": {{ forloop.counter }},
+        "item": {
+          "@type": "JobPosting",
+          "title": "{{ x.jobtitle }}",
+          "hiringOrganization": {
+            "@type": "Organization",
+            "name": "{{ x.company }}"
+          },
+          "employmentType": "FULL_TIME",
+          "description": "{{ x.jobdesc|truncatechars:200 }}",
+          "jobLocation": {
+            "@type": "Place",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      }{% if not forloop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+  </script>
+
+  <style>
+    .responsive-heading {
+      font-family: 'Times New Roman', Times, serif !important;
+      text-align: center !important;
+      font-size: 5rem !important;
+      letter-spacing: 6px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .sub-heading {
+      font-size: 1rem;
+      color: #6c757d;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+    }
+    .responsive-title {
+      font-size: 1.1rem !important;
+      font-family: Kanit !important;
+    }
+    @media (max-width: 768px) {
+      .responsive-heading { font-size: 4rem; }
+    }
+    @media (max-width: 480px) {
+      .responsive-heading { font-size: 2.5rem; }
+    }
+    body { overflow-x: hidden; }
+    .navbar-collapse {
+      flex-basis: 100%;
+      flex-grow: inherit !important;
+      align-items: center;
+    }
+    .border-job {
+      border: 1px solid var(--maincolor);
+      background: rgba(128,128,128,0.08);
+      border-radius: 11px;
+      margin: 16px 0;
+    }
+    .btns { font-size: 11px; margin-bottom: 12px; }
+    .btn  { background-color: #05264e; }
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+{% load static %}
+
+<!-- ===== NAVBAR ===== -->
+<header class="shadow bg-light position-sticky top-0 z-3">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="{% static 'images/logo.png' %}" style="height:8vw" alt="Education Khoj Logo">
+      </a>
+      <button class="navbar-toggler border border-0 shadow-none"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="title-header">
+        <h1 class="responsive-heading">Education Khoj</h1>
+        <h2 class="responsive-title">No. 1 Destination for Educational Services, News, Articles &amp; Job Opportunities</h2>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          >
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          >
+            <a class="nav-link text-dark" href="/News">News</a>
+          </li>
+          >
+            <a class="nav-link text-dark" href="/Job">Jobs</a>
+          </li>
+          >
+            <a class="nav-link text-dark" href="/Interveiw">Interviews</a>
+          </li>
+          >
+            <a class="nav-link text-dark" href="/events">Events</a>
+          </li>
+          >
+            <a href="/Login_form" class="btn me-2">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- ===== END NAVBAR ===== -->
+<!-- ===== JOB SECTION ===== -->
+<section class="post-area section-gap" aria-label="Teaching Job Listings">
+  <div class="container">
+
+    <!-- H1 Page Title -->
+    <div class="block-head block-head-ac block-head-e block-head-e3 is-left">
+      <h1 class="heading text-dark">
+        <a href="/Job">Latest Teaching Jobs</a>
+      </h1>
+    </div>
+
+    <div class="row justify-content-center d-flex">
+      <div class="col-lg-12 post-list" id="jobcontaienr">
+
+        <!-- Filter Form -->
+        <form id="formfilter" class="mb-5" role="search" aria-label="Filter Teaching Jobs">
+          <div class="row">
+
+            <!-- Job Type -->
+            <div class="col-sm-12 col-md-4 my-2" style="border:none">
+              abel for="jobTypeSelect" class="visually-hidden">Select Job Type</label>
+              <select class="fw-bold text-dark w-100"
+                      id="jobTypeSelect"
+                      onchange="Teaching(this.value)"
+                      aria-label="Select Job Type">
+                <option value="0" class="fw-bold text-dark">Select Job Types</option>
+                <option value="1">Teaching</option>
+                <option value="2">Non-Teaching</option>
+              </select>
+            </div>
+
+            <!-- State -->
+            <div class="col-sm-12 col-md-4 my-2" style="border:none">
+              abel for="state" class="visually-hidden">Select State</label>
+              <select class="fw-bold text-dark w-100"
+                      name="state"
+                      onchange="stateget()"
+                      id="state"
+                      aria-label="Select State">
+                <option class="fw-bold text-dark" value="0">Select State</option>
+                {% if state %}
+                  {% for x in state %}
+                    <option value="{{ x.id }}">{{ x.Statename }}</option>
+                  {% endfor %}
+                {% endif %}
+              </select>
+            </div>
+
+            <!-- Search -->
+            <div class="col-sm-12 col-md-4 my-2" style="border:none">
+              abel for="filterInput" class="visually-hidden">Search job title</label>
+              <input type="text"
+                     id="filterInput"
+                     placeholder="Search job title here..."
+                     class="fw-bold text-dark w-100"
+                     aria-label="Search job title">
+            </div>
+
+          </div>
+        </form>
+        <!-- End Filter Form -->
+
+        <!-- Top Banner -->
+        {% if jobbanner %}
+        <div class="a-wrap mb-3">
+          <div class="label">Sponsored</div>
+          <a href="{{ jobbanner.bannerlinkwebsite }}" target="_blank" rel="noopener sponsored">
+            <img loading="lazy" decoding="async"
+                 src="{{ media }}{{ jobbanner.img }}"
+                 width="970" height="125"
+                 alt="Teaching Jobs Sponsored Banner">
+          </a>
+        </div>
+        {% endif %}
+
+        <!-- Job Grid - First 8 -->
+        {% if job %}
+        <div class="row">
+          {% for x in job|slice:":8" %}
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <article class="card-grid-2 hover-up jobbox-grid-item border-job jobbox p-2"
+                     itemscope itemtype="https://schema.org/JobPosting">
+
+              <div class="card-grid-2 d-flex align-items-center mb-4">
+                <div class="card-profile">
+                  <h2 class="font-lg fw-semibold mb-0" itemprop="title">
+                    {{ x.jobtitle|slice:":50" }}
+                  </h2>
+                  <span class="font-xs color-text-mutted"
+                        itemprop="hiringOrganization"
+                        itemscope itemtype="https://schema.org/Organization">
+                    <span itemprop="name">{{ x.company }}</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-block-info">
+                <p class="font-xs color-text-mutted" itemprop="description">
+                  {{ x.jobdesc|slice:":70"|safe }}
+                </p>
+              </div>
+
+              <div class="card-2-bottom card-2-bottom-candidate mt-30">
+                <div class="text-start">
+                  <span class="btn btns btn-grey-small mr-5 mb-10">Teacher</span>
+
+                  <span class="btn btns btn-grey-small mr-5 mb-10"
+                        itemprop="jobLocation"
+                        itemscope itemtype="https://schema.org/Place">
+                    <span itemprop="name">
+                      {% if state %}
+                        {% for y in state %}
+                          {% if y.id|stringformat:"s" == x.state %}{{ y.Statename }}{% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </span>
+                  </span>
+
+                  <span class="btn btns btn-grey-small mr-5 mb-10">
+                    {{ x.experience }}
+                  </span>
+
+                  <span class="btn btns btn-grey-small mr-5 mb-10"
+                        itemprop="baseSalary">
+                    {{ x.salary }}
+                  </span>
+                </div>
+
+                <div class="row align-items-center px-2 mt-2"
+                     style="display:flex; justify-content:space-around;">
+                  <button type="button"
+                          class="btn btn-small"
+                          style="width:40%"
+                          data-bs-toggle="modal"
+                          data-bs-target="#jobModel"
+                          onclick="readhome('{{ x.id }}')"
+                          aria-label="See more about {{ x.jobtitle }}">
+                    See More
+                  </button>
+                  <button type="button"
+                          class="btn btn-small"
+                          style="width:40%"
+                          data-bs-toggle="modal"
+                          data-bs-target="#applyModel"
+                                                    onclick="readhome('{{ x.id }}')"
+                          aria-label="Apply for {{ x.jobtitle }}">
+                    Apply Now
+                  </button>
+                </div>
+              </div>
+
+            </article>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <!-- End Job Grid First 8 -->
+
+        <!-- Mid Banner -->
+        {% if m2banner %}
+        <div class="a-wrap my-3">
+          <div class="label">Sponsored</div>
+          <a href="{{ m2banner.bannerlinkwebsite }}" target="_blank" rel="noopener sponsored">
+            <img loading="lazy" decoding="async"
+                 src="{{ media }}{{ m2banner.img }}"
+                 width="970" height="125"
+                 alt="Mid Page Sponsored Banner">
+          </a>
+        </div>
+        {% endif %}
+        <!-- End Mid Banner -->
+
+        <!-- Job Grid - Next 8 (8-16) -->
+        {% if job %}
+        <div class="row">
+          {% for x in job|slice:"8:16" %}
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <article class="card-grid-2 hover-up jobbox-grid-item border-job jobbox p-2"
+                     itemscope itemtype="https://schema.org/JobPosting">
+
+              <div class="card-grid-2 d-flex align-items-center mb-4">
+                <div class="card-profile">
+                  <h2 class="font-lg fw-semibold mb-0" itemprop="title">
+                    {{ x.jobtitle|slice:":50" }}
+                  </h2>
+                  <span class="font-xs color-text-mutted"
+                        itemprop="hiringOrganization"
+                        itemscope itemtype="https://schema.org/Organization">
+                    <span itemprop="name">{{ x.company }}</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-block-info">
+                <p class="font-xs color-text-mutted" itemprop="description">
+                  {{ x.jobdesc|slice:":70"|safe }}
+                </p>
+              </div>
+
+              <div class="card-2-bottom card-2-bottom-candidate mt-30">
+                <div class="text-start">
+                  <span class="btn btns btn-grey-small mr-5 mb-10">Teacher</span>
+
+                  <span class="btn btns btn-grey-small mr-5 mb-10"
+                        itemprop="jobLocation"
+                        itemscope itemtype="https://schema.org/Place">
+                    <span itemprop="name">
+                      {% if state %}
+                        {% for y in state %}
+                          {% if y.id|stringformat:"s" == x.state %}{{ y.Statename }}{% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </span>
+                  </span>
+
+                  <span class="btn btns btn-grey-small mr-5 mb-10">
+                    {{ x.experience }}
+                  </span>
+
+                  <span class="btn btns btn-grey-small mr-5 mb-10"
+                        itemprop="baseSalary">
+                    {{ x.salary }}
+                  </span>
+                </div>
+
+                <div class="row align-items-center px-2 mt-2"
+                     style="display:flex; justify-content:space-around;">
+                  <button type="button"
+                          class="btn btn-small"
+                          style="width:40%"
+                          data-bs-toggle="modal"
+                          data-bs-target="#jobModel"
+                          onclick="readhome('{{ x.id }}')"
+                          aria-label="See more about {{ x.jobtitle }}">
+                    See More
+                  </button>
+                  <button type="button"
+                          class="btn btn-small"
+                          style="width:40%"
+                          data-bs-toggle="modal"
+                          data-bs-target="#applyModel"
+                          onclick="readhome('{{ x.id }}')"
+                          aria-label="Apply for {{ x.jobtitle }}">
+                    Apply Now
+                  </button>
+                </div>
+              </div>
+
+            </article>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <!-- End Job Grid 8-16 -->
+
+      </div>
+      <!-- End col-lg-12 -->
+
+      <!-- Sidebar -->
+      <div class="col-lg-4 sidebar">
+        <!-- Sidebar widgets if needed -->
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ===== END JOB SECTION ===== -->
+
+
+<!-- ===== JOB DETAIL MODAL ===== -->
+<div class="modal fade" id="jobModel" tabindex="-1"
+     aria-labelledby="jobModelLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" id="jobdata">
+    <div class="modal-content">
+      <!-- Populated by JS readhome() -->
+    </div>
+  </div>
+</div>
+
+<!-- ===== APPLY JOB MODAL ===== -->
+<div class="modal fade" id="applyModel" tabindex="-1"
+     aria-labelledby="applyModelLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" id="jobapply">
+    <div class="modal-content">
+      <!-- Populated by JS readhome() -->
+    </div>
+  </div>
+</div>
+<!-- ===== END MODALS ===== -->
+
+
+<!-- ===== FOOTER ===== -->
+<div class="px-5 py-2" style="background-color:#212529">
+  <style>
+    footer ul.nav li a { font-size: 0.8rem; }
+    footer h6 { font-size: 0.8rem; margin-bottom: 0.75rem; }
+    footer ul.nav { gap: 0.25rem; }
+    @media (max-width: 767px) { footer .col-md-2 { margin-bottom: 1.5rem; } }
+  </style>
+  <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 px-3 bg-dark text-white small">
+
+    <!-- Column 1: Logo & About -->
+    <div class="col mb-3">
+      <a href="/" class="d-flex align-items-center mb-3 text-white text-decoration-none">
+        <img src="{% static 'images/logo.png' %}" height="40" alt="Education Khoj Logo">
+      </a>
+      <p class="text-muted">
+        Education Khoj — India's No. 1 destination for educational news, jobs &amp; opportunities.
+      </p>
+    </div>
+
+    <!-- Column 2: Quick Links -->
+    <div class="col mb-3">
+      <h6 class="text-white">Quick Links</h6>
+      <ul class="nav flex-column">
+        >
+          <a href="/" class="nav-link p-0 text-muted">Home</a>
+        </li>
+        >
+          <a href="/News" class="nav-link p-0 text-muted">News</a>
+        </li>
+        >
+          <a href="/Job" class="nav-link p-0 text-muted">Teaching Jobs</a>
+        </li>
+        >
+          <a href="/Non_Teaching" class="nav-link p-0 text-muted">Non-Teaching Jobs</a>
+        </li>
+        >
+          <a href="/Interveiw" class="nav-link p-0 text-muted">Interviews</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Company -->
+    <div class="col mb-3">
+      <h6 class="text-white">Company</h6>
+      <ul class="nav flex-column">
+        >
+          <a href="/about" class="nav-link p-0 text-muted">About Us</a>
+        </li>
+        >
+          <a href="/advertising" class="nav-link p-0 text-muted">Advertise</a>
+        </li>
+        >
+          <a href="/work_with_us" class="nav-link p-0 text-muted">Work With Us</a>
+        </li>
+        >
+          <a href="/Contact" class="nav-link p-0 text-muted">Contact</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Column 4: Legal -->
+    <div class="col mb-3">
+      <h6 class="text-white">Legal</h6>
+      <ul class="nav flex-column">
+        >
+          <a href="/privacy" class="nav-link p-0 text-muted">Privacy Policy</a>
+        </li>
+        >
+          <a href="/term_condition" class="nav-link p-0 text-muted">Terms &amp; Conditions</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Column 5: Contact -->
+    <div class="col mb-3">
+      <h6 class="text-white">Contact Us</h6>
+      <ul class="nav flex-column">
+        >
+          <a href="/Contact" class="nav-link p-0 text-muted">
+            <i class="fa-solid fa-envelope me-2" aria-hidden="true"></i>Get in Touch
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </footer>
+</div>
+<!-- ===== END FOOTER ===== -->
+
+
+<!-- ===== SCRIPTS ===== -->
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" defer></script>
+
+<script>
+  // ── Job Type filter ──────────────────────────────────────────
+  function Teaching(val) {
+    if (val == 1) {
+      window.location.href = "/Job";
+    } else if (val == 2) {
+      window.location.href = "/Non_Teaching";
+    }
+  }
+
+  // ── State filter ─────────────────────────────────────────────
+  function stateget() {
+    var stateId = $('#state').val();
+    $.ajax({
+      url: "/get_data/" + (stateId != 0 ? stateId : 0),
+      type: "GET",
+      data: { stateid: stateId },
+      dataType: "json",
+      success: function (data) {
+        var dataArea = $("#area");
+        dataArea.empty();
+        $.each(data.data, function (index, item) {
+          dataArea.append(
+            '<option value="' + item.Areaid + '">' + item.Areaname + '</option>'
+          );
+        });
+      },
+      error: function (error) {
+        console.log("Error fetching state data:", error);
+      }
+    });
+    document.querySelector('#formfilter').submit();
+  }
+
+  // ── Title search filter ──────────────────────────────────────
+  $(document).ready(function () {
+    $('#filterInput').on('input', function () {
+      var filterValue = this.value.toLowerCase();
+      $('#jobcontaienr .jobbox').each(function () {
+        var jobTitle = $(this).find('h2').text().toLowerCase();
+        if (jobTitle.includes(filterValue)) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    });
+  });
+
+  // ── Fetch Job Detail & Apply Modal ───────────────────────────
+  function readhome(id) {
+    $.ajax({
+      url: "/job_data_read/" + id,
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        var d = data.data[0];
+
+        // Populate Job Detail Modal
+        $("#jobdata").html(`
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="fs-4 mb-2 mx-3 fw-semibold text-primary"
+                  id="jobModelLabel">${d.title}</h2>
+              <button type="button" class="btn-close"
+                      data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="col-md-12 my-2">
+                <div class="rounded my-3 d-flex justify-content-between">
+                  <div>
+                    <h3 class="fs-5">
+                      <span class="m-3">
+                        <i class="fa-solid fa-building-columns fs-6"
+                           aria-hidden="true"></i>
+                      </span>
+                      ${d.company}
+                    </h3>
+                  </div>
+                </div>
+                <div class="card-block-info mt-4">
+                  <div class="card-2-bottom mt-30">
+                    <div class="text-start">
+                      <span class="btn btns btn-grey-small mr-5 mb-10">
+                        Teacher
+                      </span>
+                      <span class="btn btns btn-grey-small mr-5 mb-10">
+                        ${d.exp}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <p>${d.desc}</p>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-sm"
+                      data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-sm btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#applyModel">Apply Job</button>
+            </div>
+          </div>
+        `);
+
+        // Populate Apply Modal
+        $("#jobapply").html(`
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="fs-4 mb-2 mx-3 fw-semibold text-primary"
+                  id="applyModelLabel">${d.title}</h2>
+              <button type="button" class="btn-close"
+                      data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="post"
+                    enctype="multipart/form-data"
+                                        action="/job_send_email">
+                {% csrf_token %}
+
+                <!-- Hidden fields -->
+                <input type="hidden" name="jobid"
+                       class="form-control" value="${d.id}">
+                <input type="hidden" name="jobtitle"
+                       class="form-control" value="${d.title}">
+                <input type="hidden" name="companyname"
+                       class="form-control" value="${d.company}">
+
+                <!-- Full Name -->
+                <div class="mb-3">
+                  abel for="applyFullName" class="form-label">Full Name</label>
+                  <input type="text"
+                         class="form-control"
+                         name="fullname"
+                         id="applyFullName"
+                         required
+                         autocomplete="name"
+                         placeholder="Enter your full name">
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                  abel for="applyEmail" class="form-label">Email Address</label>
+                  <input type="email"
+                         class="form-control"
+                         name="email"
+                         id="applyEmail"
+                         required
+                         autocomplete="email"
+                         placeholder="Enter your email">
+                </div>
+
+                <!-- CV Upload -->
+                <div class="mb-3">
+                  abel for="applyCV" class="form-label">CV Upload Here</label>
+                  <input type="file"
+                         class="form-control"
+                         name="file"
+                         id="applyCV"
+                         required
+                         accept=".pdf,.doc,.docx"
+                         aria-describedby="cvHelp">
+                  <div id="cvHelp" class="form-text">
+                    Accepted: PDF, DOC, DOCX
+                  </div>
+                </div>
+
+                <!-- Submit -->
+                <div class="d-flex justify-content-end">
+                  <button type="submit" class="btn btn-primary">
+                    Submit Application
+                  </button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        `);
+
+      },
+      error: function (error) {
+        console.log("Error fetching job data:", error);
+      }
+    });
+  }
+</script>
+<!-- ===== END SCRIPTS ===== -->
+
+</body>
+</html>

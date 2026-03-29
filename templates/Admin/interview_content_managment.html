@@ -1,0 +1,403 @@
+{% extends './basic.html' %}
+
+
+{% block content %}
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1> Interview Content Management </h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'Education:admin_show' %}">Dashboard</a></li>
+
+                <li class="breadcrumb-item active"> Interview Content Management</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    {% if message != "" %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+       Interview Add Successfully
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+    {% endif %}
+    <section class="section">
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="card ">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Vertically Centered</h5>
+                        <p>Add <code>.modal-dialog-centered</code> to <code>.modal-dialog</code> to vertically center
+                            the modal.</p> -->
+
+                        <!-- Vertically centered Modal -->
+                        <button type="button" class="btn btn-primary mt-3 " data-bs-toggle="modal"
+                            data-bs-target="#verticalycentered">
+                            Interview Content Management
+                        </button>
+                        <div class="modal fade" id="verticalycentered" tabindex="-1">
+                            <div class="modal-dialog modal-lg">
+                                <form  method="post" enctype="multipart/form-data">
+                                    <div class="modal-content ">
+                                        {% csrf_token %}
+                                        <div class="modal-body">
+                                            <div class="col-lg-12">
+
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">  Interview Content Form</h5>
+
+                                                        <!-- General Form Elements -->
+                                                        <div class="row">
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Main Title</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="title"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Name of Person</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="name_of_person"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Name of Institution</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="institution_name"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Interviewer's Name</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="interview_name"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Profile</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="profile"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 mb-3">
+                                                                <label for="inputNumber"
+                                                                    class="col-sm-12 col-form-label">
+                                                                    Description</label>
+                                                                <div class="col-sm-12">
+                                                                    <textarea id="editor" name="editor"></textarea>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                            <div class="col-md-12 mb-3">
+                                                                <label for="inputNumber"
+                                                                    class="col-sm-12 col-form-label"> Photo </label>
+                                                                <div class="col-sm-12">
+                                                                    <input class="form-control" name="img"
+                                                                        type="file" id="formFile">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                </form><!-- End General Form Elements -->
+                            </div>
+                        </div>
+                    </div><!-- End Vertically centered Modal-->
+
+
+                    <div class="modal fade" id="verticalycentered_update" tabindex="-1">
+                      <div class="modal-dialog modal-lg" id="update">
+
+                        </div>
+                    </div><!-- End Vertically centered Modal-->
+
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Search Content Table</h5>
+
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Interview's Name</th>
+                                    <th scope="col">Name of Person</th>
+                                    <th scope="col">Institute Name</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col" colspan="2" class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if data %}
+                                {% for m in data %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td>{{m.interview_name}}</td>
+                                <td>{{m.name_of_person}}</td>
+                                <td>{{m.institution_name}}</td>
+                                <td><img src="/media/{{m.img}}" title="{{m.title}}" alt="{{m.title}}" width="100px" height="100px"></td>
+  <td> <button type="button" class="btn btn-success btn-sm " data-bs-toggle="modal" onclick="read_home('{{m.id}}')"
+                                            data-bs-target="#verticalycentered_update">
+                                            Update
+                                        </button></td>
+                                        {% if m.is_active == '1' %}
+                                        <td> <a type="button" id="delete{{m.id}}" onclick="deactive('{{m.id}}')"
+                                            class="btn btn-sm btn-danger">
+                                            Deactive
+                                        </a></td>
+                                        {% else %}
+                                        <td> <a type="button" id="delete{{m.id}}" onclick="deactive('{{m.id}}')"
+                                            class="btn btn-sm btn-warning">
+                                            Active
+                                        </a></td>
+                                        {% endif %}
+
+
+
+
+                                           <td> <a type="button"  onclick="deleteper('{{m.id}}')"
+                                        class="btn btn-sm btn-danger">
+                                       <i class="fa-solid fa-trash"></i>
+                                    </a></td>
+                                </tr>
+                                {% endfor %}
+                           {% endif %}
+
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+
+
+      function deleteper(id) {
+        // Use AJAX to fetch data and update the data area
+
+
+        $.ajax({
+            url: `interview_delete/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+                // Update the data area with the received data
+                var dataArea = $('#alert');
+                dataArea.empty()
+                dataArea.append(`<div class="alert alert-success alert-dismissible fade show" role="alert">${data.data}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                window.location.href=""
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+
+
+     function deactive(id) {
+        // Use AJAX to fetch data and update the data area
+
+
+        $.ajax({
+            url: `interview_deactive/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+                // Update the data area with the received data
+                var dataArea = $('#alert');
+                dataArea.empty()
+                dataArea.append(`<div class="alert alert-success alert-dismissible fade show" role="alert">${data.data}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                if ($(`#delete${id}`).hasClass('btn-warning')) {
+                    $(`#delete${id}`).removeClass('btn-warning')
+                    $(`#delete${id}`).addClass('btn-danger')
+                    $(`#delete${id}`).text('Deactive')
+                } else {
+                    $(`#delete${id}`).removeClass('btn-danger')
+                    $(`#delete${id}`).addClass('btn-warning')
+                    $(`#delete${id}`).text('Active')
+                }
+
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+
+
+
+      function read_home(id) {
+        // Use AJAX to fetch data and update the data area
+
+
+        $.ajax({
+            url: `interview_update/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data.data[0].title)
+                // Update the data area with the received data
+                var dataArea = $('#update');
+
+                dataArea.html(`
+                  <form action="interview_update/${id}"  method="post" enctype="multipart/form-data">
+                                    <div class="modal-content ">
+                                                  {% csrf_token %}
+                                        <div class="modal-body">
+                                            <div class="col-lg-12">
+
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">  Interview Content Form</h5>
+
+                                                        <!-- General Form Elements -->
+                                                        <div class="row">
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Main Title</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="title"  value="${data.data[0].title}"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Name of Person</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="name_of_person"  value="${data.data[0].name_of_person}"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Name of Institution</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="institution_name" value="${data.data[0].institution_name}"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Interviewer's Name</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="interview_name"  value="${data.data[0].interview_name}"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-12 mb-3">
+                                                                <label for="inputNumber"
+                                                                    class="col-sm-12 col-form-label">
+                                                                    Description</label>
+                                                                <div class="col-sm-12">
+                                                                    <textarea id="editor" name="desc">${data.data[0].desc}</textarea>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                            <div class="col-md-12 mb-3">
+                                                                <label for="inputNumber"
+                                                                    class="col-sm-12 col-form-label"> Photo </label>
+                                                                <div class="col-sm-12">
+                                                                    <input class="form-control" name="img"
+                                                                        type="file" id="formFile">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                            </div>
+                                </form><!-- End General Form Elements -->
+
+
+
+
+                                `);
+
+
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+</script>
+{% endblock %}

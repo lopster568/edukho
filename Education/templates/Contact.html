@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact Us | Education Khoj — Get in Touch{% endblock %}
+
+{% block metadescription %}
+<meta name="description" content="Contact Education Khoj — reach us by phone, email or visit our website. We are happy to help with education news, job listings, interviews and school queries.">
+{% endblock %}
+
+{% block canonical %}
+//educationkhoj.com/Contact
+{% endblock %}
+
+{% block extra_meta %}
+<meta property="og:title" content="Contact Us | Education Khoj">
+<meta property="og:description" content="Get in touch with Education Khoj — India's No.1 education platform.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://educationkhoj.com/Contact">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Contact Us | Education Khoj">
+{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Education Khoj",
+  "url": "https://educationkhoj.com/Contact",
+  "description": "Contact Education Khoj by phone, email or through our website.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Education Khoj",
+    "url": "https://educationkhoj.com",
+    "telephone": "+91-78-400-600-70",
+    "email": "educationkhoj@gmail.com",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-78-400-600-70",
+      "contactType": "customer support",
+      "email": "educationkhoj@gmail.com",
+      "availableLanguage": ["English", "Hindi"]
+    }
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<style>
+  .card {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+  }
+  h2 {
+    font-family: "Anton", sans-serif;
+    font-size: 1.6rem;
+  }
+  h3 {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+  }
+  p { margin-bottom: 15px; }
+  ul { margin-left: 20px; }
+  li { margin-bottom: 10px; }
+</style>
+
+<div class="container">
+  <div class="card p-4">
+    <h1 class="text-center mb-4">Contact Us</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>Website:</strong> Educationkhoj.com</p>
+        <p>
+          <strong>Phone:</strong>
+          <a href="tel:+917840060070">+91 78 400 600 70</a>
+        </p>
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:educationkhoj@gmail.com">educationkhoj@gmail.com</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

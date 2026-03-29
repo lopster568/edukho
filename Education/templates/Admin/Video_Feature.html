@@ -1,0 +1,382 @@
+{% extends './basic.html' %}
+
+
+{% block content %}
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1> Video Feature Page  </h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'Education:admin_show' %}">Dashboard</a></li>
+
+                <li class="breadcrumb-item active">Video Feature Page</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    {% if message != "" %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Video Add Successfully
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endif %}
+    <section class="section">
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="card ">
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Vertically Centered</h5>
+                        <p>Add <code>.modal-dialog-centered</code> to <code>.modal-dialog</code> to vertically center
+                            the modal.</p> -->
+
+                        <!-- Vertically centered Modal -->
+                        <button type="button" class="btn btn-primary mt-3 " data-bs-toggle="modal"
+                            data-bs-target="#verticalycentered">
+                            Video +
+                        </button>
+                        <div class="modal fade" id="verticalycentered" tabindex="-1">
+                            <div class="modal-dialog">
+                                <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="col-lg-12">
+
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Add Video Page</h5>
+
+                                                        <!-- General Form Elements -->
+                                                        <div class="row">
+                                                            <div class="col-md-12 mb-3">
+                                                                <label for="inputText"
+                                                                    class="col-sm-12 col-form-label">Title</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="title"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 mb-3">
+                                                                <label for="inputEmail"
+                                                                    class="col-sm-12 col-form-label">Youtube Video Link</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" name="youtube_video"
+                                                                        class="form-control">
+                                                                </div>
+
+
+                                                            </div>
+
+
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                </form><!-- End General Form Elements -->
+                            </div>
+                        </div>
+                    </div><!-- End Vertically centered Modal-->
+
+
+                    <div class="modal fade" id="verticalycentered_update" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Vertically Centered</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et
+                                    reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere
+                                    consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem
+                                    neque recusandae quo sit molestias sint dignissimos.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End Vertically centered Modal-->
+
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Search Page Banner</h5>
+
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">video link</th>
+
+                                    <th scope="col"> Date</th>
+
+                                    <th scope="col" colspan="2" class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if banner %}
+                                {% for m in banner %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td><a href="{{m.banner_link_website}}" target="_blank">{{m.title}}</a></td>
+
+                                    <td>{{m.video}}</td>
+
+
+                                    <td>{{m.date}}</td>
+
+
+                                     {% if m.is_active == '0' %}
+                                    <td> <a type="button" id="delete{{m.id}}" onclick="deactive('{{m.id}}')"
+                                            class="btn btn-sm btn-warning">
+                                            Active
+                                        </a></td>
+
+                                        {% else %}
+                                        <td> <a type="button" id="delete{{m.id}}" onclick="deactive('{{m.id}}')"
+                                            class="btn btn-sm btn-danger">
+                                            Deactive
+                                        </a></td>
+
+                                        {% endif %}
+
+
+                                          <td> <a type="button"  onclick="deleteper('{{m.id}}')"
+                                        class="btn btn-sm btn-danger">
+                                       <i class="fa-solid fa-trash"></i>
+                                    </a></td>
+
+                                </tr>
+                                {% endfor %}
+                                {% endif %}
+
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+
+   function deleteper(id) {
+        // Use AJAX to fetch data and update the data area
+
+
+        $.ajax({
+            url: `delete_video/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+                // Update the data area with the received data
+                var dataArea = $('#alert');
+                dataArea.empty()
+                dataArea.append(`<div class="alert alert-success alert-dismissible fade show" role="alert">${data.data}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                window.location.href=""
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+
+
+
+
+    function deactive(id) {
+        // Use AJAX to fetch data and update the data area
+
+
+        $.ajax({
+            url: `video_section/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+                // Update the data area with the received data
+                var dataArea = $('#alert');
+                dataArea.empty()
+                dataArea.append(`<div class="alert alert-success alert-dismissible fade show" role="alert">${data.data}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+                if ($(`#delete${id}`).hasClass('btn-danger')) {
+                    $(`#delete${id}`).removeClass('btn-danger')
+                    $(`#delete${id}`).addClass('btn-warning')
+                    $(`#delete${id}`).text('Active')
+                } else {
+                    $(`#delete${id}`).removeClass('btn-warning')
+                    $(`#delete${id}`).addClass('btn-danger')
+                    $(`#delete${id}`).text('Deactive')
+                }
+
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+
+    function read_home(id) {
+        // Use AJAX to fetch data and update the data area
+
+
+        $.ajax({
+            url: `homepage_banner_update/${id}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data.data[0].title)
+                // Update the data area with the received data
+                var dataArea = $('#update');
+
+                dataArea.html(` <form method="post" action="/homepage_banner_update/${id}" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="col-lg-12">
+
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Add Home Page Banner</h5>
+
+                                                        <!-- General Form Elements -->
+
+                                                        <div class="row mb-3">
+                                                            <label for="inputText"
+                                                                class="col-sm-12 col-form-label">Title</label>
+                                                            <div class="col-sm-12">
+                                                                <input type="text" value="${data.data[0].title}" name="title" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputEmail"
+                                                                class="col-sm-12 col-form-label">Banner Website
+                                                                link</label>
+                                                            <div class="col-sm-12">
+                                                                <input type="text" value="${data.data[0].banner_link_website}" name="banner_website_link"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputEmail"
+                                                                class="col-sm-12 col-form-label">Start Date</label>
+                                                            <div class="col-sm-12">
+                                                                <input type="date" value="${data.data[0].start_date}"  name="start_date"
+                                                                    class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="inputEmail" class="col-sm-12 col-form-label">End
+                                                                Date</label>
+                                                            <div class="col-sm-12">
+                                                                <input type="date" value="${data.data[0].end_date}"  name="end_date" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label class="col-sm-12 col-form-label">Select Banner's
+                                                                Position</label>
+                                                            <div class="col-sm-12">
+                                                                <select class="form-select" name="position"
+                                                                    aria-label="Default select example">
+
+                                                                    <option ${data.data[0].position == '1' ? 'selected':''} value="1">Top Banner</option>
+                                                                    <option ${data.data[0].position == '2' ? 'selected':''} value="2">Main Banners</option>
+                                                                    <option ${data.data[0].position == '3' ? 'selected':''} value="3">Right 1</option>
+                                                                    <option ${data.data[0].position == '4' ? 'selected':''} value="4">Right 2</option>
+                                                                    <option ${data.data[0].position == '5' ? 'selected':''} value="5">Right 3</option>
+                                                                    <option ${data.data[0].position == '6' ? 'selected':''} value="6">Right 4</option>
+                                                                    <option ${data.data[0].position == '7' ? 'selected':''} value="7">Right 5</option>
+                                                                    <option ${data.data[0].position == '8' ? 'selected':''} value="8">Right 6</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-3">
+                                                            <label for="inputNumber"
+                                                                class="col-sm-12 col-form-label">Banner's Images</label>
+                                                            <div class="col-sm-12">
+                                                                <input class="form-control" name="banner_img"
+                                                                    type="file" id="formFile">
+                                                            </div>
+                                                        </div>
+
+
+
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </form><!-- End General Form Elements -->`);
+
+
+
+            },
+            error: function (error) {
+                console.log('Error fetching data: ', error);
+            }
+        });
+
+
+    }
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  {% if data %}{% for x in data %}{{ x.name_of_institution }}{% endfor %}{% endif %} | Education Khoj
+{% endblock %}
+
+{% block metadescription %}
+  {% if data %}
+    {% for x in data %}
+      <meta name="description" content="Find details about {{ x.name_of_institution }} in {{ x.address_of_institution }}. Explore contact info, photos, and reviews on Education Khoj.">
+    {% endfor %}
+  {% endif %}
+{% endblock %}
+
+{% block extra_meta %}
+{% if data %}
+{% for x in data %}
+//educationkhoj.com/user_info_profile/{{ x.id }}">
+
+<!-- Open Graph -->
+<meta property="og:title" content="{{ x.name_of_institution }} | Education Khoj">
+<meta property="og:description" content="View address, contact details and info for {{ x.name_of_institution }}.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://educationkhoj.com/user_info_profile/{{ x.id }}">
+<meta property="og:image" content="https://educationkhoj.com/media/{{ x.add_logo_of_instituion }}">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ x.name_of_institution }}">
+<meta name="twitter:image" content="https://educationkhoj.com/media/{{ x.add_logo_of_instituion }}">
+{% endfor %}
+{% endif %}
+{% endblock %}
+
+{% block schema %}
+{% if data %}
+{% for x in data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "School",
+  "name": "{{ x.name_of_institution }}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ x.address_of_institution }}",
+    "addressCountry": "IN"
+  },
+  "telephone": "{{ x.contact_no }}",
+  "email": "{{ x.user_email }}",
+  "url": "https://educationkhoj.com/user_info_profile/{{ x.id }}",
+  "image": "https://educationkhoj.com/media/{{ x.add_logo_of_instituion }}",
+  "description": "Educational institution listed on Education Khoj."
+}
+</script>
+{% endfor %}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+{% if data %}
+  {% for x in data %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+          <div class="shadow p-5 h-100 bg-white rounded">
+            <h1 class="fs-2" itemprop="name">{{x.name_of_institution}}</h1>
+            <p class="lh-lg fs-5 mx-2 text-muted">{{x.address_of_institution}}</p>
+            
+            <div class="mt-4">
+                <p class="fs-6"><span class="me-2"><i class="fa-solid fa-user text-primary"></i></span><strong>Contact Person:</strong> {{x.name_of_concerned_person}}</p>
+                <p class="fs-6"><span class="me-2"><i class="fa-solid fa-phone text-success"></i></span><strong>Phone:</strong> <a href="tel:{{x.contact_no}}">{{x.contact_no}}</a></p>
+                <p class="fs-6"><span class="me-2"><i class="fa-solid fa-envelope text-danger"></i></span><strong>Email:</strong> <a href="mailto:{{x.user_email}}">{{x.user_email}}</a></p>
+                {% if x.user_web %}
+                <p class="fs-6"><span class="me-2"><i class="fa-solid fa-globe text-info"></i></span><strong>Website:</strong> <a href="{{x.user_web}}" target="_blank" rel="noopener">{{x.user_web}}</a></p>
+                {% endif %}
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="shadow p-4 h-100 d-flex align-items-center justify-content-center bg-white rounded">
+                <img style="width:100%; max-height:250px; object-fit:contain;" 
+                     src="/media/{{x.add_logo_of_instituion}}"
+                     alt="{{ x.name_of_institution }} Logo"
+                     title="{{ x.name_of_institution }}"
+                     loading="lazy">
+            </div>
+        </div>
+    </div>
+    <div class="row p-2">
+        <ul class="nav nav-pills mb-3 shadow p-2 justify-content-evenly" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                    type="button" role="tab" aria-controls="pills-home" aria-selected="true">About Me</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Gallery</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-feature-tab" data-bs-toggle="pill" data-bs-target="#pills-feature"
+                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Silient
+                    Feature</button>
+            </li>
+
+
+        </ul>
+        <div class="tab-content shadow p-2" id="pills-tabContent">
+            <div class="tab-pane fade show active p-4" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
+                tabindex="0">
+
+                <h2 class="fs-4 mb-2 ps-3 text-danger fw-semibold border-danger border-start d-inline">About Me</h2>
+
+               {% if about %}
+        {% for n in about %}
+            <p>{{ n.about | slice:"0:700" | safe }}</p>
+            <p id="hide_text" class="fs-5 mt-4" style="display:none;">{{ n.about | slice:"700:"  }}</p>
+        {% endfor %}
+    {% endif %}
+                <button id="morebtn" class="text-danger border-0 bg-transparent fw-bold">Read More ...</button>
+
+
+
+
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+                tabindex="0">
+
+                <div class="px-4 mt-3">
+                    <h2 class="fs-5 ps-3 text-secondary fw-semibold mb-2 d-inline">Video</h2>
+
+
+
+                    <div class="owl-carousel owl-theme ">
+{% if video %}
+{% for x in video %}
+
+                        <div class="item">
+                            <div class="card">
+                                <iframe src="{{x.video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+
+                        </div>
+
+{% endfor %}
+{% endif %}
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="tab-pane fade" id="pills-feature" role="tabpanel" aria-labelledby="pills-feature-tab"
+                tabindex="0">
+
+                {% if feature %}
+                {% for x in feature %}
+                {{x.features | safe}}
+                {% endfor %}
+                {% endif %}
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+{% endfor %}
+{% endif %}
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(document).ready(() => {
+        $("#hide_text").hide();
+        $('#morebtn').click(() => {
+            $("#hide_text").toggle();
+
+
+            if ($('#morebtn').text() == 'Less Text ..') {
+                $('#morebtn').text('Read More ..')
+            } else {
+                $('#morebtn').text('Less Text ..')
+            }
+
+        })
+    })
+
+    $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    autoplay:true,
+    autoplayTimeout:3000,
+    autoplayHoverPause:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+})
+</script>
+
+
+{% endblock %}

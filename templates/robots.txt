@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Block sensitive areas
+Disallow: /Admin/
+Disallow: /accounts/
+Disallow: /Login_form
+Disallow: /Sign_form
+Disallow: /logoutuser
+
+# Tell Google where the sitemap is
+Sitemap: https://educationkhoj.com/sitemap.xml

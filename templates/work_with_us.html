@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Work With Us | Education Khoj — Join India's No.1 Education Platform{% endblock %}
+
+{% block metadescription %}
+<meta name="description" content="Work with Education Khoj — India's No.1 education platform. Join our team or partner with us. Contact us by phone or email to explore opportunities.">
+{% endblock %}
+
+{% block canonical %}
+//educationkhoj.com/work_with_us
+{% endblock %}
+
+{% block extra_meta %}
+<meta property="og:title" content="Work With Us | Education Khoj">
+<meta property="og:description" content="Join Education Khoj — India's No.1 education platform. Explore career and partnership opportunities with us.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://educationkhoj.com/work_with_us">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Work With Us | Education Khoj">
+{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Work With Education Khoj",
+  "url": "https://educationkhoj.com/work_with_us",
+  "description": "Work with Education Khoj — India's No.1 education platform. Explore career and partnership opportunities.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Education Khoj",
+    "url": "https://educationkhoj.com",
+    "telephone": "+91-78-400-600-70",
+    "email": "educationkhoj@gmail.com"
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<style>
+  .card {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+  }
+  h2 {
+    font-family: "Anton", sans-serif;
+    font-size: 1.6rem;
+  }
+  h3 {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+  }
+  p { margin-bottom: 15px; }
+  ul { margin-left: 20px; }
+  li { margin-bottom: 10px; }
+</style>
+
+<div class="container">
+  <div class="card p-4">
+    <h1 class="text-center mb-4">Work With Us</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>Website:</strong> Educationkhoj.com</p>
+        <p>
+          <strong>Phone:</strong>
+          <a href="tel:+917840060070">+91 78 400 600 70</a>
+        </p>
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:educationkhoj@gmail.com">educationkhoj@gmail.com</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

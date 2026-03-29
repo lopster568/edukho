@@ -1,0 +1,249 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  {% if singlenews %}
+    {% for x in singlenews %}{{ x.title }} | Education Khoj{% endfor %}
+  {% else %}
+    News | Education Khoj
+  {% endif %}
+{% endblock %}
+
+{% block metadescription %}
+  {% if singlenews %}
+    {% for x in singlenews %}
+      <meta name="description" content="{{ x.desc|striptags|truncatechars:160 }}">
+    {% endfor %}
+  {% endif %}
+{% endblock %}
+
+{% block schema %}
+{% if singlenews %}
+{% for x in singlenews %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "{{ x.title }}",
+  "description": "{{ x.desc|striptags|truncatechars:160 }}",
+  "image": "{% if x.img %}{{ x.img.url }}{% endif %}",
+  "datePublished": "{{ x.start_date }}",
+  "dateModified": "{{ x.start_date }}",
+  "author": {
+    "@type": "Organization",
+    "name": "Education Khoj",
+    "url": "https://educationkhoj.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Education Khoj",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://educationkhoj.com/static/images/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://educationkhoj.com/News/{{ x.slug }}"
+  }
+}
+</script>
+{% endfor %}
+{% endif %}
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://educationkhoj.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "News",
+      "item": "https://educationkhoj.com/News"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{% if singlenews %}{% for x in singlenews %}{{ x.title }}{% endfor %}{% endif %}",
+      "item": "https://educationkhoj.com/News/{% if singlenews %}{% for x in singlenews %}{{ x.slug }}{% endfor %}{% endif %}"
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block extra_meta %}
+{% if singlenews %}
+{% for x in singlenews %}
+<!-- Canonical -->
+//educationkhoj.com/News/{{ x.slug }}">
+
+<!-- Open Graph -->
+<meta property="og:title" content="{{ x.title }}">
+<meta property="og:description" content="{{ x.desc|striptags|truncatechars:160 }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://educationkhoj.com/News/{{ x.slug }}">
+{% if x.img %}<meta property="og:image" content="{{ x.img.url }}">{% endif %}
+<meta property="article:published_time" content="{{ x.start_date }}">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ x.title }}">
+<meta name="twitter:description" content="{{ x.desc|striptags|truncatechars:160 }}">
+{% if x.img %}<meta name="twitter:image" content="{{ x.img.url }}">{% endif %}
+{% endfor %}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<main class="container">
+  <div class="row g-5">
+
+    <!-- ── Main Article Column ── -->
+    <div class="col-md-8">
+      {% if singlenews %}
+        {% for x in singlenews %}
+
+        <!-- 🔍 DEBUG - REMOVE AFTER TESTING -->
+        <!-- <p style="background:yellow; padding:8px;">
+          IMG VALUE: [{{ x.img }}]<br>
+          FULL URL: [{% if x.img %}{{ x.img.url }}{% endif %}]<br>
+          DATE: [{{ x.start_date }}]
+        </p> -->
+        <!-- END DEBUG -->
+
+        <!-- Breadcrumb -->
+        <!-- <nav aria-label="breadcrumb" class="mb-3">
+          <ol class="breadcrumb">
+            ><a href="/">Home</a></li>
+            ><a href="/News">News</a></li>
+            >{{ x.title|truncatechars:50 }}</li>
+          </ol>
+        </nav> -->
+
+        <article itemscope itemtype="https://schema.org/NewsArticle">
+
+          <!-- Article Header -->
+          <header class="mb-4">
+            <h1 class="fw-bolder mb-1 display-6"
+                itemprop="headline">{{ x.title }}</h1>
+
+            <div class="text-muted fst-italic mb-2">
+              <time itemprop="datePublished"
+                    datetime="{{ x.start_date }}">
+                Posted on {{ x.start_date }}
+              </time>
+            </div>
+
+            {% if x.tags %}
+            <a class="badge bg-secondary text-decoration-none link-light"
+               href="/News?tag={{ x.tags }}">
+              {{ x.tags }}
+            </a>
+            {% endif %}
+          </header>
+
+          <!-- Article Image -->
+          {% if x.img %}
+          <figure class="mb-4">
+            <img width="100%"
+                 class="img-fluid rounded"
+                 src="{{ x.img.url }}"
+                 alt="{{ x.title }}"
+                 loading="lazy"
+                 decoding="async"
+                 itemprop="image">
+          </figure>
+          {% endif %}
+
+          <!-- Article Content -->
+          <section class="mb-5" itemprop="articleBody">
+            {{ x.desc|safe }}
+          </section>
+
+        </article>
+
+        <!-- Prev / Next Navigation -->
+        <div class="d-flex justify-content-between mt-4">
+          {% if prev_btn == "enable" %}
+            <a href="javascript:history.back()"
+              class="btn btn-primary" rel="prev">← Previous</a>
+          {% else %}
+            <a class="btn btn-primary disabled" aria-disabled="true">← Previous</a>
+          {% endif %}
+
+          {% if btn == "enable" %}
+            <a href="/News" class="btn btn-primary" rel="next">More News →</a>
+          {% else %}
+            <a class="btn btn-primary disabled" aria-disabled="true">More News →</a>
+          {% endif %}
+        </div>
+
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <!-- ── Sidebar ── -->
+    <div class="col-md-4">
+      <div class="position-sticky" style="top: 2rem;">
+
+        <!-- Recent News -->
+        <div class="mb-4">
+          <h2 class="fst-italic h4">Recent News</h2>
+          <ul class="list-unstyled">
+            {% if news %}
+              {% for x in news %}
+              >
+                <a class="d-flex flex-column flex-lg-row gap-3
+                           align-items-start align-items-lg-center
+                           py-3 link-body-emphasis text-decoration-none
+                           border-top"
+                   href="/News/{{ x.slug }}">
+                  {% if x.img %}
+                  <img src="{{ x.img.url }}"
+                       width="140px" height="100px"
+                       alt="{{ x.title|truncatechars:50 }}"
+                       loading="lazy">
+                  {% endif %}
+                  <div class="col-lg-8">
+                    <h3 class="mb-0 h6">{{ x.title|slice:":30" }}...</h3>
+                    <small class="text-body-secondary">{{ x.start_date }}</small>
+                  </div>
+                </a>
+              </li>
+              {% endfor %}
+            {% endif %}
+          </ul>
+        </div>
+
+        <!-- Social Links -->
+        <div class="p-4">
+          <h2 class="fst-italic h4">Follow Us</h2>
+          <ol class="list-unstyled">
+            >
+              <a href="https://facebook.com/educationkhoj"
+                 rel="noopener"
+                 target="_blank">Facebook</a>
+            </li>
+            >
+              <a href="https://twitter.com/educationkhoj"
+                 rel="noopener"
+                 target="_blank">Twitter / X</a>
+            </li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+{% endblock %}

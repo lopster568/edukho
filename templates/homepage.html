@@ -20,6 +20,7 @@
 
 {% block content %}
 {% load static %}
+{% load custom_filter %}
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" integrity="sha512-RWhcC19d8A3vE7kpXq6Ze4GcPfGe3DQWuenhXAbcGiZOaqGojLtWwit1eeM9jLGHFv8hnwpX3blJKGjTsf2HxQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
  <link rel="preload" as="font"
@@ -10842,15 +10843,14 @@ p{
 
 
 			<div class="media">
-			 {% with embed_url=x.video|cut:"https://www.youtube.com/watch?v="|cut:"https://youtu.be/" %}
-            <iframe src="https://www.youtube.com/embed/{{ embed_url }}"
+            <iframe src="{{ x.video|clean_embed_url }}"
                 title="{{ x.title }} | Education Khoj"
                 frameborder="0"
                 loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="no-referrer-when-downgrade"
                 allowfullscreen>
             </iframe>
-            {% endwith %}
 			<span class="format-overlay c-overlay format-video p-center"><i class="tsi tsi-play"></i></span>
 
 
@@ -10861,7 +10861,7 @@ p{
 
 		<div class="content">
 
-			<div class="post-meta post-meta-a has-below"><h2 class="is-title post-title limit-lines l-lines-2" style="margin:0px !important;"><a href="{{x.video}}" style="font-size:1.2rem !important;color:white !important;">{{x.title|slice:"0:25"}} ..</a></h2><div class="post-meta-items meta-below"></div></div>
+			<div class="post-meta post-meta-a has-below"><h2 class="is-title post-title limit-lines l-lines-2" style="margin:0px !important;"><a href="{{x.video|embed_to_watch_url}}" target="_blank" rel="noopener" style="font-size:1.2rem !important;color:white !important;">{{x.title|truncatechars:25}}</a></h2><div class="post-meta-items meta-below"></div></div>
 
 
 		</div>

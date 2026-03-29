@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load custom_filter %}
 
 {% block title %}
   {% if data %}{% for x in data %}{{ x.name_of_institution }}{% endfor %}{% endif %} | Education Khoj
@@ -16,7 +17,7 @@
 {% block extra_meta %}
 {% if data %}
 {% for x in data %}
-//educationkhoj.com/user_info_profile/{{ x.id }}">
+<link rel="canonical" href="https://educationkhoj.com/user_info_profile/{{ x.id }}">
 
 <!-- Open Graph -->
 <meta property="og:title" content="{{ x.name_of_institution }} | Education Khoj">
@@ -58,7 +59,7 @@
 {% endblock %}
 
 {% block content %}
-//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 {% if data %}
   {% for x in data %}
@@ -140,7 +141,7 @@
 
                         <div class="item">
                             <div class="card">
-                                <iframe src="{{x.video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                <iframe src="{{x.video|clean_embed_url}}" title="YouTube video player" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
                             </div>
 
                         </div>

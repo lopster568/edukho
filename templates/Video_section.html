@@ -2,6 +2,7 @@
 {% block title %}Home Page{% endblock %}
 {% block content %}
 {% load static %}
+{% load custom_filter %}
  <link rel="preload" as="font"
         href="https://smartmag.theme-sphere.com/tech-blog/wp-content/themes/smart-mag/css/icons/fonts/ts-icons.woff2?v2.8"
         type="font/woff2" crossorigin="anonymous" />
@@ -10211,23 +10212,24 @@ p{
                     <meta itemprop="name"        content="{{ x.title }}">
                     <meta itemprop="description" content="{{ x.title }} — an event video from Education Khoj.">
                     <meta itemprop="uploadDate"  content="2025-01-01">
-                    <meta itemprop="embedUrl"    content="{{ x.video }}">
+                    <meta itemprop="embedUrl"    content="{{ x.video|clean_embed_url }}">
 
                     {# Responsive iframe wrapper #}
                     <div class="ratio ratio-16x9">
                         <iframe
-                            src="{{ x.video }}"
+                            src="{{ x.video|clean_embed_url }}"
                             title="{{ x.title }} | Education Khoj Video"
                             frameborder="0"
                             loading="lazy"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="no-referrer-when-downgrade"
                             allowfullscreen>
                         </iframe>
                     </div>
 
                     <div class="card-body">
                         <h5 class="card-title fw-semibold" itemprop="name">
-                            {{ x.title|slice:":80" }}
+                            {{ x.title|truncatechars:80 }}
                         </h5>
                     </div>
 

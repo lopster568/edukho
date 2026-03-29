@@ -1,12 +1,13 @@
 # created by virtualenv automatically
- __pycache__/
-  *.pyc
-  *.pyo
-  db.sqlite3
-  media/
-  *.log
-  .env
-  Lib_old_windows_venv/
-  Scripts/
-  pyvenv.cfg
-  CACHEDIR.TAG
+__pycache__/
+*.pyc
+*.pyo
+db.sqlite3
+media/
+*.log
+.env
+Lib_old_windows_venv/
+Scripts/
+pyvenv.cfg
+CACHEDIR.TAG
+venv/

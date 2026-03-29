@@ -11,3 +11,7 @@ Scripts/
 pyvenv.cfg
 CACHEDIR.TAG
 venv/
+mb/
+server_backup/
+grab_server.sh
+collect_remote.py

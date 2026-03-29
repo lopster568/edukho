@@ -1,0 +1,13 @@
+venv/
+Lib_old_windows_venv/
+Scripts/
+.git/
+__pycache__/
+*.pyc
+*.pyo
+db.sqlite3
+*.sql
+mb/
+server_backup/
+grab_server.sh
+.claude/

@@ -183,10 +183,12 @@ APPEND_SLASH = True
 SITE_ID = 1 
 
 # -------------------------------------------------------------------
+STATIC_ROOT = '/var/www/ek/staticfiles/'
+
+# -------------------------------------------------------------------
 # Local overrides (only used on your PC)
 # -------------------------------------------------------------------
 try:
     from .local_settings import *  # noqa
 except ImportError:
     pass
-STATIC_ROOT = '/var/www/ek/staticfiles/'

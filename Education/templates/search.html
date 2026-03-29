@@ -8288,9 +8288,9 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
                 <img src="/static/image/logo.png" width="90" height="90"
                     alt="{{ x.user.nameofinstitution }}" loading="lazy">
             </div>
-            <h3><a href="#" class="text-decoration-none">{{ x.user.name_of_institution|slice:":30" }}..</a></h3>
+            <h3><a href="#" class="text-decoration-none">{{ x.user.name_of_institution|truncatechars:30 }}</a></h3>
             <ul class="">
-                <li><p><span class="ion-ios-pin"></span> {{x.user.address_of_institution|slice:":60"}}...</p></li>
+                <li><p><span class="ion-ios-pin"></span> {{x.user.address_of_institution|truncatechars:60}}</p></li>
                 <li><p><span class="fa fa-phone"></span> {{x.user.contact_no}}</p></li>
             </ul>
 

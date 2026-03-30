@@ -2,20 +2,7 @@
 {% load static %}
 
 {% block title %}
-  {% if request.GET.category == '1' %}Best Play Schools
-  {% elif request.GET.category == '2' %}Best Schools
-  {% elif request.GET.category == '3' %}Best Coaching Institutes
-  {% elif request.GET.category == '4' %}Best Music Academies
-  {% elif request.GET.category == '5' %}Best Dance Academies
-  {% elif request.GET.category == '6' %}Best Professional Institutes
-  {% elif request.GET.category == '7' %}Best Colleges
-  {% elif request.GET.category == '8' %}Best Universities
-  {% elif request.GET.category == '9' %}Best Sports Academies
-  {% elif request.GET.category == '10' %}Home Tutors
-  {% else %}Search Results
-  {% endif %}
-  {% if request.GET.state %} in {{ request.GET.state|title }}{% endif %}
-  | Education Khoj
+  Best {{ category_name }}{% if area_name %} in {{ area_name }}{% endif %} | Education Khoj
 {% endblock %}
 
 {% block metadescription %}
@@ -8241,27 +8228,7 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
 
 <div class="container">
-    <h1 class="text-center my-4">
-{% if request.GET.category == '1' %} Play School
-{% elif request.GET.category == '2' %} School
-{% elif request.GET.category == '3' %} Coaching Institute
-{% elif request.GET.category == '4' %} Music Academy
-{% elif request.GET.category == '5' %} Dance Academy
-{% elif request.GET.category == '6' %} Professional Institute
-{% elif request.GET.category == '7' %} College
-{% elif request.GET.category == '8' %} University
-{% elif request.GET.category == '9' %} Sports Academy
-{% elif request.GET.category == '10' %} Home Tutor
-{% elif request.GET.category == '11' %} Hostel & PG - Girls
-{% elif request.GET.category == '12' %} Hostel & PG - Girls
-{% elif request.GET.category == '13' %} Hostel & PG - Boys
-{% elif request.GET.category == '14' %} Study Abroad
-{% elif request.GET.category == '15' %} Special Educator
-{% else %} Misc.
-{% endif %}
-
-
-                        </h1>
+    <h1 class="text-center my-4">Best {{ category_name }}{% if area_name %} In {{ area_name }}{% endif %}</h1>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3"> <!-- 5 columns on larger screens -->
     {% if paid_users %}

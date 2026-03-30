@@ -473,6 +473,9 @@ def search(request):
             'search_banner': search_banner,
             'm1_banner':     m1_banner,
             'm2_banner':     m2_banner,
+            'area_name':     area_obj.Area_name,
+            'state_name':    state_obj.State_name,
+            'category_name': category_obj.Category,
         })
 
 

@@ -200,6 +200,7 @@ def news(request):
         sports_obj      = Category.objects.filter(is_active=1, Category__iexact="sports academy").first()
         study_obj       = Category.objects.filter(is_active=1, Category__iexact="study abroad").first()
         prof_obj        = Category.objects.filter(is_active=1, Category__iexact="professional institute").first()
+        coaching_obj    = Category.objects.filter(is_active=1, Category__iexact="coaching institute").first()
 
         school_id        = school_obj.id if school_obj else None
         play_school_id   = play_school_obj.id if play_school_obj else None
@@ -208,6 +209,7 @@ def news(request):
         Sports_Academy_id = sports_obj.id if sports_obj else None
         study_abroad_id  = study_obj.id if study_obj else None
         prof_id          = prof_obj.id if prof_obj else None
+        coaching_id      = coaching_obj.id if coaching_obj else None
 
         news_banner  = News_Banner.objects.filter(is_active=1)
         m1_banner    = news_banner.filter(position=7).last()
@@ -240,7 +242,10 @@ def news(request):
             if prof_id else News.objects.none()
         )
         all_job = Job.objects.order_by('-id').all()[0:4]
-        other_news = News.objects.order_by('-id').filter(is_active=1)[0:8]
+        other_news = (
+            News.objects.order_by('-id').filter(category=coaching_id, is_active=1)[0:8]
+            if coaching_id else News.objects.none()
+        )
 
     except Exception:
         state = cate = all_nwes = current_news = []

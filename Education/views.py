@@ -199,6 +199,7 @@ def news(request):
         univercity_obj  = Category.objects.filter(is_active=1, Category__iexact="university").first()
         sports_obj      = Category.objects.filter(is_active=1, Category__iexact="sports academy").first()
         study_obj       = Category.objects.filter(is_active=1, Category__iexact="study abroad").first()
+        prof_obj        = Category.objects.filter(is_active=1, Category__iexact="professional institute").first()
 
         school_id        = school_obj.id if school_obj else None
         play_school_id   = play_school_obj.id if play_school_obj else None
@@ -206,6 +207,7 @@ def news(request):
         univercity_id    = univercity_obj.id if univercity_obj else None
         Sports_Academy_id = sports_obj.id if sports_obj else None
         study_abroad_id  = study_obj.id if study_obj else None
+        prof_id          = prof_obj.id if prof_obj else None
 
         news_banner  = News_Banner.objects.filter(is_active=1)
         m1_banner    = news_banner.filter(position=7).last()
@@ -233,34 +235,35 @@ def news(request):
             News.objects.order_by('-id').filter(category=study_abroad_id, is_active=1)[0:9]
             if study_abroad_id else News.objects.none()
         )
-        all_job = Job.objects.order_by('-id').all()[0:4]
-        other_news = (
-            News.objects.order_by('-id').exclude(category__in=exclude_ids).filter(is_active=1)[0:8]
-            if exclude_ids
-            else News.objects.order_by('-id').filter(is_active=1)[0:8]
+        prof = (
+            News.objects.order_by('-id').filter(category=prof_id, is_active=1)[0:8]
+            if prof_id else News.objects.none()
         )
+        all_job = Job.objects.order_by('-id').all()[0:4]
+        other_news = News.objects.order_by('-id').filter(is_active=1)[0:8]
 
     except Exception:
         state = cate = all_nwes = current_news = []
         rand_news = m1_banner = m2_banner = None
         news_banner = school_play_shool_news = college_university_news = []
-        sport = study = all_job = other_news = []
+        sport = study = prof = all_job = other_news = []
 
     return render(request, 'News.html', {
-        'news':                 all_nwes,
-        'job':                  all_job,
-        'other':                other_news,
-        'm1_banner':            m1_banner,
-        'm2_banner':            m2_banner,
-        'sport':                sport,
-        'studyabroad':          study,
-        'schoolplayshoolnews':  school_play_shool_news,
-        'collegeuniversitynews': college_university_news,
-        'news_banner':          news_banner,
-        'cur':                  current_news,
-        'state':                state,
-        'cate':                 cate,
-        'main':                 rand_news,
+        'news':                    all_nwes,
+        'job':                     all_job,
+        'other':                   other_news,
+        'm1_banner':               m1_banner,
+        'm2_banner':               m2_banner,
+        'sport':                   sport,
+        'study_abroad':            study,
+        'prof':                    prof,
+        'school_play_shool_news':  school_play_shool_news,
+        'college_university_news': college_university_news,
+        'news_banner':             news_banner,
+        'cur':                     current_news,
+        'state':                   state,
+        'cate':                    cate,
+        'main':                    rand_news,
     })
 
 

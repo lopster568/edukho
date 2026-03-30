@@ -298,9 +298,18 @@ footer {
             <nav class="navbar navbar-expand-lg bg-body-tertiary px-3 py-0">
                 <div class="container-fluid d-flex align-items-center justify-content-between">
                     <a class="navbar-brand d-flex flex-column align-items-center text-decoration-none" href="/">
-                        <img src="/static/image/new_logo.png" alt="Education Khoj - No. 1 Platform for All Educational Needs" style="height: 16vh; width: 60vw;">
-                        <span style="font-size: 1.3rem; color: #333;"><strong>No. 1</strong> Platform for All <strong>Educational Needs</strong></span>
+                        <img src="/static/image/new_logo.png" alt="Education Khoj - No. 1 Platform for All Educational Needs" class="header-logo">
+                        <span class="header-tagline"><strong>No. 1</strong> Platform for All <strong>Educational Needs</strong></span>
                     </a>
+                    <style>
+                        .navbar { overflow-x: hidden; }
+                        .header-logo { height: 16vh; width: 60vw; max-width: 600px; object-fit: contain; }
+                        .header-tagline { font-size: 1.3rem; color: #333; }
+                        @media (max-width: 768px) {
+                            .header-logo { height: 8vh; width: 65vw; max-width: none; }
+                            .header-tagline { font-size: 0.75rem; }
+                        }
+                    </style>
                     <button class="navbar-toggler border shadow-none" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">

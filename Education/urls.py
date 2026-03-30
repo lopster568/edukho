@@ -109,4 +109,8 @@ urlpatterns = [
     path('privacy', views.privacy, name='privacy'),
     path('work_with_us', views.work_with_us, name='work_with_us'),
     path('events', views.events, name='events'),
+
+    path('footer_section', views.footer_section, name='footer_section'),
+    path('footer_section/<int:footer_id>', views.footer_section_deactive, name='footer_section_deactive'),
+    path('footer_section_update/<int:footer_id>', views.footer_section_update, name='footer_section_update'),
 ]

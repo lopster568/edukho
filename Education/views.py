@@ -21,6 +21,7 @@ from .Model.Interview_Banner import Interview_Banner
 from django.shortcuts import get_object_or_404
 from .Model.Category import Category
 from .Model.Video_Section import Video_Section
+from .Model.Footer_section import Footer_Section
 from .Model.Features import Features
 from .Model.UserJobApply import UserJobApply
 from .Model.Payment_table import Payment_table
@@ -1624,4 +1625,40 @@ def about_section(request):
         return redirect('/UserAccount')
     except Payment_table.DoesNotExist:
         return redirect('/UserAccount')
-# MARKER Sat Mar 14 08:21:21 UTC 2026
+
+
+def footer_section(request):
+    is_banner_add = ""
+    if request.method == "POST":
+        Footer_Section(
+            user_id=str(request.user.id),
+            title=request.POST.get('title'),
+            footer_link=request.POST.get('footer_link'),
+            column_number=request.POST.get('column_number', 1),
+        ).save()
+        is_banner_add = "true"
+    all_footer = Footer_Section.objects.all().order_by('column_number', 'id')
+    return render(request, './Admin/Footer_Section.html', {
+        "message": is_banner_add, 'footer': all_footer
+    })
+
+
+def footer_section_deactive(request, footer_id):
+    item = Footer_Section.objects.get(pk=footer_id)
+    item.is_active = 0 if item.is_active == "1" else 1
+    item.save()
+    return JsonResponse({'data': "Deactivate Successful!" if item.is_active == 0 else "Activate Successful!"})
+
+
+def footer_section_update(request, footer_id):
+    if request.method == "POST":
+        item = Footer_Section.objects.get(pk=footer_id)
+        item.title = request.POST.get('title')
+        item.footer_link = request.POST.get('footer_link')
+        item.column_number = request.POST.get('column_number', item.column_number)
+        item.save()
+        messages.success(request, "Update Successful")
+        return redirect('/footer_section')
+    item = Footer_Section.objects.filter(pk=footer_id)
+    data = [{'title': i.title, 'footer_link': i.footer_link, 'column_number': i.column_number} for i in item]
+    return JsonResponse({'data': data})

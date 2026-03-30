@@ -373,75 +373,15 @@ footer {
         }
       </style>
       <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5">
-
+        {% for col_num, links in footer_columns.items %}
         <div class="col mb-3">
-          <ul class="nav flex-column border-end pe-3">
-            <li class="nav-item mb-1"><a href="/about" class="nav-link p-0 text-white">About Us</a></li>
-            <li class="nav-item mb-1"><a href="/Contact" class="nav-link p-0 text-white">Contact Us</a></li>
-            <li class="nav-item mb-1"><a href="/advertising" class="nav-link p-0 text-white">Advertise With Us</a></li>
-            <li class="nav-item mb-1"><a href="/term_condition" class="nav-link p-0 text-white">Terms and Conditions</a></li>
-            <li class="nav-item mb-1"><a href="/privacy" class="nav-link p-0 text-white">Privacy Policy</a></li>
-            <li class="nav-item mb-1"><a href="/work_with_us" class="nav-link p-0 text-white">Work with Us</a></li>
+          <ul class="nav flex-column{% if col_num == 1 %} border-end pe-3{% endif %}">
+            {% for link in links %}
+            <li class="nav-item mb-1"><a href="{{ link.footer_link }}" class="nav-link p-0 text-white">{{ link.title }}</a></li>
+            {% endfor %}
           </ul>
         </div>
-
-        <div class="col mb-3">
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=play-school&amp;state=new-delhi&amp;area=najafgarh" class="nav-link p-0 text-white">Best Play School in Najafgarh</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=play-school&amp;state=new-delhi&amp;area=dwarka" class="nav-link p-0 text-white">Best Play School in Dwarka</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=play-school&amp;state=new-delhi&amp;area=vikaspuri" class="nav-link p-0 text-white">Best Play School in Vikaspuri</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=play-school&amp;state=new-delhi&amp;area=rohini" class="nav-link p-0 text-white">Best Pre School in Rohini</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=play-school&amp;state=haryana&amp;area=gurugram" class="nav-link p-0 text-white">Best Play School in Gurugram</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=play-school&amp;state=uttrakhand&amp;area=dehradun" class="nav-link p-0 text-white">Best Play School in Dehradun</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=play-school&amp;state=chandigarh&amp;area=chandigarh" class="nav-link p-0 text-white">Best Pre School in Chandigarh</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=school&amp;state=chandigarh&amp;area=chandigarh" class="nav-link p-0 text-white">Top School in Chandigarh</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=school&amp;state=uttrakhand&amp;area=dehradun" class="nav-link p-0 text-white">Top School in Dehradun</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=school&amp;state=uttar-pradesh&amp;area=noida" class="nav-link p-0 text-white">Best School in Noida</a></li>
-          </ul>
-        </div>
-
-        <div class="col mb-3">
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=school&amp;state=haryana&amp;area=gurugram" class="nav-link p-0 text-white">Top School in Gurugram</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=school&amp;state=haryana&amp;area=palam-vihar-gurugram" class="nav-link p-0 text-white">Top School in Palam Vihar Gurugram</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=school&amp;state=haryana&amp;area=bahadurgarh" class="nav-link p-0 text-white">Best School in Bahadurgarh</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=school&amp;state=haryana&amp;area=faridabad" class="nav-link p-0 text-white">Top School in Faridabad</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=school&amp;state=new-delhi&amp;area=najafgarh" class="nav-link p-0 text-white">Best School in Najafgarh</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=school&amp;state=new-delhi&amp;area=vikaspuri" class="nav-link p-0 text-white">Top Schools in Vikaspuri</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=school&amp;state=new-delhi&amp;area=rohini" class="nav-link p-0 text-white">Top Schools in Rohini</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=school&amp;state=new-delhi&amp;area=paschim-vihar" class="nav-link p-0 text-white">Top School in Paschim Vihar</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=school&amp;state=new-delhi&amp;area=dwarka" class="nav-link p-0 text-white">Best School in Dwarka</a></li>
-            <li class="nav-item mb-2"><a href="https://educationkhoj.com/search?category=coaching-institute&amp;state=new-delhi&amp;area=dwarka" class="nav-link p-0 text-white">Best Coaching Institute in Dwarka</a></li>
-          </ul>
-        </div>
-
-        <div class="col mb-3">
-          <ul class="nav flex-column">
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=coaching-institute&amp;state=new-delhi&amp;area=janak-puri" class="nav-link p-0 text-white">Best Coaching Institute in Janakpuri</a></li>
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=coaching-institute&amp;state=new-delhi&amp;area=rohini" class="nav-link p-0 text-white">Best Coaching Institute in Rohini</a></li>
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=coaching-institute&amp;state=haryana&amp;area=gurugram" class="nav-link p-0 text-white">Top Coaching Institute in Gurugram</a></li>
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=coaching-institute&amp;state=uttar-pradesh&amp;area=noida" class="nav-link p-0 text-white">Top Coaching Institute in Noida</a></li>
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=coaching-institute&amp;state=uttar-pradesh&amp;area=vasundhra-ghaziabad" class="nav-link p-0 text-white">Best Coaching Institute in Vasundhra Gaziabad</a></li>
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=coaching-institute&amp;state=uttrakhand&amp;area=dehradun" class="nav-link p-0 text-white">Top Coaching Institute in Dehradun</a></li>
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=coaching-institute&amp;state=chandigarh&amp;area=chandigarh" class="nav-link p-0 text-white">Best Coaching Institute in Chandigarh</a></li>
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=coaching-institute&amp;state=haryana&amp;area=faridabad" class="nav-link p-0 text-white">Best Coaching Institute in Faridabad</a></li>
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=coaching-institute&amp;state=uttar-pradesh&amp;area=greater-noida" class="nav-link p-0 text-white">Best Coaching Institute in Greater Noida</a></li>
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=music-academy&amp;state=new-delhi&amp;area=dwarka" class="nav-link p-0 text-white">Best Music Academy in Dwarka</a></li>
-          </ul>
-        </div>
-
-        <div class="col mb-3">
-          <ul class="nav flex-column">
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=dance-academy&amp;state=new-delhi&amp;area=dwarka" class="nav-link p-0 text-white">Best Dance Academy in Dwarka</a></li>
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=college&amp;state=new-delhi&amp;area=dwarka" class="nav-link p-0 text-white">Best College in Dwarka</a></li>
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=college&amp;state=uttrakhand&amp;area=dehradun" class="nav-link p-0 text-white">Best College in Dehradun</a></li>
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=university&amp;state=uttrakhand&amp;area=dehradun" class="nav-link p-0 text-white">Top Universities in Dehradun</a></li>
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=professional-institute&amp;state=chandigarh&amp;area=chandigarh" class="nav-link p-0 text-white">Computer Institute in Chandigarh</a></li>
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/search?category=professional-institute&amp;state=uttrakhand&amp;area=dehradun" class="nav-link p-0 text-white">Computer Institute in Dehradun</a></li>
-            <li class="nav-item mb-1"><a href="https://educationkhoj.com/Job" class="nav-link p-0 text-white">Jobs in Education</a></li>
-          </ul>
-        </div>
-
+        {% endfor %}
       </footer>
     </div>
 

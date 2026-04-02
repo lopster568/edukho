@@ -8231,8 +8231,8 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     <h1 class="text-center my-4">Best {{ category_name }}{% if area_name %} In {{ area_name }}{% endif %}</h1>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3"> <!-- 5 columns on larger screens -->
-    {% if paid_users %}
-        {% for x in paid_users %}
+    {% if data %}
+        {% for x in data %}
             {% if True %}
 
 
@@ -8263,7 +8263,7 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
             <!-- Check if type exists and it's not "non-paid" -->
             {% if x.type and x.type != "non-paid" %}
-                <a href="/user_info_profile/{{x.user.id}}" style="position: relative; top: 4rem;" class="btn btn-sm">View More </a>
+                <a href="/user_info_profile/{{x.user.id}}" style="margin-top: 1rem;" class="btn btn-sm">View More </a>
             {% else %}
 
             {% endif %}
@@ -8338,23 +8338,23 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
 
 
-<nav aria-label="Page navigation example">
-  <ul class="pagination d-flex justify-content-between">
-{% if data.has_previous %}
-    <li class="page-item"><a class="page-link" href="search?category={{ request.GET.category }}&state={{ request.GET.state }}&area={{ request.GET.area }}&page={{ data.previous_page_number }}">Previous</a></li>
-{% endif %}
-
- {% if data.has_next %}
-    <li class="page-item"><a class="page-link" href="search?category={{ request.GET.category }}&state={{ request.GET.state }}&area={{ request.GET.area }}&page={{ data.next_page_number }}">Next</a></li>
-{% endif %}
-  </ul>
+<nav aria-label="Page navigation" style="margin-bottom: 4rem;">
+  <div class="d-flex justify-content-between align-items-center">
+    <div>
+      {% if data.has_previous %}
+        <a class="btn btn-outline-primary" href="search?category={{ request.GET.category }}&state={{ request.GET.state }}&area={{ request.GET.area }}&page={{ data.previous_page_number }}">Previous</a>
+      {% endif %}
+    </div>
+    {% if data.paginator.num_pages > 1 %}
+      <span class="text-muted">Page {{ data.number }} of {{ data.paginator.num_pages }}</span>
+    {% endif %}
+    <div>
+      {% if data.has_next %}
+        <a class="btn btn-outline-primary" href="search?category={{ request.GET.category }}&state={{ request.GET.state }}&area={{ request.GET.area }}&page={{ data.next_page_number }}">Next</a>
+      {% endif %}
+    </div>
+  </div>
 </nav>
-
-{% if data.paginator.num_pages > 1 %}
- <span>
-      Page {{ data.number }} of {{data.paginator.num_pages }}.
-    </span>
-{% endif %}
 </div>
 
 

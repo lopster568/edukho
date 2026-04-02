@@ -7341,7 +7341,7 @@
                                                                 <div
                                                                     class="block-head block-head-ac block-head-e block-head-e3 is-left">
 
-                                                                    <h3> <span id="catedata"></span> News</h3>
+                                                                    <h3> <span id="catedata"></span><span id="catesuffix"> News</span></h3>
 
                                                                 </div>
 
@@ -8140,22 +8140,33 @@
     });
   });
 
-   // Django template mein 'cate' variable ko JavaScript variable mein pass karna
-  var cate = "{{ cate }}";  // Example: "college_and_university_news"
+   var cate = "{{ cate }}";
 
-  // Underscore ko "and" mein replace karna
-  var modifiedCate = cate.replace(/_/g, ' and ');
+  var displayNames = {
+    'professional_institute': 'Articles',
 
-  // "and" ko "&" mein replace karna
-  modifiedCate = modifiedCate.replace(/\band\b/g, '&');
+    'others': 'Other News',
+    'college_university': 'College & University News',
+    'school_play_shool_news': 'School & Play School News',
+    'sports': 'Sports News',
+    'study_abroad': 'Study Abroad News',
+    'all': 'All News'
+  };
 
-  // Uppercase mein convert karna aur har word ke pehle letter ko capital karna
-  var finalCate = modifiedCate.replace(/\b\w/g, function(char) {
-    return char.toUpperCase();
-  });
+  var finalCate;
+  if (displayNames[cate]) {
+    finalCate = displayNames[cate];
+  } else {
+    var modifiedCate = cate.replace(/_/g, ' ').replace(/\band\b/g, '&');
+    finalCate = modifiedCate.replace(/\b\w/g, function(char) {
+      return char.toUpperCase();
+    });
+  }
 
-  // Modified value ko console mein print karna (optional)
   document.querySelector("#catedata").innerHTML = finalCate;
+  if (displayNames[cate]) {
+    document.querySelector("#catesuffix").style.display = 'none';
+  }
 
 
 </script>

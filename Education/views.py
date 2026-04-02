@@ -347,15 +347,26 @@ def news_filter(request):
                 news_banner = News_Banner.objects.filter(cate=study_abroad_id, state=stateid, is_active=1)
             main_news = all_news.order_by("-id").first() if all_news.exists() else {}
 
-        elif cate == 'others':
-            exclude_q = Q(category=school_id) | Q(category=play_school_id) | Q(category=college_id) | \
-                        Q(category=univercity_id) | Q(category=Sports_Academy_id) | Q(category=study_abroad_id)
+        elif cate == 'professional_institute':
+            prof_obj = Category.objects.filter(is_active=1, Category__iexact="professional institute").first()
+            prof_id  = prof_obj.id if prof_obj else None
             if stateid is None:
-                all_news    = News.objects.filter(is_active=1).exclude(exclude_q)
-                news_banner = News_Banner.objects.filter(cate=study_abroad_id, state=0, is_active=1)
+                all_news    = News.objects.filter(category=prof_id, is_active=1)
+                news_banner = News_Banner.objects.filter(cate=prof_id, state=0, is_active=1)
             else:
-                all_news    = News.objects.filter(is_active=1, state=stateid).exclude(exclude_q)
-                news_banner = News_Banner.objects.filter(cate=study_abroad_id, state=0, is_active=1)
+                all_news    = News.objects.filter(category=prof_id, state=stateid, is_active=1)
+                news_banner = News_Banner.objects.filter(cate=prof_id, state=stateid, is_active=1)
+            main_news = all_news.order_by("-id").first() if all_news.exists() else {}
+
+        elif cate == 'others':
+            coaching_obj = Category.objects.filter(is_active=1, Category__iexact="coaching institute").first()
+            coaching_id  = coaching_obj.id if coaching_obj else None
+            if stateid is None:
+                all_news    = News.objects.filter(category=coaching_id, is_active=1)
+                news_banner = News_Banner.objects.filter(cate=coaching_id, state=0, is_active=1)
+            else:
+                all_news    = News.objects.filter(category=coaching_id, state=stateid, is_active=1)
+                news_banner = News_Banner.objects.filter(cate=coaching_id, state=stateid, is_active=1)
             main_news = all_news.order_by("-id").first() if all_news.exists() else {}
 
         if news_banner:
@@ -477,8 +488,6 @@ def search(request):
 
         return render(request, 'search.html', {
             "data":          page_obj,
-            "paid_users":    combined,
-            "non_paid_user": non_paid_dataset,
             'search_banner': search_banner,
             'm1_banner':     m1_banner,
             'm2_banner':     m2_banner,

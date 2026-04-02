@@ -275,7 +275,7 @@ def news(request):
 
 def news_filter(request):
     cate    = request.GET.get('cate')
-    stateid = request.GET.get('state')
+    state_param = request.GET.get('state')
 
     all_news   = []
     main_news  = {}
@@ -286,6 +286,16 @@ def news_filter(request):
     try:
         state        = State.objects.all()
         current_news = News.objects.order_by('-id')[0:5]
+
+        # Resolve state slug or ID to numeric ID
+        stateid = None
+        if state_param and state_param != '0':
+            slug_name = state_param.replace('-', ' ').strip()
+            state_obj_match = State.objects.filter(State_name__iexact=slug_name).first()
+            if not state_obj_match and state_param.isdigit():
+                state_obj_match = State.objects.filter(id=int(state_param)).first()
+            if state_obj_match:
+                stateid = str(state_obj_match.id)
 
         school_obj      = Category.objects.filter(is_active=1, Category__iexact="school").first()
         play_school_obj = Category.objects.filter(is_active=1, Category__iexact="Play School").first()
@@ -380,7 +390,7 @@ def news_filter(request):
 
     return render(request, 'News_Filter.html', {
         'news':        all_news,
-        'stateid':     stateid,
+        'stateid':     state_param or '',
         'cate':        cate,
         'm1_banner':   m1_banner,
         'm2_banner':   m2_banner,

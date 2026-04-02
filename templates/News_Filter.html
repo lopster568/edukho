@@ -37,6 +37,7 @@
 
 
 {% block content %}
+{% load custom_filter %}
 
 
 <!--======================================start here ======================-->
@@ -7364,7 +7365,7 @@
 
                 {% if state %}
                 {% for x in state %}
-                <option {% if stateid == x.id|stringformat:"s" %} selected{% endif %} value="{{x.id}}">{{x.State_name}}  </option>
+                <option {% if stateid == x.State_name|slugify_name %} selected{% endif %} value="{{x.State_name|slugify_name}}">{{x.State_name}}  </option>
                 {% endfor %}
                 {% endif %}
               </select>

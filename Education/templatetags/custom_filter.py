@@ -22,3 +22,10 @@ def embed_to_watch_url(url):
         return url
     url = re.sub(r'[?&]si=[^&]*', '', url)
     return url.replace('/embed/', '/watch?v=')
+
+@register.filter(name='slugify_name')
+def slugify_name(value):
+    """Convert name to URL slug: 'Play School' -> 'play-school'"""
+    if not value:
+        return value
+    return re.sub(r'[^a-z0-9]+', '-', str(value).lower()).strip('-')

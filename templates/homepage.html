@@ -10320,7 +10320,7 @@ p{
                             <option selected>Category</option>
                             {% if cate %}
                             {% for x in cate %}
-                            <option value="{{x.id}}">{{x.Category}}</option>
+                            <option value="{{x.Category|slugify_name}}">{{x.Category}}</option>
                             {% endfor %}
                             {% endif %}
                         </select>
@@ -10332,7 +10332,7 @@ p{
                             <option selected value="0">State</option>
                             {% if state %}
                             {% for x in state %}
-                            <option value="{{x.id}}">{{x.State_name}}</option>
+                            <option value="{{x.State_name|slugify_name}}" data-id="{{x.id}}">{{x.State_name}}</option>
                             {% endfor %}
                             {% endif %}
                         </select>
@@ -10344,7 +10344,7 @@ p{
                             <option selected>Area</option>
                             {% if area %}
                             {% for x in area %}
-                            <option value="{{x.id}}">{{x.Area_name}}</option>
+                            <option value="{{x.Area_name|slugify_name}}">{{x.Area_name}}</option>
                             {% endfor %}
                             {% endif %}
                         </select>
@@ -11621,31 +11621,24 @@ p{
 <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js" integrity="sha512-9CWGXFSJ+/X0LWzSRCZFsOPhSfm6jbnL+Mpqo0o8Ke2SYr8rCTqb4/wGm+9n13HtDE1NQpAEOrMecDZw4FXQGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     function area_get() {
-        // Use AJAX to fetch data and update the data area
-        var stateId = $("#state").val();
-        console.log(stateId)
+        var stateId = $("#state option:selected").data('id');
+        if (!stateId) stateId = "0";
         $.ajax({
-            url: `get_data/${stateId !== "0" ? stateId : "0"}`,
+            url: `get_data/${stateId}`,
             type: 'GET',
-            // data: {'stateid': stateId},
             dataType: 'json',
             success: function (data) {
-                console.log(data)
-                // Update the data area with the received data
                 var dataArea = $('#area');
                 dataArea.empty();
                 $.each(data.data, function (index, item) {
-                    dataArea.append(`<option value="${item.Area_id}">${item.Area_name}</option>`);
+                    var slug = item.Area_name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                    dataArea.append(`<option value="${slug}">${item.Area_name}</option>`);
                 });
-
-
             },
             error: function (error) {
                 console.log('Error fetching data: ', error);
             }
         });
-
-
     }
 
 

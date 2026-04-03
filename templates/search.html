@@ -8228,10 +8228,10 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
 
 <div class="container">
+    {% if data %}
     <h1 class="text-center my-4">Best {{ category_name }}{% if area_name %} In {{ area_name }}{% endif %}</h1>
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3"> <!-- 5 columns on larger screens -->
-    {% if data %}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
         {% for x in data %}
             {% if True %}
 
@@ -8291,8 +8291,13 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
             {% endif %}
         {% endfor %}
-    {% endif %}
 </div>
+    {% else %}
+    <div class="text-center my-5 py-5">
+        <h2 class="text-muted">No results found</h2>
+        <p class="text-muted">Try searching with a different category, state, or area.</p>
+    </div>
+    {% endif %}
 
 
 

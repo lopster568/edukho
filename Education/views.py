@@ -1108,18 +1108,23 @@ def video_section_deactive(request, home_banner_id):
 def news_management_section(request):
     is_banner_add = ""
     if request.method == "POST":
-        News(
-            state=request.POST.get('state'),
-            title=request.POST.get('title'),
-            start_date=request.POST.get('start_date'),
-            end_date=request.POST.get('end_date'),
-            author=request.POST.get('author'),
-            img=request.FILES.get('news_img'),
-            tags=request.POST.get('tags'),
-            category=request.POST.get('category'),
-            desc=request.POST.get('editor'),
-        ).save()
-        is_banner_add = "true"
+        try:
+            News(
+                state=request.POST.get('state'),
+                title=request.POST.get('title'),
+                start_date=request.POST.get('start_date'),
+                end_date=request.POST.get('end_date'),
+                author=request.POST.get('author'),
+                img=request.FILES.get('news_img'),
+                tags=request.POST.get('tags'),
+                category=request.POST.get('category'),
+                desc=request.POST.get('editor'),
+            ).save()
+            is_banner_add = "true"
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            is_banner_add = str(e)
     all_state = State.objects.all()
     all_cate  = Category.objects.all()
     all_news  = News.objects.all()

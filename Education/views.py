@@ -1119,6 +1119,7 @@ def news_management_section(request):
                 tags=request.POST.get('tags'),
                 category=request.POST.get('category'),
                 desc=request.POST.get('editor'),
+                userid=str(request.user.id),
             ).save()
             is_banner_add = "true"
         except Exception as e:

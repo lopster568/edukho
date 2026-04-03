@@ -1125,7 +1125,8 @@ def news_management_section(request):
         except Exception as e:
             import traceback
             traceback.print_exc()
-            is_banner_add = str(e)
+            is_banner_add = ""
+            messages.error(request, f"Failed to add news: {e}")
     all_state = State.objects.all()
     all_cate  = Category.objects.all()
     all_news  = News.objects.all()

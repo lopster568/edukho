@@ -8202,7 +8202,7 @@ p{
                                                                             <div class="media">
 
 
-                                                                                <a href="/News/{{other.0.title|slugify}}"
+                                                                                <a href="/News/{{other.0.slug}}"
                                                                                     class="image-link media-ratio ratio-3-2"
                                                                                     title="{{other.0.title}}"><img src="/media/{{other.0.img}}"
                                                                                         data-bgsrc="{{other.0.img}}"
@@ -8230,7 +8230,7 @@ p{
 
 
 
-                                                                                <a href="/News/{{other.0.title|slugify}}"
+                                                                                <a href="/News/{{other.0.slug}}"
                                                                                     class="read-more-link read-more-basic">
                                                                                     Read More </a>
 
@@ -8280,7 +8280,7 @@ p{
                                                                             <div class="media">
 
 
-                                                                                <a href="/News/{{x.title|slugify}}"
+                                                                                <a href="/News/{{x.slug}}"
                                                                                     class="image-link media-ratio ratio-is-custom"
                                                                                     title="{{ x.title}}"><span
                                                                                         data-bgsrc="/media/{{x.img}}"
@@ -8301,7 +8301,7 @@ p{
                                                                                 <div
                                                                                     class="post-meta post-meta-a has-below">
                                                                                    <h2 class="is-title post-title">
-    <a href="/News/{{ x.title|slugify }}">
+    <a href="/News/{{ x.slug }}">
         {% if x.title|length > 35 %}
             {{ x.title|slice:":35" }}..
         {% else %}
@@ -8511,7 +8511,7 @@ p{
                                                             <div class="media">
 
 
-                                                                <a href="/News/{{x.title|slugify}}"
+                                                                <a href="/News/{{x.slug}}"
                                                                     class="image-link media-ratio ratio-3-2"
                                                                     title="{{ x.title }}">
 
@@ -8525,7 +8525,7 @@ p{
 
                                                                 <span
                                                                     class="cat-labels cat-labels-overlay c-overlay p-top-left">
-                                                                    <a href="/News/{{x.title|slugify}}"
+                                                                    <a href="/News/{{x.slug}}"
                                                                         class="category term-color-2"
                                                                         rel="category">College and University</a>
                                                                 </span>
@@ -8540,7 +8540,7 @@ p{
 
                                                                 <div class="post-meta post-meta-a has-below">
                                                                    <h2 class="is-title post-title">
-    <a href="/News/{{ x.title | slugify }}">
+    <a href="/News/{{ x.slug }}">
         {% if x.title|length > 35 %}
             {{ x.title|slice:":35" }}..
         {% else %}
@@ -8622,7 +8622,7 @@ p{
                                                                             <div class="media">
 
 
-                                                                                <a href="/News/{{ x.title| slugify }}"
+                                                                                <a href="/News/{{ x.slug }}"
                                                                                     class="image-link media-ratio ratio-3-2"
                                                                                     title="{{school_play_shool_news.0.title}}">
                                                                                     <img src="/media/{{school_play_shool_news.0.img}}"
@@ -8635,7 +8635,7 @@ p{
 
                                                                                 <span
                                                                                     class="cat-labels cat-labels-overlay c-overlay p-bot-left">
-                                                                                    <a href="/News/{{x.title|slugify}}"
+                                                                                    <a href="/News/{{x.slug}}"
                                                                                         class="category term-color-2"
                                                                                         rel="category">{{school_play_shool_news.0.title}}</a>
                                                                                 </span>
@@ -8651,7 +8651,7 @@ p{
                                                                                 <div
                                                                                     class="post-meta post-meta-a has-below">
                                                                                     <h2 class="is-title post-title"><a
-                                                                                            href="/News/{{school_play_shool_news.0.title|slugify}}">{{school_play_shool_news.0.title}}</a></h2>
+                                                                                            href="/News/{{school_play_shool_news.0.slug}}">{{school_play_shool_news.0.title}}</a></h2>
                                                                                     <div
                                                                                         class="post-meta-items meta-below has-author-img">
 
@@ -8668,7 +8668,7 @@ p{
 
 
 
-                                                                                <a href="/News/{{school_play_shool_news.0.title|slugify}}"
+                                                                                <a href="/News/{{school_play_shool_news.0.slug}}"
                                                                                     class="read-more-link read-more-basic">
                                                                                     Read More </a>
 
@@ -8715,7 +8715,7 @@ p{
                                                                             <div class="media">
 
 
-                                                                                <a href="/News/{{x.title|slugify}}"
+                                                                                <a href="/News/{{x.slug}}"
                                                                                     class="image-link media-ratio ratio-is-custom"
                                                                                     title="{{ x.title}}">
                                                                                     <img src="/media/{{x.img}}"
@@ -8736,7 +8736,7 @@ p{
                                                                                 <div
                                                                                     class="post-meta post-meta-a has-below">
                                                                                     <h2 class="is-title post-title"><a
-                                                                                            href="/News/{{x.title|slugify}}">{{ x.title|slice:"0:40"}}..</a></h2>
+                                                                                            href="/News/{{x.slug}}">{{ x.title|slice:"0:40"}}..</a></h2>
 
                                                                                 </div>
 
@@ -9154,7 +9154,7 @@ p{
                                                                             <div class="media">
 
 
-                                                                                <a href="/News/{{ sport.0.title |slugify }}"
+                                                                                <a href="/News/{{ sport.0.slug }}"
                                                                                     class="image-link media-ratio ar-bunyad-overlay"
                                                                                     title="{{sport.0.title}}">
                                                                                     <img src="/media/{{sport.0.img}}" style="object-fit:cover;"
@@ -9181,7 +9181,7 @@ p{
                                                                                             <span
                                                                                                 class="meta-item cat-labels">
 
-                                                                                                <a href="/News/{{sport.0.title|slugify}}"
+                                                                                                <a href="/News/{{sport.0.slug}}"
                                                                                                     class="category term-color-10"
                                                                                                     rel="category">Sports</a>
                                                                                             </span>
@@ -9189,13 +9189,13 @@ p{
                                                                                         <h2
                                                                                             class="is-title post-title limit-lines l-lines-2">
                                                                                             <a
-                                                                                                href="/News/{{sport.0.title|slugify}}">{{sport.0.title}}</a>
+                                                                                                href="/News/{{sport.0.slug}}">{{sport.0.title}}</a>
                                                                                         </h2>
                                                                                         <div
                                                                                             class="post-meta-items meta-below">
                                                                                             <span
                                                                                                 class="meta-item post-author"><a
-                                                                                                    href="/News/{{sport.0.title|slugify}}"
+                                                                                                    href="/News/{{sport.0.slug}}"
                                                                                                     title="Posts by Shane Doe"
                                                                                                     rel="author">{{sport.0.author}}</a></span><span
                                                                                                 class="meta-item date"><span
@@ -9222,7 +9222,7 @@ p{
                                                                             <div class="media">
 
 
-                                                                                <a href="/News/{{ sport.1.title | slugify }}"
+                                                                                <a href="/News/{{ sport.1.slug }}"
                                                                                     class="image-link media-ratio ar-bunyad-overlay"
                                                                                     title="{{sport.1.title}}">
 
@@ -9249,7 +9249,7 @@ p{
                                                                                             <span
                                                                                                 class="meta-item cat-labels">
 
-                                                                                                <a href="/News/{{sport.1.title |slugify}}"
+                                                                                                <a href="/News/{{sport.1.slug}}"
                                                                                                     class="category term-color-10"
                                                                                                     rel="category">Sports</a>
                                                                                             </span>
@@ -9257,13 +9257,13 @@ p{
                                                                                         <h2
                                                                                             class="is-title post-title limit-lines l-lines-2">
                                                                                             <a
-                                                                                                href="/News/{{sport.1.title|slugify}}">{{sport.1.title}}</a>
+                                                                                                href="/News/{{sport.1.slug}}">{{sport.1.title}}</a>
                                                                                         </h2>
                                                                                         <div
                                                                                             class="post-meta-items meta-below">
                                                                                             <span
                                                                                                 class="meta-item post-author"><a
-                                                                                                    href="/News/{{sport.1.title|slugify}}"
+                                                                                                    href="/News/{{sport.1.slug}}"
                                                                                                     title="Posts by Shane Doe"
                                                                                                     rel="author">{{sport.1.author}}</a></span><span
                                                                                                 class="meta-item date"><span
@@ -9291,7 +9291,7 @@ p{
                                                                             <div class="media">
 
 
-                                                                                <a href="/News/{{ sport.2.title | slugify }}"
+                                                                                <a href="/News/{{ sport.2.slug }}"
                                                                                     class="image-link media-ratio ar-bunyad-overlay"
                                                                                     title="{{sport.2.title}}">
                                                                                     <img src="/media/{{sport.2.img}}" style="object-fit:cover;"
@@ -9318,7 +9318,7 @@ p{
                                                                                             <span
                                                                                                 class="meta-item cat-labels">
 
-                                                                                                <a href="/News/{{sport.2.title |slugify}}"
+                                                                                                <a href="/News/{{sport.2.slug}}"
                                                                                                     class="category term-color-10"
                                                                                                     rel="category">Sports</a>
                                                                                             </span>
@@ -9326,13 +9326,13 @@ p{
                                                                                         <h2
                                                                                             class="is-title post-title limit-lines l-lines-2">
                                                                                             <a
-                                                                                                href="/News/{{sport.2.title |slugify}}">{{sport.2.title}}</a>
+                                                                                                href="/News/{{sport.2.slug}}">{{sport.2.title}}</a>
                                                                                         </h2>
                                                                                         <div
                                                                                             class="post-meta-items meta-below">
                                                                                             <span
                                                                                                 class="meta-item post-author"><a
-                                                                                                    href="/News/{{sport.2.title |slugify}}"
+                                                                                                    href="/News/{{sport.2.slug}}"
                                                                                                     title="Posts by Shane Doe"
                                                                                                     rel="author">{{sport.2.author}}</a></span><span
                                                                                                 class="meta-item date"><span
@@ -9389,7 +9389,7 @@ p{
                                                                             <div class="media">
 
 
-                                                                                <a href="/News/{{x.title |slugify}}"
+                                                                                <a href="/News/{{x.slug}}"
                                                                                     class="image-link media-ratio ratio-is-custom"
                                                                                     title="{{ x.title}}"> <img src="/media/{{x.img}}" style="object-fit:cover;"
                                                                                           data-bgsrc="/media/{{x.img}}"
@@ -9409,7 +9409,7 @@ p{
                                                                                 <div
                                                                                     class="post-meta post-meta-a has-below">
                                                                                     <h2 class="is-title post-title"><a
-                                                                                            href="/News/{{x.title |slugify}}">{{ x.title|slice:"0:80"}}..
+                                                                                            href="/News/{{x.slug}}">{{ x.title|slice:"0:80"}}..
                                                                                             </a></h2>
 
                                                                                 </div>
@@ -9507,7 +9507,7 @@ p{
                                                             <div class="media">
 
 
-                                                                <a href="/News/{{ study_abroad.0.title | slugify }}"
+                                                                <a href="/News/{{ study_abroad.0.slug }}"
                                                                     class="image-link media-ratio ratio-is-custom"
                                                                     title="Pico 4 Review: Should You Actually Buy One Instead Of Quest 2?">
 
@@ -9542,13 +9542,13 @@ p{
                                                                     <div class="post-meta-items meta-above"><span
                                                                             class="meta-item cat-labels">
 
-                                                                            <a href="/News/{{study_abroad.0.title|slugify}}"
+                                                                            <a href="/News/{{study_abroad.0.slug}}"
                                                                                 class="category term-color-3"
                                                                                 rel="category">Study Abroad</a>
                                                                         </span>
                                                                     </div>
                                                                     <h2 class="is-title post-title"><a
-                                                                            href="/News/{{study_abroad.0.title |slugify}}">{{study_abroad.0.title}}</a></h2>
+                                                                            href="/News/{{study_abroad.0.slug}}">{{study_abroad.0.title}}</a></h2>
 
                                                                 </div>
 
@@ -9593,7 +9593,7 @@ p{
                                                             <div class="media">
 
 
-                                                                <a href="/News/{{x.title|slugify}}"
+                                                                <a href="/News/{{x.slug}}"
                                                                     class="image-link media-ratio ratio-is-custom"
                                                                     title="A Review of the Venus Optics Argus 18mm f/0.95 MFT APO Lens">
 
@@ -9618,7 +9618,7 @@ p{
 
                                                                 <span
                                                                     class="cat-labels cat-labels-overlay c-overlay p-bot-left">
-                                                                    <a href="/News/{{x.title|slugify}}"
+                                                                    <a href="/News/{{x.slug}}"
                                                                         class="category term-color-1"
                                                                         rel="category">Study Abroad</a>
                                                                 </span>
@@ -9633,7 +9633,7 @@ p{
 
                                                                 <div class="post-meta post-meta-a has-below">
                                                                     <h2 class="is-title post-title"><a
-                                                                            href="/News/{{x.title|slugify}}">{{ x.title|slice:"0:40"}}</a></h2>
+                                                                            href="/News/{{x.slug}}">{{ x.title|slice:"0:40"}}</a></h2>
 
                                                                 </div>
 
@@ -9705,7 +9705,7 @@ p{
                                                             <div class="media">
 
 
-                                                                <a href="/News/{{x.title|slugify}}"
+                                                                <a href="/News/{{x.slug}}"
                                                                     class="image-link media-ratio ratio-is-custom"
                                                                     title="{{x.title}}">
 
@@ -9719,7 +9719,7 @@ p{
 
                                                                 <span
                                                                     class="cat-labels cat-labels-overlay c-overlay p-bot-left">
-                                                                    <a href="/News/{{x.title|slugify}}"
+                                                                    <a href="/News/{{x.slug}}"
                                                                         class="category term-color-3"
                                                                         rel="category">{{x.cate}}</a>
                                                                 </span>
@@ -9734,7 +9734,7 @@ p{
 
                                                                 <div class="post-meta post-meta-a has-below">
                                                                     <h2 class="is-title post-title"><a
-                                                                            href="/News/{{x.title|slugify}}">{{x.title}}
+                                                                            href="/News/{{x.slug}}">{{x.title}}
                                                                           </a></h2>
 
                                                                 </div>

@@ -675,6 +675,13 @@
             .elementor-column[data-col="100"] { width: 100%; }
         }
 
+        @media (max-width:767px) {
+            .elementor-column { width: 100%; flex-basis: 100%; min-width: 0; }
+            .elementor-widget-container { min-width: 0; max-width: 100%; }
+            .l-post .content, .l-post .media { min-width: 0; }
+            .l-post .post-title, .l-post .excerpt p { word-break: break-word; overflow-wrap: anywhere; }
+        }
+
         .e-con {
             --container-max-width: 1200px;
         }

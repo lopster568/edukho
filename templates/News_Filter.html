@@ -680,8 +680,21 @@
             .elementor-widget-container { min-width: 0; max-width: 100%; }
             .l-post .content, .l-post .media { min-width: 0; }
             .l-post .post-title, .l-post .excerpt p { word-break: break-word; overflow-wrap: anywhere; }
-            /* Constrain banner size on mobile so they don't dominate the viewport */
-            .elementor-element-225d8f23 .swiper.leftSlider { max-width: 336px; margin-left: auto; margin-right: auto; }
+            /* On mobile, show banners side-by-side horizontally so they don't dominate/float */
+            .elementor-element-225d8f23 .elementor-widget-container,
+            .elementor-element-225d8f23 .block-content,
+            .elementor-element-225d8f23 .loop {
+                display: flex !important;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+            .elementor-element-225d8f23 .loop { grid-template-columns: none !important; }
+            .elementor-element-225d8f23 .swiper.leftSlider {
+                flex: 1 1 calc(50% - 12px);
+                max-width: calc(50% - 12px);
+                min-width: 140px;
+            }
             .elementor-element-225d8f23 .swiper.leftSlider img { width: 100%; height: auto; }
         }
 

@@ -8829,6 +8829,25 @@ p{
  </div>
 
 
+ <div class="swiper leftSlider mb-4">
+<div class="swiper-wrapper w-100">
+  {% if news_banner %}
+  {% for x in news_banner %}
+  {% if x.position == "5" and x.cate_home == '1' %}
+<div class="swiper-slide">
+   <div id="smartmag-block-codes-2" class="widget ts-block-widget smartmag-widget-codes">
+		<div class="block">
+			<div class="a-wrap"> <a href="{{x.banner_link_website}}" target="_blank" rel="noopener">
+<img loading="lazy" src="/media/{{x.img}}" width="336" height="280" alt="Demo">
+</a></div>		</div>
+
+		</div>
+</div>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+ </div>
+ </div>
 
 
 

@@ -483,7 +483,7 @@ def search(request):
                 page_obj = paginator.page(paginator.num_pages)
 
             try:
-                search_banner = Search_Banner.objects.filter(state=state_obj.State_name, is_active=1, category=category_obj.Category, area=area_obj.Area_name)
+                search_banner = Search_Banner.objects.filter(state=state_obj.id, is_active=1, category=str(category_obj.id), area=area_obj.id)
                 m1_banner     = search_banner.filter(position=5).last()
                 m2_banner     = search_banner.filter(position=6).last()
             except Exception:

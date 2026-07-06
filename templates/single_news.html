@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load custom_filter %}
 
 {% block title %}
   {% if singlenews %}
@@ -104,6 +105,26 @@
 {% endblock %}
 
 {% block content %}
+<style>
+  /* Keyword badge: let long keyword strings wrap instead of being clipped */
+  .news-keywords {
+    display: inline-block;
+    max-width: 100%;
+    white-space: normal;
+    text-align: left;
+    line-height: 1.5;
+  }
+  /* Justify the article body text (override editor's inline centering) */
+  [itemprop="articleBody"],
+  [itemprop="articleBody"] p,
+  [itemprop="articleBody"] li {
+    text-align: justify !important;
+  }
+  /* Keep image-only paragraphs centered, don't justify them */
+  [itemprop="articleBody"] p:has(img) {
+    text-align: center !important;
+  }
+</style>
 <main class="container">
   <div class="row g-5">
 
@@ -144,9 +165,9 @@
             </div>
 
             {% if x.tags %}
-            <a class="badge bg-secondary text-decoration-none link-light"
+            <a class="badge bg-secondary text-decoration-none link-light news-keywords"
                href="/News?tag={{ x.tags }}">
-              {{ x.tags }}
+              {{ x.tags|format_tags }}
             </a>
             {% endif %}
           </header>

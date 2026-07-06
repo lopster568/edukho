@@ -1,6 +1,8 @@
 from django import template
 import re
 
+from Education.slug_utils import slugify_name as _slugify_name
+
 register = template.Library()
 
 @register.filter(name='add_lists')
@@ -26,6 +28,15 @@ def embed_to_watch_url(url):
 @register.filter(name='slugify_name')
 def slugify_name(value):
     """Convert name to URL slug: 'Play School' -> 'play-school'"""
+    return _slugify_name(value)
+
+@register.filter(name='format_tags')
+def format_tags(value):
+    """Normalize inconsistent tag separators to ' | '.
+
+    'A |B latest | C' -> 'A | B latest | C'
+    """
     if not value:
         return value
-    return re.sub(r'[^a-z0-9]+', '-', str(value).lower()).strip('-')
+    parts = [p.strip() for p in value.split('|')]
+    return ' | '.join(p for p in parts if p)

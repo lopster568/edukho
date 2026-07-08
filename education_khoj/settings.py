@@ -75,6 +75,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "Education.context_processors.common_footer_data",
+                "Education.context_processors.adsense_slots",
             ],
             "loaders": [
                 "django.template.loaders.filesystem.Loader",
@@ -181,7 +182,15 @@ EMAIL_HOST_PASSWORD = "***REMOVED***"
 
 APPEND_SLASH = True
 
-SITE_ID = 1 
+SITE_ID = 1
+
+# File-based cache so all Apache workers share state (LocMemCache is per-process).
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": str(BASE_DIR / ".django_cache"),
+    }
+}
 
 # -------------------------------------------------------------------
 STATIC_ROOT = '/var/www/ek/staticfiles/'

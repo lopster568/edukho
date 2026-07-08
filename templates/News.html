@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load custom_filter %}
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
@@ -8398,21 +8399,23 @@ p{
 
  <div class="swiper leftSlider mb-4">
 <div class="swiper-wrapper w-100">
-  {% if news_banner %}
-  {% for x in news_banner %}
-  {% if x.position == "2" and x.cate_home == '1' %}
+  {# News R2: Google ad primary; institution banner (position 2, home column) backfills when unfilled #}
+  <div class="ek-ad-slot">
+  {% if adsense_slots.news_r2 %}{% include "ads/adsense_unit.html" with slot=adsense_slots.news_r2 min_height=280 %}{% endif %}
+  {% with r2=news_banner|banner_at:"2:home" %}{% if r2 %}
+  <div class="ek-ad-fallback"{% if adsense_slots.news_r2 %} style="display:none"{% endif %}>
 <div class="swiper-slide">
    <div id="smartmag-block-codes-2" class="widget ts-block-widget smartmag-widget-codes">
 		<div class="block">
-			<div class="a-wrap"> <a href="{{x.banner_link_website}}" target="_blank" rel="noopener">
-<img loading="lazy" src="/media/{{x.img}}" width="336" height="280" alt="Demo">
+			<div class="a-wrap"> <a href="{{r2.banner_link_website}}" target="_blank" rel="noopener">
+<img loading="lazy" src="/media/{{r2.img}}" width="336" height="280" alt="Demo">
 </a></div>		</div>
 
 		</div>
 </div>
-  {% endif %}
-  {% endfor %}
-  {% endif %}
+  </div>
+  {% endif %}{% endwith %}
+  </div>
  </div>
  </div>
 
@@ -8466,7 +8469,11 @@ p{
                                         data-widget_type="smartmag-codes.default">
                                         <div class="elementor-widget-container">
 
+                                            {# News Mid 1: Google ad primary; institution banner backfills when unfilled #}
+                                            <div class="ek-ad-slot">
+                                            {% if adsense_slots.news_mid1 %}{% include "ads/adsense_unit.html" with slot=adsense_slots.news_mid1 min_height=125 %}{% endif %}
                                             {% if m1_banner %}
+                                            <div class="ek-ad-fallback"{% if adsense_slots.news_mid1 %} style="display:none"{% endif %}>
                                             <div class="a-wrap">
                                                 <div class="label">Sponsored</div> <a
                                                     href="{{m1_banner.banner_link_website}}"
@@ -8476,7 +8483,9 @@ p{
                                                         width="970" height="125" alt="Demo" />
                                                 </a>
                                             </div>
+                                            </div>
                                             {% endif %}
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="elementor-element elementor-element-20c12c85 elementor-widget elementor-widget-smartmag-grid"
@@ -9815,21 +9824,23 @@ p{
 
  <div class="swiper leftSlider mb-4">
 <div class="swiper-wrapper w-100">
-  {% if news_banner %}
-  {% for x in news_banner %}
-  {% if x.position == "5" and x.cate_home == '1' %}
+  {# News R5: Google ad primary; institution banner (position 5, home column) backfills when unfilled #}
+  <div class="ek-ad-slot">
+  {% if adsense_slots.news_r5 %}{% include "ads/adsense_unit.html" with slot=adsense_slots.news_r5 min_height=280 %}{% endif %}
+  {% with r5=news_banner|banner_at:"5:home" %}{% if r5 %}
+  <div class="ek-ad-fallback"{% if adsense_slots.news_r5 %} style="display:none"{% endif %}>
 <div class="swiper-slide">
    <div id="smartmag-block-codes-2" class="widget ts-block-widget smartmag-widget-codes">
 		<div class="block">
-			<div class="a-wrap"> <a href="{{x.banner_link_website}}" target="_blank" rel="noopener">
-<img loading="lazy" src="/media/{{x.img}}" width="336" height="280" alt="Demo">
+			<div class="a-wrap"> <a href="{{r5.banner_link_website}}" target="_blank" rel="noopener">
+<img loading="lazy" src="/media/{{r5.img}}" width="336" height="280" alt="Demo">
 </a></div>		</div>
 
 		</div>
 </div>
-  {% endif %}
-  {% endfor %}
-  {% endif %}
+  </div>
+  {% endif %}{% endwith %}
+  </div>
  </div>
  </div>
 

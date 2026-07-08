@@ -30,6 +30,31 @@ def slugify_name(value):
     """Convert name to URL slug: 'Play School' -> 'play-school'"""
     return _slugify_name(value)
 
+@register.filter(name='banner_at')
+def banner_at(banners, spec):
+    """Return the first banner in `banners` matching `spec`, else None.
+
+    spec is "<position>" or "<position>:home".
+    - Matches News_Banner.position OR HomepageMainBanner.banner_position.
+    - The ":home" suffix also requires cate_home == "1" (News right-column rule).
+    Used to drive the paid-banner-wins / AdSense-fallback logic in templates.
+    """
+    if not banners:
+        return None
+    parts = str(spec).split(':')
+    position = parts[0]
+    require_home = len(parts) > 1 and parts[1] == 'home'
+    for b in banners:
+        val = getattr(b, 'position', None)
+        if val is None:
+            val = getattr(b, 'banner_position', None)
+        if str(val) != position:
+            continue
+        if require_home and str(getattr(b, 'cate_home', '')) != '1':
+            continue
+        return b
+    return None
+
 @register.filter(name='format_tags')
 def format_tags(value):
     """Normalize inconsistent tag separators to ' | '.

@@ -404,5 +404,32 @@ footer {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
             crossorigin="anonymous" ...defer></script>
+
+    {# AdSense no-fill backfill: if a Google ad in a .ek-ad-slot comes back unfilled,
+       hide the empty ad and reveal the institution banner (.ek-ad-fallback). #}
+    <script>
+    (function () {
+      function reveal(ins) {
+        if (ins.getAttribute('data-ad-status') !== 'unfilled') return;
+        var slot = ins.closest('.ek-ad-slot');
+        if (!slot) return;
+        var fb = slot.querySelector('.ek-ad-fallback');
+        if (fb) fb.style.display = '';
+        var ad = ins.closest('.ek-ad');
+        if (ad) ad.style.display = 'none';
+      }
+      function watch(ins) {
+        if (ins.getAttribute('data-ad-status')) { reveal(ins); return; }
+        var mo = new MutationObserver(function () {
+          if (ins.getAttribute('data-ad-status')) { reveal(ins); mo.disconnect(); }
+        });
+        mo.observe(ins, { attributes: true, attributeFilter: ['data-ad-status'] });
+        setTimeout(function () { reveal(ins); }, 4000);
+      }
+      window.addEventListener('load', function () {
+        document.querySelectorAll('.ek-ad-slot ins.adsbygoogle').forEach(watch);
+      });
+    })();
+    </script>
 </body>
 </html>

@@ -1,0 +1,45 @@
+{% comment %}
+================================================================================
+Reusable Google AdSense unit.  Publisher ca-pub-0514207241892727 is baked in
+(matches the loader in templates/base.html — do not change one without the other).
+
+USAGE — drop one line wherever the client wants a banner:
+
+  Responsive display (most common):
+    {% include "ads/adsense_unit.html" with slot="1234567890" %}
+
+  In-article (inside a news/article body):
+    {% include "ads/adsense_unit.html" with slot="1234567890" format="fluid" layout="in-article" %}
+
+  In-feed (between list/grid items):
+    {% include "ads/adsense_unit.html" with slot="1234567890" format="fluid" layout="in-feed" %}
+
+OPTIONAL params:
+  min_height  : px number to reserve vertical space (prevents layout shift / CLS).
+                Set it to the ad's typical height for that slot, e.g. min_height=90.
+  show_label  : pass show_label=False to hide the small "Advertisement" caption.
+  label       : override the caption text (default "Advertisement").
+  format      : "auto" (default) or "fluid" (for in-article / in-feed).
+  layout      : "in-article" or "in-feed" (only with format="fluid").
+
+The client only needs to supply, per position, the numeric data-ad-slot ID from the
+AdSense dashboard. Nothing else changes.
+================================================================================
+{% endcomment %}
+{% if slot %}
+<div class="ek-ad"
+     style="text-align:center; margin:1.25rem auto; overflow:hidden;{% if min_height %} min-height:{{ min_height }}px;{% endif %}">
+  {% if show_label|default:True %}
+  <span class="ek-ad__label"
+        style="display:block; font-size:.65rem; letter-spacing:.08em; text-transform:uppercase; color:#9aa2af; margin-bottom:4px;">{{ label|default:"Advertisement" }}</span>
+  {% endif %}
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-0514207241892727"
+       data-ad-slot="{{ slot }}"
+       {% if layout %}data-ad-layout="{{ layout }}"
+       {% endif %}data-ad-format="{{ format|default:'auto' }}"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+{% endif %}

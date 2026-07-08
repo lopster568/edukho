@@ -7,9 +7,11 @@ from django.views.generic import TemplateView
 app_name = 'Education'
 urlpatterns = [
     path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
+    path('ads.txt', TemplateView.as_view(template_name="ads.txt", content_type="text/plain")),
     path('', views.homepage, name='homepage'),
     path('job_data_read/<int:job_id>', views.job_data_read, name='job_data_read'),
     path('get_data/<int:stateid>', views.get_data, name='get_data'),
+    path('get_states', views.get_states, name='get_states'),
     path('job_statewise/<int:stateid>', views.job_statewise, name='job_statewise'),
     path('random_news', views.random_news, name='random_news'),
     path('News', views.news, name='news'),
@@ -32,6 +34,11 @@ urlpatterns = [
     path('UserAccount', views.UserAccount, name='UserAccount'),
     path('User_job', views.User_job, name='User_job'),
     path('Event_activity', views.Event_activity, name='Event_activity'),
+    path('event_management', views.event_management, name='event_management'),
+    path('event_deactivate/<int:event_id>', views.event_deactivate, name='event_deactivate'),
+    path('event_update/<int:event_id>', views.event_update, name='event_update'),
+    path('event_gallery/<int:event_id>', views.event_gallery, name='event_gallery'),
+    path('event_image_delete/<int:image_id>', views.event_image_delete, name='event_image_delete'),
     path('User_Feature', views.User_Feature, name='User_Feature'),
     path('send_email', views.send_html_email, name='send_html_email'),
     path('job_send_email', views.job_send_html_email, name='job_send_html_email'),

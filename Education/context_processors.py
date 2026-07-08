@@ -1,4 +1,5 @@
 from .Model.Footer_section import Footer_Section
+from .adsense_slots import ADSENSE_SLOTS
 
 
 def common_footer_data(request):
@@ -8,4 +9,11 @@ def common_footer_data(request):
         columns.setdefault(link.column_number, []).append(link)
     return {
         'footer_columns': columns,
+    }
+
+
+def adsense_slots(request):
+    """Expose AdSense ad-unit slot IDs to all templates as `adsense_slots`."""
+    return {
+        'adsense_slots': ADSENSE_SLOTS,
     }

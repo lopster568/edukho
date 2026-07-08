@@ -10316,8 +10316,9 @@ p{
                 <div class="row">
                     <!-- Education Place -->
                     <div class="col-md-4 my-2">
-                        <select class="form-select" required name="category" aria-label="select example">
-                            <option selected>Category</option>
+                        <select class="form-select" required name="category" id="category" aria-label="select example"
+                            onchange="state_get()">
+                            <option selected value="">Category</option>
                             {% if cate %}
                             {% for x in cate %}
                             <option value="{{x.Category|slugify_name}}">{{x.Category}}</option>
@@ -10523,27 +10524,25 @@ p{
 
 
 
-{% if banner %}
-{% for x in banner %}
-
-{% if x.banner_position == "3" %}
+{# Home R2: Google ad primary; institution banner (banner_position 3) backfills when the ad is unfilled #}
+<div class="ek-ad-slot">
+{% if adsense_slots.homepage_r2 %}{% include "ads/adsense_unit.html" with slot=adsense_slots.homepage_r2 min_height=280 %}{% endif %}
+{% with r2=banner|banner_at:"3" %}{% if r2 %}
+<div class="ek-ad-fallback"{% if adsense_slots.homepage_r2 %} style="display:none"{% endif %}>
  <div class="swiper-slide swiper-slide-next" role="group" aria-label="1 / 4" data-swiper-slide-index="0" style="width: 300px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
    <div id="smartmag-block-codes-2" class="widget ts-block-widget smartmag-widget-codes">
 		<div class="block">
 			<div class="a-wrap"> <a href="" target="_blank" rel="noopener">
-<img loading="lazy" src="/media/{{x.img}}" width="336" height="280" alt="Demo">
+<img loading="lazy" src="/media/{{r2.img}}" width="336" height="280" alt="Demo">
 </a>
 </div>
 </div>
 
 </div>
 </div>
-
-{% endif %}
-
-
-{% endfor %}
-{% endif  %}
+</div>
+{% endif %}{% endwith %}
+</div>
 
 
 
@@ -11620,16 +11619,42 @@ p{
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js" integrity="sha512-9CWGXFSJ+/X0LWzSRCZFsOPhSfm6jbnL+Mpqo0o8Ke2SYr8rCTqb4/wGm+9n13HtDE1NQpAEOrMecDZw4FXQGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
+    function state_get() {
+        var category = $("#category").val() || "";
+        $.ajax({
+            url: `get_states`,
+            type: 'GET',
+            dataType: 'json',
+            data: { category: category },
+            success: function (data) {
+                var dataState = $('#state');
+                dataState.empty();
+                dataState.append('<option selected value="0">State</option>');
+                $.each(data.data, function (index, item) {
+                    var slug = item.State_name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                    dataState.append(`<option value="${slug}" data-id="${item.State_id}">${item.State_name}</option>`);
+                });
+                $('#area').empty().append('<option selected>Area</option>');
+            },
+            error: function (error) {
+                console.log('Error fetching states: ', error);
+            }
+        });
+    }
+
     function area_get() {
-        var stateId = $("#state option:selected").data('id');
+        var stateId  = $("#state option:selected").data('id');
+        var category = $("#category").val() || "";
         if (!stateId) stateId = "0";
         $.ajax({
             url: `get_data/${stateId}`,
             type: 'GET',
             dataType: 'json',
+            data: { category: category },
             success: function (data) {
                 var dataArea = $('#area');
                 dataArea.empty();
+                dataArea.append('<option selected>Area</option>');
                 $.each(data.data, function (index, item) {
                     var slug = item.Area_name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
                     dataArea.append(`<option value="${slug}">${item.Area_name}</option>`);

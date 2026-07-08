@@ -7544,23 +7544,8 @@
 
  <div class="swiper leftSlider mb-4">
 <div class="swiper-wrapper w-100">
-  {# Category R2: Google ad primary; institution banner (position 2) backfills when unfilled #}
-  <div class="ek-ad-slot">
-  {% if adsense_slots.category_r2 %}{% include "ads/adsense_unit.html" with slot=adsense_slots.category_r2 min_height=280 %}{% endif %}
-  {% with r2=news_banner|banner_at:"2" %}{% if r2 %}
-  <div class="ek-ad-fallback"{% if adsense_slots.category_r2 %} style="display:none"{% endif %}>
-<div class="swiper-slide">
-   <div id="smartmag-block-codes-2" class="widget ts-block-widget smartmag-widget-codes">
-		<div class="block">
-			<div class="a-wrap"> <a href="{{r2.banner_link_website}}" target="_blank" rel="noopener">
-<img loading="lazy" src="/media/{{r2.img}}" width="336" height="280" alt="Education News Sponsored Banner">
-</a></div>		</div>
-
-		</div>
-</div>
-  </div>
-  {% endif %}{% endwith %}
-  </div>
+  {# Category R2: Google ad (blank if unfilled) #}
+  {% include "ads/adsense_unit.html" with slot=adsense_slots.category_r2 %}
  </div>
  </div>
 
@@ -7812,23 +7797,8 @@
                                         data-id="69f662b8" data-element_type="widget"
                                         data-widget_type="smartmag-codes.default">
                                         <div class="elementor-widget-container">
-                                           {# Category Bottom: Google ad primary; institution banner backfills when unfilled #}
-                                           <div class="ek-ad-slot">
-                                           {% if adsense_slots.category_bottom %}{% include "ads/adsense_unit.html" with slot=adsense_slots.category_bottom min_height=125 %}{% endif %}
-                                           {% if m2_banner %}
-                                            <div class="ek-ad-fallback"{% if adsense_slots.category_bottom %} style="display:none"{% endif %}>
-                                            <div class="a-wrap">
-                                                <div class="label">Sponsored</div> <a
-                                                    href="{{m2_banner.banner_link_website}}"
-                                                    target="_blank" rel="noopener">
-                                                    <img loading="lazy" decoding="async" loading="lazy"
-                                                        src="/media/{{m2_banner.img}}"
-                                                        width="970" height="125" alt="Education News Sponsored Banner" />
-                                                </a>
-                                            </div>
-                                            </div>
-                                            {% endif %}
-                                            </div>
+                                           {# Category Bottom: Google ad (blank if unfilled) #}
+                                           {% include "ads/adsense_unit.html" with slot=adsense_slots.category_bottom %}
                                         </div>
                                     </div>
 

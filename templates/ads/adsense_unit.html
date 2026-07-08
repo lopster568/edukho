@@ -28,12 +28,7 @@ AdSense dashboard. Nothing else changes.
 {% endcomment %}
 {% if slot %}
 <div class="ek-ad"
-     style="text-align:center; margin:1.25rem auto; overflow:hidden;{% if min_height %} min-height:{{ min_height }}px;{% endif %}">
-  {% if show_label|default:True %}
-  {# Hidden until the ad actually fills (revealed by base.html JS on data-ad-status=filled) #}
-  <span class="ek-ad__label"
-        style="display:none; font-size:.65rem; letter-spacing:.08em; text-transform:uppercase; color:#9aa2af; margin-bottom:4px;">{{ label|default:"Advertisement" }}</span>
-  {% endif %}
+     style="text-align:center; margin:1.25rem auto; overflow:hidden;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-0514207241892727"

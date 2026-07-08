@@ -8270,26 +8270,14 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
         </div>
     </div>
 </div>
-                <!-- Display Banner after every 10 cards, alternating m1 / m2 -->
-                {% if forloop.counter|divisibleby:10 and forloop.counter != 0 %}
+                <!-- Display Banner after every 10 cards, alternating m1 / m2 (or after the last card if fewer than 10) -->
+                {% if forloop.counter|divisibleby:10 and forloop.counter != 0 or forloop.last and data|length < 10 %}
                     <div class="banner-section">
                         <div class="elementor-element elementor-element-1d4dbe28 elementor-widget elementor-widget-smartmag-codes" data-id="1d4dbe28" data-element_type="widget" data-widget_type="smartmag-codes.default">
                             <div class="elementor-widget-container">
-                                {% if forloop.counter == 10 %}
-                                    {# Search Mid 1 (after 10): Google ad primary; institution banner backfills when unfilled #}
-                                    <div class="ek-ad-slot">
-                                    {% if adsense_slots.search_mid1 %}{% include "ads/adsense_unit.html" with slot=adsense_slots.search_mid1 min_height=125 %}{% endif %}
-                                    {% if m1_banner %}
-                                    <div class="ek-ad-fallback"{% if adsense_slots.search_mid1 %} style="display:none"{% endif %}>
-                                    <div class="a-wrap">
-                                        <div class="label">Sponsored</div>
-                                        <a href="{{ m1_banner.banner_link_website }}" target="_blank" rel="noopener">
-                                            <img loading="lazy" decoding="async" src="/media/{{ m1_banner.img }}" width="970" height="125" alt="Education Khoj Sponsored Banner" style="max-width:100%; height:auto;" />
-                                        </a>
-                                    </div>
-                                    </div>
-                                    {% endif %}
-                                    </div>
+                                {% if forloop.counter == 10 or forloop.last and data|length < 10 %}
+                                    {# Search Mid 1 (after 10, or after last if fewer than 10): Google ad (blank if unfilled) #}
+                                    {% include "ads/adsense_unit.html" with slot=adsense_slots.search_mid1 %}
                                 {% elif m2_banner %}
                                     <div class="a-wrap">
                                         <div class="label">Sponsored</div>

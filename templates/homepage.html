@@ -10524,25 +10524,8 @@ p{
 
 
 
-{# Home R2: Google ad primary; institution banner (banner_position 3) backfills when the ad is unfilled #}
-<div class="ek-ad-slot">
-{% if adsense_slots.homepage_r2 %}{% include "ads/adsense_unit.html" with slot=adsense_slots.homepage_r2 min_height=280 %}{% endif %}
-{% with r2=banner|banner_at:"3" %}{% if r2 %}
-<div class="ek-ad-fallback"{% if adsense_slots.homepage_r2 %} style="display:none"{% endif %}>
- <div class="swiper-slide swiper-slide-next" role="group" aria-label="1 / 4" data-swiper-slide-index="0" style="width: 300px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
-   <div id="smartmag-block-codes-2" class="widget ts-block-widget smartmag-widget-codes">
-		<div class="block">
-			<div class="a-wrap"> <a href="" target="_blank" rel="noopener">
-<img loading="lazy" src="/media/{{r2.img}}" width="336" height="280" alt="Demo">
-</a>
-</div>
-</div>
-
-</div>
-</div>
-</div>
-{% endif %}{% endwith %}
-</div>
+{# Home R2: Google ad (blank if unfilled) #}
+{% include "ads/adsense_unit.html" with slot=adsense_slots.homepage_r2 %}
 
 
 

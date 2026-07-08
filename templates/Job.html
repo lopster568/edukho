@@ -10307,22 +10307,10 @@ p{
         </div>
     </div>
 </div>
-{% if forloop.counter == 8 %}
-{# Jobs Mid 1 (after 8 listings): Google ad primary; institution banner (Job_Banner position 7) backfills when unfilled #}
+{% if forloop.counter == 8 or forloop.last and job|length < 8 %}
+{# Jobs Mid 1: after the 8th listing, or after the last one if fewer than 8. Google ad (blank if unfilled). #}
 <div class="col-12">
-  <div class="ek-ad-slot">
-  {% if adsense_slots.jobs_mid1 %}{% include "ads/adsense_unit.html" with slot=adsense_slots.jobs_mid1 min_height=125 %}{% endif %}
-  {% if job_banner %}
-  <div class="ek-ad-fallback"{% if adsense_slots.jobs_mid1 %} style="display:none"{% endif %}>
-  <div class="a-wrap my-3">
-    <div class="label">Sponsored</div>
-    <a href="{{ job_banner.banner_link_website }}" target="_blank" rel="noopener sponsored">
-      <img loading="lazy" decoding="async" src="/media/{{ job_banner.img }}" width="970" height="125" alt="Jobs Sponsored Banner" style="max-width:100%;height:auto;">
-    </a>
-  </div>
-  </div>
-  {% endif %}
-  </div>
+  {% include "ads/adsense_unit.html" with slot=adsense_slots.jobs_mid1 %}
 </div>
 {% endif %}
 {% endfor %}

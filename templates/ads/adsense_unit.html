@@ -34,8 +34,8 @@ AdSense dashboard. Nothing else changes.
        data-ad-client="ca-pub-0514207241892727"
        data-ad-slot="{{ slot }}"
        {% if layout %}data-ad-layout="{{ layout }}"
-       {% endif %}data-ad-format="{{ format|default:'auto' }}"
-       data-full-width-responsive="true"></ins>
+       {% endif %}data-ad-format="{{ format|default:'auto' }}"{% if format|default:'auto' == 'auto' %}
+       data-full-width-responsive="true"{% endif %}></ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 {% endif %}

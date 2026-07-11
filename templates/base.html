@@ -15,9 +15,15 @@
     {# Canonical URL (overridable per page) #}
     <link rel="canonical" href="{% block canonical %}{{ request.build_absolute_uri }}{% endblock %}">
 
-    {% block meta_description %}
+    {% block metadescription %}
       <meta name="description" content="Education Khoj – India's No.1 platform to find schools, colleges, coaching institutes, education news and teaching jobs near you.">
     {% endblock %}
+
+    {# Per-page Open Graph / Twitter meta (social share previews) #}
+    {% block extra_meta %}{% endblock %}
+
+    {# Per-page structured data (JSON-LD) #}
+    {% block schema %}{% endblock %}
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">

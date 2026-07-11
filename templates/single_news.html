@@ -18,6 +18,8 @@
   {% endif %}
 {% endblock %}
 
+{% block canonical %}{% if singlenews %}{% for x in singlenews %}https://educationkhoj.com/News/{{ x.slug }}{% endfor %}{% else %}{{ request.build_absolute_uri }}{% endif %}{% endblock %}
+
 {% block schema %}
 {% if singlenews %}
 {% for x in singlenews %}
@@ -27,7 +29,7 @@
   "@type": "NewsArticle",
   "headline": "{{ x.title }}",
   "description": "{{ x.desc|striptags|truncatechars:160 }}",
-  "image": "{% if x.img %}{{ x.img.url }}{% endif %}",
+  "image": "{% if x.img %}https://educationkhoj.com{{ x.img.url }}{% endif %}",
   "datePublished": "{{ x.start_date }}",
   "dateModified": "{{ x.start_date }}",
   "author": {
@@ -84,22 +86,19 @@
 {% block extra_meta %}
 {% if singlenews %}
 {% for x in singlenews %}
-<!-- Canonical -->
-//educationkhoj.com/News/{{ x.slug }}">
-
 <!-- Open Graph -->
 <meta property="og:title" content="{{ x.title }}">
 <meta property="og:description" content="{{ x.desc|striptags|truncatechars:160 }}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://educationkhoj.com/News/{{ x.slug }}">
-{% if x.img %}<meta property="og:image" content="{{ x.img.url }}">{% endif %}
+{% if x.img %}<meta property="og:image" content="https://educationkhoj.com{{ x.img.url }}">{% endif %}
 <meta property="article:published_time" content="{{ x.start_date }}">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ x.title }}">
 <meta name="twitter:description" content="{{ x.desc|striptags|truncatechars:160 }}">
-{% if x.img %}<meta name="twitter:image" content="{{ x.img.url }}">{% endif %}
+{% if x.img %}<meta name="twitter:image" content="https://educationkhoj.com{{ x.img.url }}">{% endif %}
 {% endfor %}
 {% endif %}
 {% endblock %}

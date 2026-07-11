@@ -14,23 +14,33 @@
   {% endif %}
 {% endblock %}
 
+{% block canonical %}{% if data %}{% for x in data %}https://educationkhoj.com/user_info_profile/{{ x.id }}{% endfor %}{% else %}{{ request.build_absolute_uri }}{% endif %}{% endblock %}
+
 {% block extra_meta %}
 {% if data %}
 {% for x in data %}
-<link rel="canonical" href="https://educationkhoj.com/user_info_profile/{{ x.id }}">
-
 <!-- Open Graph -->
 <meta property="og:title" content="{{ x.name_of_institution }} | Education Khoj">
 <meta property="og:description" content="View address, contact details and info for {{ x.name_of_institution }}.">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://educationkhoj.com/user_info_profile/{{ x.id }}">
-<meta property="og:image" content="https://educationkhoj.com/media/{{ x.add_logo_of_instituion }}">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ x.name_of_institution }}">
-<meta name="twitter:image" content="https://educationkhoj.com/media/{{ x.add_logo_of_instituion }}">
 {% endfor %}
+{% endif %}
+{% endblock %}
+
+{% block og_image %}
+{% if data.0.add_logo_of_instituion %}
+<meta property="og:image" content="https://educationkhoj.com/media/{{ data.0.add_logo_of_instituion }}">
+<meta name="twitter:image" content="https://educationkhoj.com/media/{{ data.0.add_logo_of_instituion }}">
+{% else %}
+<meta property="og:image" content="https://educationkhoj.com/static/image/og_home.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://educationkhoj.com/static/image/og_home.png">
 {% endif %}
 {% endblock %}
 

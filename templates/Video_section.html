@@ -1,5 +1,22 @@
 {% extends 'base.html' %}
-{% block title %}Home Page{% endblock %}
+{% block title %}Education Videos | Education Khoj{% endblock %}
+
+{% block metadescription %}
+<meta name="description" content="Watch education videos, interviews and institution features on Education Khoj.">
+{% endblock %}
+
+{% block canonical %}https://educationkhoj.com/video{% endblock %}
+
+{% block extra_meta %}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Education Khoj">
+<meta property="og:title" content="Education Videos | Education Khoj">
+<meta property="og:description" content="Watch education videos, interviews and institution features on Education Khoj.">
+<meta property="og:url" content="https://educationkhoj.com/video">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Education Videos | Education Khoj">
+{% endblock %}
+
 {% block content %}
 {% load static %}
 {% load custom_filter %}

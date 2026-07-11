@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
 {% load custom_filter %}
-{% block title %}Home Page{% endblock %}
+{% block title %}Latest Education News | Education Khoj{% endblock %}
+
+{% block metadescription %}
+<meta name="description" content="Read the latest education news including JEE, NEET, CBSE, CUET and school updates across India on Education Khoj.">
+{% endblock %}
+
+{% block canonical %}https://educationkhoj.com/News{% endblock %}
+
+{% block extra_meta %}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Education Khoj">
+<meta property="og:title" content="Latest Education News | Education Khoj">
+<meta property="og:description" content="Read the latest education news including JEE, NEET, CBSE, CUET and school updates across India.">
+<meta property="og:url" content="https://educationkhoj.com/News">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Latest Education News | Education Khoj">
+{% endblock %}
 
 {% block content %}
 

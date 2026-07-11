@@ -5,156 +5,44 @@
 Education Khoj Events – Awards, Championships & Community Initiatives
 {% endblock %}
 
+{% block metadescription %}
+<meta name="description" content="Explore all Education Khoj events – Education Excellence Awards, Interschool Championships, felicitation, career counselling, Olympiad, and Talent Hunt.">
+{% endblock %}
+
+{% block canonical %}https://educationkhoj.com/events{% endblock %}
+
+{% block og_image %}
+  <meta property="og:image" content="https://educationkhoj.com/media/gallery_images/DSC_0530_zZIGUxk.JPG">
+  <meta name="twitter:image" content="https://educationkhoj.com/media/gallery_images/DSC_0530_zZIGUxk.JPG">
+{% endblock %}
+
 {% block extra_meta %}
-
-<meta name="description" content="Explore all Education Khoj events – Education Excellence Awards 2025, Interschool Basketball Championship 2023, CBSE felicitation, career counselling, Olympiad, Essay & Painting Competition, and Talent Hunt.">
-
   <meta property="og:title" content="Education Khoj Events — Awards, Championships & Community Initiatives">
-  <meta property="og:description" content="Explore all Education Khoj events including Education Excellence Awards 2025, Basketball Championship, CBSE felicitation, career counselling and Talent Hunt.">
+  <meta property="og:description" content="Explore all Education Khoj events including Education Excellence Awards, Basketball Championship, CBSE felicitation, career counselling and Talent Hunt.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://educationkhoj.com/events">
-  <meta property="og:image" content="https://educationkhoj.com/media/gallery/images/DSC0530zZIGUxk.JPG">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Education Khoj Events — Awards, Championships & Community Initiatives">
-  <meta name="twitter:description" content="Explore all Education Khoj events including Education Excellence Awards 2025, Basketball Championship and more.">
-  <meta name="twitter:image" content="https://educationkhoj.com/media/gallery/images/DSC0530zZIGUxk.JPG">
-
-  
-  <link rel="canonical" href="https://educationkhoj.com/events" />
+  <meta name="twitter:description" content="Explore all Education Khoj events including Education Excellence Awards, Basketball Championship and more.">
 
   {% verbatim %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "CollectionPage",
-      "name": "Education Khoj Events",
-      "description": "Gallery of events organised by Education Khoj including awards, sports championships, felicitation ceremonies, career counselling and talent hunts.",
-      "url": "https://educationkhoj.com/events",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Education Khoj",
-        "url": "https://educationkhoj.com",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://educationkhoj.com/static/images/logo.png"
-        }
-      }
-    },
-    {
-      "@type": "Event",
-      "name": "Education Excellence Award 2025",
-      "description": "Educationkhoj.com, in association with Agilo Foundation, hosted the Education Excellence Awards 2025 at CCRT Auditorium, Dwarka.",
-      "startDate": "2025",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "location": {
-        "@type": "Place",
-        "name": "CCRT Auditorium, Dwarka",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Dwarka",
-          "addressRegion": "Delhi",
-          "addressCountry": "IN"
-        }
-      },
-      "organizer": { "@type": "Organization", "name": "Education Khoj", "url": "https://educationkhoj.com" },
-      "url": "https://educationkhoj.com/events"
-    },
-    {
-      "@type": "Event",
-      "name": "Interschool Basketball Championship 2023",
-      "description": "Educationkhoj organised the Interschool Basketball Championship with 15 schools across Dwarka.",
-      "startDate": "2023",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "location": {
-        "@type": "Place",
-        "name": "Dwarka, New Delhi",
-        "address": { "@type": "PostalAddress", "addressLocality": "Dwarka", "addressRegion": "Delhi", "addressCountry": "IN" }
-      },
-      "organizer": { "@type": "Organization", "name": "Education Khoj", "url": "https://educationkhoj.com" },
-      "url": "https://educationkhoj.com/events"
-    },
-    {
-      "@type": "Event",
-      "name": "Felicitating Government School Students for CBSE Excellence",
-      "description": "Felicitation ceremony honouring government school students who performed exceptionally well in CBSE examinations.",
-      "startDate": "2022",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "location": {
-        "@type": "Place",
-        "name": "Dwarka, New Delhi",
-        "address": { "@type": "PostalAddress", "addressLocality": "Dwarka", "addressRegion": "Delhi", "addressCountry": "IN" }
-      },
-      "organizer": { "@type": "Organization", "name": "Education Khoj", "url": "https://educationkhoj.com" },
-      "url": "https://educationkhoj.com/events"
-    },
-    {
-      "@type": "Event",
-      "name": "Career Counselling Session for Government School Students",
-      "description": "Career Counselling Session for government school students organised by Educationkhoj and Agilo Foundation.",
-      "startDate": "2022",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "location": {
-        "@type": "Place",
-        "name": "Dwarka, New Delhi",
-        "address": { "@type": "PostalAddress", "addressLocality": "Dwarka", "addressRegion": "Delhi", "addressCountry": "IN" }
-      },
-      "organizer": { "@type": "Organization", "name": "Education Khoj", "url": "https://educationkhoj.com" },
-      "url": "https://educationkhoj.com/events"
-    },
-    {
-      "@type": "Event",
-      "name": "Olympiad by Educationkhoj & Agilo Foundation 2013",
-      "description": "Olympiad to inspire academic excellence and healthy competition among government school students.",
-      "startDate": "2013",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "location": {
-        "@type": "Place",
-        "name": "Dwarka, New Delhi",
-        "address": { "@type": "PostalAddress", "addressLocality": "Dwarka", "addressRegion": "Delhi", "addressCountry": "IN" }
-      },
-      "organizer": { "@type": "Organization", "name": "Education Khoj", "url": "https://educationkhoj.com" },
-      "url": "https://educationkhoj.com/events"
-    },
-    {
-      "@type": "Event",
-      "name": "Interschool Essay & Painting Competition 2012",
-      "description": "Interschool Essay and Painting Competition to encourage creativity and expression among students.",
-      "startDate": "2012",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "location": {
-        "@type": "Place",
-        "name": "New Delhi",
-        "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressRegion": "Delhi", "addressCountry": "IN" }
-      },
-      "organizer": { "@type": "Organization", "name": "Education Khoj", "url": "https://educationkhoj.com" },
-      "url": "https://educationkhoj.com/events"
-    },
-    {
-      "@type": "Event",
-      "name": "Talent Hunt — Encouraging Young Minds 2010",
-      "description": "Talent Hunt for students of Classes X, XI and XII with cash prizes for top performers.",
-      "startDate": "2010",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "location": {
-        "@type": "Place",
-        "name": "Dwarka, New Delhi",
-        "address": { "@type": "PostalAddress", "addressLocality": "Dwarka", "addressRegion": "Delhi", "addressCountry": "IN" }
-      },
-      "organizer": { "@type": "Organization", "name": "Education Khoj", "url": "https://educationkhoj.com" },
-      "url": "https://educationkhoj.com/events"
+  "@type": "CollectionPage",
+  "name": "Education Khoj Events",
+  "description": "Gallery of events organised by Education Khoj including awards, sports championships, felicitation ceremonies, career counselling and talent hunts.",
+  "url": "https://educationkhoj.com/events",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Education Khoj",
+    "url": "https://educationkhoj.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://educationkhoj.com/static/images/logo.png"
     }
-  ]
+  }
 }
 </script>
 {% endverbatim %}
@@ -163,7 +51,6 @@ Education Khoj Events – Awards, Championships & Community Initiatives
 {% block content %}
 
   <style>
-  /* ── EXACT COPY FROM LIVE HOMEPAGE ── */
   .responsive-heading {
     font-family: 'Times New Roman', Times, serif !important;
     text-align: center !important;
@@ -185,7 +72,6 @@ Education Khoj Events – Awards, Championships & Community Initiatives
   body { overflow-x: hidden; }
   .leftSlider { width: 300px !important; height: 250px !important; }
 
-  /* ── KEY FIX: exact homepage navbar-collapse ── */
   .navbar-collapse {
     flex-basis: 100%;
     flex-grow: inherit !important;
@@ -203,7 +89,6 @@ Education Khoj Events – Awards, Championships & Community Initiatives
     font-family: 'Kanit' !important;
   }
 
-  /* ── Gallery images ── */
   .gallery-img {
     width: 100%;
     height: 200px;
@@ -215,7 +100,6 @@ Education Khoj Events – Awards, Championships & Community Initiatives
   @media (max-width: 768px) { .gallery-img { height: 150px; } }
   @media (max-width: 480px) { .gallery-img { height: 100px; } }
 
-  /* ── Event cards ── */
   .card { box-shadow: 0px 4px 6px rgba(0,0,0,0.1); margin-top: 30px; }
   h2 { font-family: "Anton", sans-serif; font-size: 1.4rem; }
   p  { margin-bottom: 15px; }
@@ -229,299 +113,55 @@ Education Khoj Events – Awards, Championships & Community Initiatives
 <body>
 
 
-<!-- MAIN CONTENT -->
 <main>
 <div class="container mt-4">
 
-  <!-- PAGE H1 – unique and descriptive -->
   <h1 class="text-center mb-1">Education Khoj Events</h1>
   <p class="text-center sub-heading">Awards, Championships, Felicitations &amp; Community Initiatives</p>
 
-  <!-- ══ EVENT 1 ══ -->
+  {% for event in events %}
   <div class="container my-4">
     <div class="row">
       <div class="col-12">
         <div class="card shadow-sm">
           <div class="card-body">
-            <h2>Education Excellence Award, 2025</h2>
+            <h2>{{ event.title }}</h2>
 
-            <p>Educationkhoj.com, in association with Agilo Foundation, proudly hosted the Education Excellence Awards 2025 at the CCRT Auditorium, Dwarka, to honour outstanding institutions, educators and students who have made significant contributions to the field of education.</p>
+            {% if event.venue %}
+            <p class="text-muted mb-2"><i class="bi bi-geo-alt"></i> {{ event.venue }}{% if event.event_date %} &bull; {{ event.event_date|date:"Y" }}{% endif %}</p>
+            {% elif event.event_date %}
+            <p class="text-muted mb-2">{{ event.event_date|date:"Y" }}</p>
+            {% endif %}
 
-            <p>The event was graced by Sh. Kuldeep Solanki, MLA Palam, as Special Guest. Sh. Ombir Singh Balayan (Ex-Commandant CISF, Arjun Awardee), Dr. Pankaj Lathar (CoEC/VO/Director DSEU Dwarka), Dr. Praveen Saroha (Director Physical Education &amp; Sports, NSUT), and Dr. Naresh K. Vats (Associate Professor, GGSIPU) served as Guests of Honour. Also present were Sh. Amit Kharkhari (Dy. Chairman Education Committee, MCD), Sh. Pawan Sharma (Former Mayor Najafgarh Zone), Sh. Har Gobind Arora (Spokesperson BJP), Ms. Meenakshi Verma (Director Puran Murti College, Haryana), Sh. Pancham Bhatia (CEO Holy Child Public School, Faridabad), and Ms. Poonam Ahlawat Lakra (Founder Bharat Vatsalya Trust). The event was organised under the esteemed guidance of Sh. Dharamadev Solanki ji, Ex-MLA.</p>
+            {{ event.description|safe }}
 
-            <p>This year's awardees included:</p>
-            <ul>
-              <li>Life Time Achievement Award – Sh. B. N. Nigam, Chairman, Modern International School</li>
-              <li>Educationist &amp; Philanthropist – Dr. T.P. Singh, Ex. Principal, Rajkiya Pratibha Vikas Vidyalaya, Dwarka</li>
-              <li>Outstanding Play School – Rising Stars Junior School</li>
-              <li>Outstanding Coaching Institute (Science Stream) – Bhardwaj Career Classes</li>
-              <li>Outstanding Test Preparation Institute – Pratham Test Prep</li>
-              <li>Outstanding Educational Group of Institutions – Udayan Group of Institution</li>
-              <li>Outstanding Coaching Institute (Commerce Stream) – Commerce Decoded Classes</li>
-              <li>Outstanding Digital Marketing Institute – Mr. Gaurav Mudgil, AIDM Institute of Digital Marketing</li>
-              <li>Outstanding Dance Academy – Versatile Dance Academy</li>
-              <li>Outstanding Music Academy – Arohi Music Academy</li>
-              <li>Outstanding Defence Coaching Institute – Georgian Defence Academy</li>
-              <li>Outstanding Sports Academy – IB Sports Academy</li>
-              <li>Outstanding Maths Academy – Narnoli Maths Academy</li>
-              <li>Outstanding Physics Teacher – Mr. Raj Kumar Khatri</li>
-              <li>Social Contribution through Education – Bimla Jain Memorial Trust</li>
-              <li>Special Category – Ms. Preetima Khandelwal for Bal Ramayan</li>
-              <li>Outstanding Sports Enthusiast Person – Mr. Praveen Rana</li>
-              <li>Outstanding Sanskrit Teacher – Mr. Hitesh Narayan Mudgal, Rajkiya Pratibha Vikas Vidyalaya, Dwarka</li>
-              <li>Outstanding Mathematics Teacher – Mr. Virender Kumar, Basava International School Dwarka</li>
-              <li>Outstanding Economics Teacher – Ms. Charu Dua, Basava International School Dwarka</li>
-              <li>Outstanding Biology Teacher – Ms. Neelima Arora, Basava International School Dwarka</li>
-              <li>Outstanding Physical Education Teacher – Mr. Chanderkant Bhardwaj, Basava International School Dwarka</li>
-              <li>Outstanding Physical Education Teacher – Mr. Rajneesh Sharma, Mount Carmel School Dwarka</li>
-              <li>Outstanding Physics Teacher – Dr. Shailendra Rawat, Mount Carmel School Dwarka</li>
-              <li>Outstanding Abacus Classes – Ms. Aditi Roy Banerjee, Roots Abacus Learning School Dwarka</li>
-              <li>Outstanding Health Care Institute – Rajiv Gandhi Paramedical Institute</li>
-              <li>Educationist &amp; Social Activist – Dr. Suman Mittal</li>
-            </ul>
-
-            <p>Many Physical Education teachers were also honoured: Mr. Rakesh Sharma (Shiv Vani Model Sr. Sec. School), Mr. H.P.S Rajput (I.T.L Public School), Mr. Rakesh Kumar Kataria (Modern Convent School), Mr. Bhupender Singh (Nirmal Bhartiya School), Mr. Sunil Kumar (St. Gregorios School), Mr. Sudhir Mann (Venkateswar International School), Mr. Karan Singh (Adarsh World School), Mr. Amit Kumar (Maxfort School), Mr. Kewal Krishan Rai (St. Mary School), Ms. Sapna Chauhan (R.D. Rajpal School), Ms. Archana Rana (Swiss Cottage School), Ms. Poonam Sharma (Jinvani Bharti School), Mr. Dalraj (SAM International School), Mr. Rakesh Kumar (Shiksha Bharti Global School), Mr. Sandeep Kumar (J.M International School), Mr. Ankur Chauhan (N.K Bagrodia School), Ms. Jyoti Aneja (Rainbow English School), Mr. Aashish Chauhan (Mount Carmel School), Mr. Manoj Kumar (N.K Bagrodia School), Ms. Pooja Sharma (St. Gregorios School).</p>
-
-            <p>The Education Excellence Awards 2025 reflected the mission of EducationKhoj.com to highlight talent, innovation, and leadership across the educational spectrum. Founder Mr. Girish Bhardwaj expressed: "These awards celebrate passion, innovation, and commitment in education. By honouring our awardees, we hope to inspire many more changemakers in the years to come."</p>
-
+            {% with gallery=event.images.all %}
+            {% if gallery %}
             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-2 mt-3">
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0530_zZIGUxk.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 ceremony at CCRT Auditorium Dwarka" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0540.JPG"          class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – dignitaries on stage" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0542_7lKZfYz.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – award recipient felicitated" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0548_BGGa5rA.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – felicitation moment on stage" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0557_qSNYWa0.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – educators receiving award" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0560.JPG"          class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – group photo at CCRT Auditorium" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0566_XkxTmLU.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – award distribution ceremony" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0576_EaONIjC.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – outstanding institution recognised" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0582.JPG"          class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – auditorium audience" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0602_czwGBG4.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – MLA Palam addressing guests" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0609.JPG"          class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – award winner with trophy" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0613_7UcjmN3.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – Agilo Foundation representative on stage" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0627_nfOaAgg.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – students honoured at ceremony" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0639_rZkw1uI.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – certificate presentation" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0642_zmMlF0m.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – award ceremony highlights" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0646_mVgoTd2.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – special guest with awardees" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0648_QSytsEa.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – prize distribution at Dwarka" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0651_kPZsu0Z.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – event at CCRT Dwarka" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0653_5fJK6eg.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – award ceremony photo" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0655_DDAXFED.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – Educationkhoj event gallery" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0659_pj37Kwt.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – educators felicitated on stage" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0667_4UmsRs7.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – students on stage" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0669_oimTYtS.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – institution representatives felicitated" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0685_C66O9ii.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – gala ceremony moment" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0689_75FDTJd.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – award function candid shot" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0693_fkBJp5C.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – closing prize distribution" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0694_vmQyfaT.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – felicitation of outstanding school" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0699_FOcSNnw.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – closing ceremony" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0717.JPG"          class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – audience applauding" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0730.JPG"          class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – group photograph" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0739_5D2Rei7.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – event conclusion photo" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/DSC_0742_1cKmWbV.JPG"  class="img-fluid rounded gallery-img" alt="Education Excellence Award 2025 – post-event group photo" loading="lazy"></div>
+              {% for img in gallery %}
+              <div class="col p-2"><img src="{{ img.image.url }}" class="img-fluid rounded gallery-img" alt="{{ img.alt_text|default:event.title }}" loading="lazy"></div>
+              {% endfor %}
             </div>
+            {% endif %}
+            {% endwith %}
 
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- ══ END EVENT 1 ══ -->
-
-
-  <!-- ══ EVENT 2 ══ -->
+  {% empty %}
   <div class="container my-4">
-    <div class="row">
-      <div class="col-12">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h2>Interschool Basketball Championship, 2023</h2>
-
-            <p>Educationkhoj, in association with Agilo Foundation &amp; Abhikalpana, successfully organised the Interschool Basketball Championship, bringing together young sporting talent from across Dwarka.</p>
-
-            <p>The tournament witnessed enthusiastic participation from 15 leading schools, making it a grand celebration of sportsmanship, teamwork, and competitive spirit. The championship matches were intense, showcasing excellent skills, determination, and passion for the game.</p>
-
-            <p>After a thrilling series of contests, ITL Public School, Dwarka emerged as the champion, lifting the First Prize of ₹5,100. The Second Prize of ₹3,100 was secured by GD Goenka School, Vasant Kunj, while the Third Prize was jointly shared by Maxfort School and GD Goenka School, Dwarka, both receiving ₹1,100 each.</p>
-
-            <p>The event not only recognised the winning teams but also celebrated the efforts of all participating schools. With the success of this event, Educationkhoj and Agilo Foundation reaffirm their commitment to promoting sports and nurturing young talent for a brighter and healthier future.</p>
-
-            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-2 mt-3">
-              <div class="col p-2"><img src="/media/gallery_images/2.jpg"                                                                       class="img-fluid rounded gallery-img" alt="Interschool Basketball Championship 2023 – opening ceremony Dwarka" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/4_baKxFml.jpg"                                                                class="img-fluid rounded gallery-img" alt="Interschool Basketball Championship 2023 – teams in action" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/5_koCQo60.jpg"                                                                class="img-fluid rounded gallery-img" alt="Interschool Basketball Championship 2023 – match in progress" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/6_i3th7UO.jpg"                                                                class="img-fluid rounded gallery-img" alt="Interschool Basketball Championship 2023 – players competing" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/7_WKiCUtQ.jpg"                                                                class="img-fluid rounded gallery-img" alt="Interschool Basketball Championship 2023 – championship game moment" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/8_cDxOXmh.jpg"                                                                class="img-fluid rounded gallery-img" alt="Interschool Basketball Championship 2023 – ITL Public School players" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/9_vAvZWxs.jpg"                                                                class="img-fluid rounded gallery-img" alt="Interschool Basketball Championship 2023 – tournament highlights Dwarka" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/10_xY1w5Lx.jpg"                                                               class="img-fluid rounded gallery-img" alt="Interschool Basketball Championship 2023 – team photo" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/301724623_1117739965815359_4895021391491939154_n_EETHK6C.jpg"                    class="img-fluid rounded gallery-img" alt="Interschool Basketball Championship 2023 – prize distribution ceremony" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/301916521_3275821819331153_8154421514828134200_n_Z49zA7r.jpg"                    class="img-fluid rounded gallery-img" alt="Interschool Basketball Championship 2023 – winning team ITL Public School" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/301933834_393745732904389_2956238386843945839_n_PGQCDV7.jpg"                     class="img-fluid rounded gallery-img" alt="Interschool Basketball Championship 2023 – award ceremony" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/302295325_1299497984191463_3674292548652251590_n_7bD4kvn.jpg"                    class="img-fluid rounded gallery-img" alt="Interschool Basketball Championship 2023 – closing ceremony" loading="lazy"></div>
-            </div>
-
-          </div>
-        </div>
-      </div>
+    <div class="text-center text-muted py-5">
+      <p>No events posted yet. Check back soon!</p>
     </div>
   </div>
-  <!-- ══ END EVENT 2 ══ -->
-
-
-  <!-- ══ EVENT 3 ══ -->
-  <div class="container my-4">
-    <div class="row">
-      <div class="col-12">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h2>Felicitating Government School Students for CBSE Excellence</h2>
-
-            <p>Educationkhoj, in association with Agilo Foundation, organised a felicitation ceremony to honour the outstanding achievements of government school students who performed exceptionally well in the CBSE examinations.</p>
-
-            <p>The initiative was aimed at celebrating their hard work, dedication, and perseverance, while also motivating other students to strive for academic excellence. Meritorious students were awarded certificates and prizes as a token of appreciation for their remarkable performance. Teachers and parents were also applauded for their constant support and encouragement in shaping the success of these young achievers.</p>
-
-            <p>The event created a sense of pride and inspiration, showcasing that with determination and the right guidance, students from government schools can achieve great heights. Educationkhoj and Agilo Foundation remain committed to recognising talent and providing platforms that encourage learning, confidence, and success among students.</p>
-
-            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-2 mt-3">
-              <div class="col p-2"><img src="/media/gallery_images/69672_335304559905165_134886321_n_qMUd59c.jpg"          class="img-fluid rounded gallery-img" alt="CBSE Excellence Felicitation – government school students awarded" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/WhatsApp_Image_2022-08-22_at_12.57.49_PM_2_7P0rYr9.jpeg"  class="img-fluid rounded gallery-img" alt="CBSE Excellence Felicitation – certificate distribution ceremony" loading="lazy"></div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- ══ END EVENT 3 ══ -->
-
-
-  <!-- ══
-
-  <!-- ══ EVENT 4 ══ -->
-  <div class="container my-4">
-    <div class="row">
-      <div class="col-12">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h2>Career Counselling Session for Government School Students</h2>
-
-            <p>Educationkhoj, in collaboration with Agilo Foundation, organised a Career Counselling Session exclusively for government school students with the aim of guiding them towards informed career choices.</p>
-
-            <p>The session was designed to create awareness about diverse academic and professional opportunities available after school, helping students align their interests and strengths with the right career path. Experienced counsellors and experts interacted with the students, addressing their queries related to higher education, competitive exams, skill development, and emerging career fields. Special emphasis was laid on building confidence, setting realistic goals, and exploring opportunities in both traditional and modern sectors.</p>
-
-            <p>The initiative proved to be highly impactful as students gained valuable insights into career planning, scholarships, and vocational options. The session concluded with words of motivation, inspiring young learners to dream big and work with determination. Through this effort, Educationkhoj and Agilo Foundation reaffirmed their commitment to empowering students from government schools with the right guidance for a brighter future.</p>
-
-            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-2 mt-3">
-              <div class="col p-2"><img src="/media/gallery_images/WhatsApp_Image_2022-08-22_at_12.57.50_PM_1_4vdbPri.jpeg"  class="img-fluid rounded gallery-img" alt="Career Counselling Session for government school students – expert interaction" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/WhatsApp_Image_2022-08-22_at_12.57.50_PM_2_MBX9HkH.jpeg"  class="img-fluid rounded gallery-img" alt="Career Counselling Session – students attending guidance workshop" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/WhatsApp_Image_2022-08-22_at_12.57.50_PM_6_RGICvOB.jpeg"  class="img-fluid rounded gallery-img" alt="Career Counselling Session – counsellor addressing students" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/WhatsApp_Image_2022-08-22_at_12.57.50_PM_7.jpeg"          class="img-fluid rounded gallery-img" alt="Career Counselling Session – students and faculty at Agilo Foundation event" loading="lazy"></div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- ══ END EVENT 4 ══ -->
-
-
-  <!-- ══ EVENT 5 ══ -->
-  <div class="container my-4">
-    <div class="row">
-      <div class="col-12">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h2>Olympiad by Educationkhoj &amp; Agilo Foundation, 2013</h2>
-
-            <p>Educationkhoj, in association with Agilo Foundation, successfully organised an Olympiad designed to inspire academic excellence and healthy competition among government school students.</p>
-
-            <p>The Olympiad aimed at testing conceptual understanding, analytical thinking, and problem-solving skills across various subjects. Students from different schools actively participated, showcasing their knowledge and determination to excel.</p>
-
-            <p>The Olympiad not only served as a platform to identify bright young minds but also encouraged them to push their boundaries and prepare for future challenges. Top-performing students were recognised and rewarded with prizes and certificates, while all participants were appreciated for their hard work and enthusiasm.</p>
-
-            <p>The event reflected Educationkhoj and Agilo Foundation's commitment to nurturing young talent and promoting a culture of learning beyond textbooks. The Olympiad concluded with an atmosphere of encouragement, motivating students to continue their pursuit of knowledge with confidence and passion.</p>
-
-            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-2 mt-3">
-              <div class="col p-2"><img src="/media/gallery_images/75567_335303646571923_490707557_n_dpN9tbS.jpg"             class="img-fluid rounded gallery-img" alt="Olympiad 2013 – students competing in academic contest" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/WhatsApp_Image_2022-08-22_at_12.57.49_PM_4.jpeg"            class="img-fluid rounded gallery-img" alt="Olympiad 2013 – prize distribution to top performers" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/WhatsApp_Image_2022-08-22_at_12.57.49_PM_6_iwe3sr2.jpeg"     class="img-fluid rounded gallery-img" alt="Olympiad 2013 – students and organisers group photo" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/WhatsApp_Image_2022-08-22_at_12.57.50_PM_5_j7tbgwN.jpeg"     class="img-fluid rounded gallery-img" alt="Olympiad 2013 – Educationkhoj Agilo Foundation event" loading="lazy"></div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- ══ END EVENT 5 ══ -->
-
-
-  <!-- ══ EVENT 6 ══ -->
-  <div class="container my-4">
-    <div class="row">
-      <div class="col-12">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h2>Interschool Essay &amp; Painting Competition, 2012</h2>
-
-            <p>Educationkhoj organised an Interschool Essay and Painting Competition to encourage creativity and expression among students. The event witnessed enthusiastic participation from various schools, where young minds showcased their ideas and imagination through words and art.</p>
-
-            <p>The essay competition allowed students to express their thoughts on contemporary issues, reflecting their awareness, critical thinking, and communication skills. The painting competition brought forward vibrant colours, creativity, and innovative perspectives, highlighting the artistic talent of participants.</p>
-
-            <p>Winners were felicitated with prizes and certificates, while every participant was appreciated for their effort and creativity. The event served as a meaningful platform to nurture literary and artistic abilities, promote healthy competition, and inspire students to think beyond classrooms. The competition concluded on a high note, leaving behind motivation and encouragement for all the budding writers and artists.</p>
-
-            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-2 mt-3">
-              <div class="col p-2"><img src="/media/gallery_images/170242_1526241765891_7578007_o_rck3mhG.jpg"    class="img-fluid rounded gallery-img" alt="Interschool Essay and Painting Competition 2012 – students participating" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/172263_1526243485934_70420_o_qsFZ8KG.jpg"      class="img-fluid rounded gallery-img" alt="Interschool Essay and Painting Competition 2012 – artwork on display" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/172263_1526243525935_3017569_o_JtUoTl7.jpg"   class="img-fluid rounded gallery-img" alt="Interschool Essay and Painting Competition 2012 – prize distribution" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/172263_1526243565936_6066017_o_puBqaR3.jpg"   class="img-fluid rounded gallery-img" alt="Interschool Essay and Painting Competition 2012 – winners felicitated" loading="lazy"></div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- ══ END EVENT 6 ══ -->
-
-
-  <!-- ══ EVENT 7 ══ -->
-  <div class="container my-4">
-    <div class="row">
-      <div class="col-12">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h2>Talent Hunt – Encouraging Young Minds, 2010</h2>
-
-            <p>Educationkhoj, in association with Agilo Foundation, successfully organised a Talent Hunt for students of Classes X, XI, and XII. The event aimed at recognising and rewarding young talent by providing them a platform to showcase their academic brilliance through a specially designed examination. A large number of students enthusiastically participated, making the competition vibrant and intellectually engaging.</p>
-
-            <p>The contest tested their knowledge, critical thinking, and problem-solving abilities. The highlight of the Talent Hunt was the felicitation ceremony where meritorious students were rewarded with attractive cash prizes. The First Prize of ₹5,100 was awarded to the top performer, while the Second Prize of ₹3,100 and Third Prize of ₹1,100 went to the next best achievers. To further encourage participation, consolation prizes of ₹500 each were awarded to 11 students who showcased remarkable effort and potential.</p>
-
-            <p>The event was not only about prizes but also about igniting confidence and inspiring students to aim higher. Educationkhoj and Agilo Foundation remain committed to creating more such opportunities that nurture academic excellence and foster a spirit of healthy competition among students. The Talent Hunt concluded with cheers, motivation, and the promise of a brighter tomorrow for the budding generation.</p>
-
-            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-2 mt-3">
-              <div class="col p-2"><img src="/media/gallery_images/376131_160309644071325_1928567388_n_bLOjc53.jpg"          class="img-fluid rounded gallery-img" alt="Talent Hunt 2010 – students competing in academic examination" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/385834_160309597404663_210449192_n_URg6qTZ.jpg"           class="img-fluid rounded gallery-img" alt="Talent Hunt 2010 – prize distribution ceremony" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/WhatsApp_Image_2022-08-22_at_12.57.49_PM_8_kLSrwPU.jpeg"    class="img-fluid rounded gallery-img" alt="Talent Hunt 2010 – first prize winner felicitated" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/WhatsApp_Image_2022-08-22_at_12.57.49_PM_9_2DG0GGg.jpeg"    class="img-fluid rounded gallery-img" alt="Talent Hunt 2010 – second prize winner felicitated" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/WhatsApp_Image_2022-08-22_at_12.57.49_PM_10_9iGpgVZ.jpeg"   class="img-fluid rounded gallery-img" alt="Talent Hunt 2010 – third prize winner felicitated" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/WhatsApp_Image_2022-08-22_at_12.57.49_PM_11_ZmV1Y0p.jpeg"   class="img-fluid rounded gallery-img" alt="Talent Hunt 2010 – consolation prize winners" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/WhatsApp_Image_2022-08-22_at_12.57.49_PM_niPWOwD.jpeg"     class="img-fluid rounded gallery-img" alt="Talent Hunt 2010 – students and organisers group photo" loading="lazy"></div>
-              <div class="col p-2"><img src="/media/gallery_images/WhatsApp_Image_2022-08-22_at_12.57.50_PM_fjjNu32.jpeg"     class="img-fluid rounded gallery-img" alt="Talent Hunt 2010 – Educationkhoj Agilo Foundation event closing" loading="lazy"></div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- ══ END EVENT 7 ══ -->
+  {% endfor %}
 
 </div>
 </main>
-<!-- ══ END MAIN CONTENT ══ -->
 
 
-<!-- footer -->
     <div class="px-5 py-2" style="background-color:#212529;">
       <style>
         footer ul.nav li a {
@@ -543,7 +183,7 @@ Education Khoj Events – Awards, Championships & Community Initiatives
           }
         }
       </style>
-      
+
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"

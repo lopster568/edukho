@@ -14,6 +14,10 @@
   {% if singlenews %}
     {% for x in singlenews %}
       <meta name="description" content="{{ x.desc|striptags|truncatechars:160 }}">
+      {% if x.tags %}
+      <meta name="keywords" content="{{ x.tags|tags_to_keywords }}">
+      <meta name="news_keywords" content="{{ x.tags|tags_to_keywords }}">
+      {% endif %}
     {% endfor %}
   {% endif %}
 {% endblock %}
@@ -28,7 +32,8 @@
   "@context": "https://schema.org",
   "@type": "NewsArticle",
   "headline": "{{ x.title }}",
-  "description": "{{ x.desc|striptags|truncatechars:160 }}",
+  "description": "{{ x.desc|striptags|truncatechars:160 }}",{% if x.tags %}
+  "keywords": "{{ x.tags|tags_to_keywords }}",{% endif %}
   "image": "{% if x.img %}https://educationkhoj.com{{ x.img.url }}{% endif %}",
   "datePublished": "{{ x.start_date }}",
   "dateModified": "{{ x.start_date }}",

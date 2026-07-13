@@ -65,3 +65,15 @@ def format_tags(value):
         return value
     parts = [p.strip() for p in value.split('|')]
     return ' | '.join(p for p in parts if p)
+
+
+@register.filter(name='tags_to_keywords')
+def tags_to_keywords(value):
+    """Convert pipe-separated tags to a comma-separated meta keywords string.
+
+    'Niti Ayog | Govt. Schools | Education News' -> 'Niti Ayog, Govt. Schools, Education News'
+    """
+    if not value:
+        return value
+    parts = [p.strip() for p in value.split('|')]
+    return ', '.join(p for p in parts if p)

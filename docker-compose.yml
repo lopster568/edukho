@@ -3,7 +3,7 @@ services:
     image: mysql:8.0
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: ***REMOVED***
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: users
     ports:
       - "3307:3306"
@@ -12,7 +12,7 @@ services:
       - ./educationkhoj_db.sql:/docker-entrypoint-initdb.d/01_main.sql
       - ./lookup_tables.sql:/docker-entrypoint-initdb.d/02_lookup.sql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p***REMOVED***"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
       interval: 5s
       timeout: 5s
       retries: 30
@@ -25,6 +25,7 @@ services:
     volumes:
       - .:/app
       - ./media:/app/media
+    env_file: .env
     environment:
       - DJANGO_DEBUG=True
     depends_on:

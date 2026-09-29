@@ -17,12 +17,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = BASE_DIR / "templates"
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "***REMOVED***"
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["educationkhoj.com", "www.educationkhoj.com", "***REMOVED***"]
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "educationkhoj.com,www.educationkhoj.com").split(",")
 
 # Application definition
 INSTALLED_APPS = [
@@ -95,11 +95,11 @@ TAILWIND_APP_NAME = "theme"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "users",
-        "USER": "root",
-        "PASSWORD": "***REMOVED***",
-        "HOST": "localhost",
-        "PORT": "3306",
+        "NAME": os.environ.get("DB_NAME", "users"),
+        "USER": os.environ["DB_USER"],
+        "PASSWORD": os.environ["DB_PASSWORD"],
+        "HOST": os.environ.get("DB_HOST", "localhost"),
+        "PORT": os.environ.get("DB_PORT", "3306"),
         "OPTIONS": {
             "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
         },
@@ -150,9 +150,9 @@ SOCIALACCOUNT_PROVIDERS = {
     "google": {
         "SCOPE": ["profile", "email"],
         "APP": {
-            "client_id": "***REMOVED***",
-            "secret": "***REMOVED***",
-            "key": "***REMOVED***",
+            "client_id": os.environ.get("GOOGLE_CLIENT_ID", ""),
+            "secret": os.environ.get("GOOGLE_CLIENT_SECRET", ""),
+            "key": os.environ.get("GOOGLE_API_KEY", ""),
         },
     }
 }
@@ -177,8 +177,8 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "ishaaninfomedia@gmail.com"
-EMAIL_HOST_PASSWORD = "***REMOVED***"
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
 
 APPEND_SLASH = True
 

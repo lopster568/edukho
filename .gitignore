@@ -15,3 +15,10 @@ mb/
 server_backup/
 grab_server.sh
 collect_remote.py
+.env.*
+!.env.example
+*.sql
+education_khoj/local_settings.py
+.venv/
+.django_cache/
+.claude/
